@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หลักสูตร Excel Macro และ VBA - 9Expert Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-code {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            color: #2c3e50;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .price {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .schedule-table {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .schedule-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .schedule-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .status-full {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
+        }
+
+        .status-available {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+        }
+
+        .objectives-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .objectives-list li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .objectives-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .cta-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button.secondary:hover {
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        .curriculum {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .curriculum h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .curriculum-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .curriculum-section h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .curriculum-section ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .curriculum-section ul li {
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .curriculum-section ul li::before {
+            content: "•";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="course-code">รหัสหลักสูตร : MSE-L3</div>
+            <h1>Microsoft Excel Macro และ VBA</h1>
+            <div class="description">
+                อบรมระบบงานอัตโนมัติด้วย Macro และ VBA ใน Microsoft Excel หากต้องการลดระยะเวลาในการทำงานลักษณะซ้ำ ๆ เดิม เราสามารถบันทึกกระบวนการทำงานนั้น ๆ ได้ โดยใช้ Macro ซึ่งการบันทึกดังกล่าว หากต้องการให้ Dynamic มากยิ่งขึ้น จำเป็นต้องแก้ไข Macro และปรับแต่ง code ที่เป็น Visual Basic for Application (VBA) ได้
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="card-title">
+                    <div class="card-icon">⏰</div>
+                    ระยะเวลาในการอบรม
+                </div>
+                <p><strong>ระยะเวลา:</strong> 3 วัน (18 ชั่วโมง)<br>
+                <strong>เวลา:</strong> 9.00 - 16.00 น.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-title">
+                    <div class="card-icon">💰</div>
+                    ค่าฝึกอบรม
+                </div>
+                <div class="price">9,590.-</div>
+                <p style="font-size: 0.9em; color: #666; margin-top: 10px;">*ราคาดังกล่าวยังไม่รวมภาษีมูลค่าเพิ่ม</p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-title">
+                    <div class="card-icon">🎯</div>
+                    วัตถุประสงค์
+                </div>
+                <ul class="objectives-list">
+                    <li>เพื่อให้ผู้อบรมสามารถพัฒนาระบบงานอัตโนมัติได้โดยใช้ความสามารถของ Macro ใน Microsoft Excel</li>
+                    <li>เพื่อให้ผู้อบรมสามารถแก้ไขโค้ดด้วย Visual Basic for Application (VBA) ได้</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="card-title">
+                    <div class="card-icon">👥</div>
+                    หลักสูตรนี้เหมาะสำหรับ
+                </div>
+                <ul class="objectives-list">
+                    <li>ผู้ที่ต้องการใช้เครื่องมือ Macro ใน Microsoft Excel เพื่อเพิ่มประสิทธิภาพการใช้งาน</li>
+                    <li>ผู้ที่ต้องทำงานซ้ำ ๆ เดิม ใน Microsoft Excel แต่ต้องการให้การทำงานรวดเร็วยิ่งขึ้น</li>
+                    <li>ผู้สนใจทั่วไป</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="card-title">
+                    <div class="card-icon">📋</div>
+                    พื้นฐานของผู้เข้าอบรม
+                </div>
+                <ul class="objectives-list">
+                    <li>มีพื้นฐานการใช้ Excel Shortcuts Key</li>
+                    <li>มีความเข้าใจเกี่ยวกับ Files, Folders และ Paths</li>
+                    <li>สำหรับผู้ใช้งาน Mac ควรรู้จัก Shortcut ของ MacOS เป็นอย่างดี</li>
+                    <li>ไม่จำเป็นต้องมีพื้นฐานของ Macro, การเขียน หรือพัฒนาโปรแกรม VBA</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="card-title">
+                    <div class="card-icon">💻</div>
+                    ความต้องการของระบบ
+                </div>
+                <ul class="objectives-list">
+                    <li>ระบบปฏิบัติการ Windows 11 / Windows 10</li>
+                    <li>โปรแกรม Microsoft Excel | Microsoft 365</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="schedule-table">
+            <div class="schedule-header">
+                ตารางฝึกอบรม Public
+            </div>
+            <div class="schedule-item">
+                <div>
+                    <strong>29 - 31 กรกฎาคม 2568</strong><br>
+                    <small>Class Room / Hybrid</small>
+                </div>
+                <div class="status-badge status-full">ใกล้เต็ม</div>
+            </div>
+            <div class="schedule-item">
+                <div>
+                    <strong>22 - 24 กันยายน 2568</strong><br>
+                    <small>Class Room / Hybrid</small>
+                </div>
+                <div class="status-badge status-available">เปิดรับสมัคร</div>
+            </div>
+            <div class="schedule-item">
+                <div>
+                    <strong>26 - 28 พฤศจิกายน 2568</strong><br>
+                    <small>Class Room / Hybrid</small>
+                </div>
+                <div class="status-badge status-available">เปิดรับสมัคร</div>
+            </div>
+        </div>
+
+        <div class="curriculum">
+            <h3>หัวข้อการฝึกอบรม</h3>
+            
+            <div class="curriculum-section">
+                <h4>Review Microsoft Excel</h4>
+                <ul>
+                    <li>ส่วนประกอบต่าง ๆ ของ Microsoft Excel</li>
+                    <li>การใช้คีย์ลัดใน Microsoft Excel อีกช่องทางในการใช้งานร่วมกับ Macro</li>
+                    <li>การทำงานกับข้อมูลจำนวนมาก ๆ</li>
+                    <li>การลิงก์ข้อมูลและสูตรข้าม Worksheet, Workbook</li>
+                    <li>Advanced Featured in Microsoft Excel</li>
+                </ul>
+            </div>
+
+            <div class="curriculum-section">
+                <h4>การ Import/Export Data</h4>
+                <ul>
+                    <li>Import Text File (.csv, .txt)</li>
+                    <li>Import Excel File</li>
+                    <li>Export Data</li>
+                    <li>แนะนำการสรุปผลข้อมูลด้วย PivotTable</li>
+                    <li>Dynamic PivotTable</li>
+                </ul>
+            </div>
+
+            <div class="curriculum-section">
+                <h4>Introduction to Macro</h4>
+                <ul>
+                    <li>ความหมายและประโยชน์ของ มาโคร (Macro)</li>
+                    <li>การเรียกใช้ Developer Tab และส่วนประกอบของ Developer Tab</li>
+                    <li>การกำหนดค่าให้กับ Microsoft Office Excel เพื่อใช้งาน Macro</li>
+                    <li>การบันทึกมาโคร (Macro)</li>
+                    <li>การแก้ไข Macro Excel</li>
+                    <li>รู้จักกับ Relative Reference</li>
+                </ul>
+            </div>
+
+            <div class="curriculum-section">
+                <h4>Visual Basic for Application (VBA)</h4>
+                <ul>
+                    <li>โครงสร้างทางภาษา VBA</li>
+                    <li>Visual Basic Editor (VBE)</li>
+                    <li>Excel Object Model</li>
+                    <li>Event, Object, Properties, Method</li>
+                    <li>การกำหนด ตัวแปร (Variable) และขอบเขตของตัวแปร</li>
+                    <li>วิธีการอ่านโค้ด และ เทคนิคการแก้ไขโค้ด VBA</li>
+                    <li>การดีบั๊กโปรแกรม (Debugging)</li>
+                </ul>
+            </div>
+
+            <div class="curriculum-section">
+                <h4>Case Study</h4>
+                <ul>
+                    <li>ระบบใบแจ้งหนี้ที่สามารถเก็บรายละเอียดของใบแจ้งหนี้ก่อนหน้าได้</li>
+                    <li>การ Import Data ของการรายการขาย เพื่อสรุปข้อมูลในรูปแบบ PivotTable / PivotChart อัตโนมัติ</li>
+                    <li>การ Export Data รายการลูกค้าอัตโนมัติ โดยกำหนดเงื่อนไขการ Export ได้</li>
+                    <li>การใช้มาโครช่วยในการตกแต่งเอกสารอย่างรวดเร็วในพริบตา</li>
+                    <li>เทคนิคการทำให้ระบบงานมีความยืดหยุ่น (Flexible)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="margin-bottom: 20px; color: #2c3e50;">พร้อมเริ่มต้นการเรียนรู้แล้วหรือยัง?</h2>
+            <p style="margin-bottom: 30px; color: #666; font-size: 1.1em;">สมัครเลยวันนี้และเริ่มต้นการเดินทางสู่การเป็นผู้เชี่ยวชาญ Excel Macro และ VBA</p>
+            <a href="#" class="cta-button">สมัครเรียน Public Course</a>
+            <a href="#" class="cta-button secondary">ขอใบเสนอราคา In-House</a>
+            <div style="margin-top: 20px; font-size: 0.9em; color: #666;">
+                <p>📞 โทร: 02-000-0000 | 📧 Email: info@9experttraining.com</p>
+                <p style="margin-top: 10px;">💡 โปรโมชั่นหลักสูตรต่อเนื่อง: เรียนต่อเนื่องของกลุ่มวิชานั้นๆ ได้รับส่วนลด 15%</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // เพิ่มเอฟเฟกต์การเลื่อนเมื่อโหลดหน้า
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // เพิ่มเอฟเฟกต์ hover สำหรับปุ่ม
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // เพิ่มเอฟเฟกต์ parallax เบาๆ
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('body');
+            const speed = scrolled * 0.5;
+            parallax.style.backgroundPosition = `center ${speed}px`;
+        });
+    </script>
+</body>
+</html>

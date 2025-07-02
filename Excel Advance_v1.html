@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Excel Advanced Training Course - 9Expert Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .course-code {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .course-info {
+            background: white;
+            margin: -3rem auto 0;
+            max-width: 1000px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h3 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ef4444;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e293b;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+        }
+
+        .objectives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .objective-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid;
+            transition: all 0.3s;
+        }
+
+        .objective-card:nth-child(1) { border-left-color: #3b82f6; }
+        .objective-card:nth-child(2) { border-left-color: #10b981; }
+        .objective-card:nth-child(3) { border-left-color: #f59e0b; }
+        .objective-card:nth-child(4) { border-left-color: #ef4444; }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .curriculum {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 2rem 0;
+        }
+
+        .curriculum-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .curriculum-section h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .curriculum-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .curriculum-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .curriculum-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .schedule {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .schedule-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .date {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .status {
+            background: #ef4444;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .status.available {
+            background: #10b981;
+        }
+
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .floating-action {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .floating-action:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .course-info {
+                margin: -2rem 1rem 0;
+                padding: 1.5rem;
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .requirements {
+            background: #f8fafc;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .requirements h3 {
+            color: #1e293b;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .req-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">9Expert Training</div>
+            <ul class="nav-links">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#course">หลักสูตร</a></li>
+                <li><a href="#schedule">ตารางอบรม</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="course-code">รหัสหลักสูตร: MSE-L2</div>
+            <h1>Microsoft Excel Advanced</h1>
+            <p class="hero-description">
+                อบรมการใช้งาน MS Excel เพื่อการทำงานที่ซับซ้อนยิ่งขึ้น<br>
+                สำหรับผู้ที่ต้องการศึกษาสูตรคำนวณที่ซับซ้อนเพิ่มเติม พร้อมประยุกต์ใช้งานได้จริง
+            </p>
+            <button class="cta-button" onclick="scrollToSchedule()">ดูตารางอบรม</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="course-info fade-in">
+            <div class="info-card">
+                <h3>🕒 ระยะเวลา</h3>
+                <p><strong>2 วัน (12 ชั่วโมง)</strong></p>
+                <p>9:00 - 16:00 น.</p>
+            </div>
+            <div class="info-card">
+                <h3>💰 ค่าฝึกอบรม</h3>
+                <div class="price">8,500.-</div>
+                <p><small>*ยังไม่รวม VAT</small></p>
+            </div>
+            <div class="info-card">
+                <h3>📚 รูปแบบ</h3>
+                <p><strong>Virtual Training</strong></p>
+                <p>Microsoft Teams</p>
+                <p><strong>Class Room</strong></p>
+                <p>BTS ราชเทวี</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" id="course">
+        <div class="container">
+            <h2 class="section-title fade-in">วัตถุประสงค์การอบรม</h2>
+            <div class="objectives fade-in">
+                <div class="objective-card">
+                    <h3>🔢 การคำนวณขั้นสูง</h3>
+                    <p>สามารถสร้างตารางการคำนวณโดยใช้ฟังก์ชันต่าง ๆ ในเชิงประยุกต์สูตรได้</p>
+                </div>
+                <div class="objective-card">
+                    <h3>⚡ Power Query</h3>
+                    <p>สามารถเตรียมข้อมูลเบื้องต้นด้วย Power Query ได้อย่างมีประสิทธิภาพ</p>
+                </div>
+                <div class="objective-card">
+                    <h3>📊 การวิเคราะห์ข้อมูล</h3>
+                    <p>ใช้ Excel วิเคราะห์ และสรุปผลข้อมูล ด้วย PivotTable และ PivotChart ได้</p>
+                </div>
+                <div class="objective-card">
+                    <h3>🔒 ความปลอดภัย</h3>
+                    <p>สามารถทำการกำหนดการรักษาความปลอดภัยของ Microsoft Excel ได้</p>
+                </div>
+            </div>
+
+            <div class="curriculum fade-in">
+                <h3 class="section-title">หัวข้อการฝึกอบรม</h3>
+                
+                <div class="curriculum-section">
+                    <h4>🚀 Microsoft Excel พื้นฐานขั้นสูง</h4>
+                    <ul class="curriculum-list">
+                        <li>ความสามารถและส่วนประกอบของ Microsoft Excel</li>
+                        <li>ประเภทไฟล์ Excel ข้อดี และข้อจำกัด</li>
+                        <li>คีย์ลัด Shortcut Key ที่จำเป็นต่อการทำงาน</li>
+                        <li>การจัดรูปแบบที่สามารถทำได้อย่างรวดเร็ว</li>
+                    </ul>
+                </div>
+
+                <div class="curriculum-section">
+                    <h4>🔧 ฟังก์ชันขั้นสูง</h4>
+                    <ul class="curriculum-list">
+                        <li>สูตรการคำนวณเพื่อทำงานตามเงื่อนไข (IFS, SWITCH)</li>
+                        <li>ฟังก์ชัน SUMIFS, COUNTIFS, AVERAGEIFS</li>
+                        <li>ฟังก์ชัน OFFSET, INDIRECT, XLOOKUP</li>
+                        <li>ฟังก์ชันใหม่ใน Microsoft 365 (FILTER, SORT, UNIQUE)</li>
+                    </ul>
+                </div>
+
+                <div class="curriculum-section">
+                    <h4>📈 การจัดการข้อมูล</h4>
+                    <ul class="curriculum-list">
+                        <li>การทำงานกับข้อมูลด้วย Table</li>
+                        <li>Power Query เพื่อการเตรียมข้อมูล</li>
+                        <li>PivotTable และ PivotChart</li>
+                        <li>Conditional Formatting และ Data Validation</li>
+                    </ul>
+                </div>
+
+                <div class="curriculum-section">
+                    <h4>🔐 ความปลอดภัย</h4>
+                    <ul class="curriculum-list">
+                        <li>การกำหนดรหัสผ่านให้ไฟล์ Excel</li>
+                        <li>การป้องกัน Worksheet & Workbook</li>
+                        <li>การป้องกันไม่ให้เห็นสูตรและแก้ไข Cell</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="requirements fade-in">
+                <h3>ความต้องการของระบบและพื้นฐานผู้เข้าอบรม</h3>
+                <div class="req-grid">
+                    <div class="req-card">
+                        <h4>💻 ความต้องการของระบบ</h4>
+                        <ul class="curriculum-list">
+                            <li>Windows 11 / Windows 10</li>
+                            <li>Microsoft Excel | Microsoft 365</li>
+                            <li>สำหรับ Version 2019, 2021 บางคำสั่งจะไม่สามารถใช้งานได้</li>
+                        </ul>
+                    </div>
+                    <div class="req-card">
+                        <h4>👨‍💼 เหมาะสำหรับ</h4>
+                        <ul class="curriculum-list">
+                            <li>ผู้ที่เคยใช้งาน Excel แต่ต้องการทำงานให้ง่าย เร็วยิ่งขึ้น</li>
+                            <li>ผู้ที่ต้องการประยุกต์ใช้สูตรที่ซับซ้อน</li>
+                            <li>ผู้ที่ต้องการทำงานกับข้อมูลอย่างมีประสิทธิภาพ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">ตารางฝึกอบรม Public</h2>
+            <div class="schedule-grid fade-in">
+                <div class="schedule-card">
+                    <div class="date">22 - 23 กรกฎาคม 2568</div>
+                    <div class="status">ใกล้เต็ม</div>
+                    <p style="margin-top: 1rem;">Class Room / Hybrid</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="date">14 - 15 สิงหาคม 2568</div>
+                    <div class="status available">ว่าง</div>
+                    <p style="margin-top: 1rem;">Class Room / Hybrid</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="date">18 - 19 กันยายน 2568</div>
+                    <div class="status">ใกล้เต็ม</div>
+                    <p style="margin-top: 1rem;">Class Room / Hybrid</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="date">16 - 17 ตุลาคม 2568</div>
+                    <div class="status available">ว่าง</div>
+                    <p style="margin-top: 1rem;">Class Room / Hybrid</p>
+                </div>
+            </div>
+            <div style="margin-top: 3rem;">
+                <button class="cta-button">สมัครอบรม</button>
+                <button class="cta-button" style="margin-left: 1rem; background: linear-gradient(45deg, #10b981, #059669);">ขอใบเสนอราคา In-House</button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2025 9Expert Training. สงวนลิขสิทธิ์</p>
+            <p>ติดต่อเรา: BTS ราชเทวี | Microsoft Teams Virtual Training</p>
+        </div>
+    </footer>
+
+    <div class="floating-action" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // Fade in animation
+        function handleScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        function scrollToSchedule() {
+            document.getElementById('schedule').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

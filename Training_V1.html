@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางการฝึกอบรม / Training Schedule</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e88e5, #42a5f5);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .header-right {
+            font-size: 12px;
+        }
+
+        /* Sub Header */
+        .sub-header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .training-btn {
+            background-color: #d32f2f;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .class-room-btn {
+            background-color: #7b1fa2;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: #e3f2fd;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #1976d2;
+        }
+
+        .breadcrumb a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+
+        /* Main Title */
+        .main-title {
+            background: linear-gradient(135deg, #1565c0, #1976d2);
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Content Area */
+        .content-area {
+            display: flex;
+            background-color: white;
+            min-height: 600px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background-color: #37474f;
+            color: white;
+            padding: 0;
+        }
+
+        .sidebar-header {
+            background-color: #263238;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .sidebar-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid #455a64;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-item:hover {
+            background-color: #455a64;
+        }
+
+        .sidebar-arrow {
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .content-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .tab.inactive {
+            background-color: #e0e0e0;
+            color: #666;
+        }
+
+        /* Training Section */
+        .training-section {
+            background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .training-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .training-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 14px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .classroom { background-color: #4caf50; }
+        .hybrid { background-color: #f44336; }
+
+        /* Schedule Table */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .schedule-table th {
+            background-color: #1976d2;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .schedule-table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .schedule-table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .course-code {
+            font-weight: bold;
+            color: #1976d2;
+        }
+
+        .course-name {
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .price {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .date-cell {
+            position: relative;
+            padding: 5px;
+        }
+
+        .date-tag {
+            background-color: #e91e63;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 11px;
+            display: inline-block;
+            margin: 1px;
+        }
+
+        .date-tag.green {
+            background-color: #4caf50;
+        }
+
+        .excel-icon {
+            color: #107c41;
+            margin-right: 8px;
+        }
+
+        .access-icon {
+            color: #d83b01;
+            margin-right: 8px;
+        }
+
+        /* Private Training Page Styles */
+        .private-page {
+            display: none;
+            padding: 0;
+        }
+
+        .private-page.active {
+            display: block;
+        }
+
+        .private-header {
+            background: linear-gradient(135deg, #f9c74f, #f8961e);
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .private-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .laptop-icon {
+            width: 50px;
+            height: 40px;
+            background-color: #666;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .laptop-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #666;
+            border-radius: 2px;
+        }
+
+        .quote-btn {
+            background-color: #c62828;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quote-btn:hover {
+            background-color: #b71c1c;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: #1976d2;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #1976d2;
+        }
+
+        .objectives-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .objectives-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .objectives-list li::before {
+            content: counter(item);
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            top: 8px;
+            background-color: #1976d2;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .objectives-list {
+            counter-reset: item;
+        }
+
+        .curriculum-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .curriculum-list li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .curriculum-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            color: #1976d2;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirements-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .requirements-list li::before {
+            content: counter(req-item);
+            counter-increment: req-item;
+            position: absolute;
+            left: 0;
+            top: 8px;
+            background-color: #4caf50;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .requirements-list {
+            counter-reset: req-item;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="nav-menu">
+            <a href="#" class="nav-item">🏠 หน้าหลัก</a>
+            <a href="#" class="nav-item">ตารางอบรม</a>
+            <a href="#" class="nav-item">ลงทะเบียน / เปิดบิลจ่าย</a>
+            <a href="#" class="nav-item">โปรโมชั่น</a>
+            <a href="#" class="nav-item">บทความ</a>
+            <a href="#" class="nav-item">ดาวน์โหลดเอกสาร</a>
+            <a href="#" class="nav-item">ติดต่อเรา</a>
+        </div>
+        <div class="header-right">
+            สอบถามโทร 0-2219-4304-6
+        </div>
+    </div>
+
+    <!-- Sub Header -->
+    <div class="sub-header">
+        <div>
+            <button class="training-btn">📺 Virtual Training สอนสดระหว่าง Microsoft Teams</button>
+            <button class="class-room-btn">🎓 Class Room</button>
+        </div>
+        <div>หรือ</div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="#">หน้าหลัก</a> » ตารางการฝึกอบรม / Training Schedule
+    </div>
+
+    <!-- Main Title -->
+    <div class="main-title">
+        ตารางการฝึกอบรม / Training Schedule
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">หลักสูตรที่ให้บริการ</div>
+            <div class="sidebar-item">
+                <span>Artificial Intelligence</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Power Platform</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Power BI</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Microsoft Excel</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Microsoft PowerPoint / Canva</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Microsoft Access</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>SQL Server</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Robotic Process Automation (RPA)</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Web Development / Programming</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Python</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+            <div class="sidebar-item">
+                <span>Other</span>
+                <span class="sidebar-arrow">▶</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-header">
+                <button class="tab" onclick="showSchedule()">ตารางเรียน</button>
+                <button class="tab inactive" onclick="showPrivate()">อบรมภายในองค์กร/Private</button>
+            </div>
+
+            <div class="schedule-content">
+                <div class="training-section">
+                    <div class="training-title">Microsoft Office/Automation</div>
+                    <div class="training-legend">
+                        <div class="legend-item">
+                            <div class="legend-color classroom"></div>
+                            <span>Class Room</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color hybrid"></div>
+                            <span>Hybrid(ผู้เรียนเลือกเรียนที่ Class Room หรือ Live)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>รหัส</th>
+                            <th>ชื่อหลักสูตร</th>
+                            <th>วัน</th>
+                            <th>ราคา</th>
+                            <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Mar</th>
+                            <th>Apr</th>
+                            <th>May</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>Aug</th>
+                            <th>Sep</th>
+                            <th>Oct</th>
+                            <th>Nov</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="course-code">MSA-L1</td>
+                            <td class="course-name">
+                                <span class="access-icon">🔶</span>Microsoft Access Intermediate
+                            </td>
+                            <td>2</td>
+                            <td class="price">8,500</td>
+                            <td class="date-cell">
+                                <span class="date-tag">07 - 08</span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">12 - 13</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="course-code">MSE-L1</td>
+                            <td class="course-name">
+                                <span class="excel-icon">📊</span>Microsoft Excel Intermediate
+                            </td>
+                            <td>2</td>
+                            <td class="price">7,900</td>
+                            <td class="date-cell">
+                                <span class="date-tag">08 - 09</span>
+                            </td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">11 - 12</span>
+                            </td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">06 - 07</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="course-code">MSE-L2</td>
+                            <td class="course-name">
+                                <span class="excel-icon">📊</span>Microsoft Excel Advanced
+                            </td>
+                            <td>2</td>
+                            <td class="price">8,500</td>
+                            <td class="date-cell">
+                                <span class="date-tag">22 - 23</span>
+                            </td>
+                            <td class="date-cell">
+                                <span class="date-tag green">14 - 15</span>
+                            </td>
+                            <td class="date-cell">
+                                <span class="date-tag">18 - 19</span>
+                            </td>
+                            <td class="date-cell">
+                                <span class="date-tag">16 - 17</span>
+                            </td>
+                            <td class="date-cell">
+                                <span class="date-tag">10 - 11</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="course-code">MSE-L3</td>
+                            <td class="course-name">
+                                <span class="excel-icon">📊</span>Microsoft Excel Macro and VBA
+                            </td>
+                            <td>3</td>
+                            <td class="price">9,990</td>
+                            <td class="date-cell">
+                                <span class="date-tag">29 - 31</span>
+                            </td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">22 - 24</span>
+                            </td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">26 - 28</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="course-code">MSE-L4</td>
+                            <td class="course-name">
+                                <span class="excel-icon">📊</span>Microsoft Excel Advanced PivotTable and PivotChart
+                            </td>
+                            <td>2</td>
+                            <td class="price">8,500</td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">28 - 29</span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">17 - 18</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="course-code">MSE-L5</td>
+                            <td class="course-name">
+                                <span class="excel-icon">📊</span>Microsoft Excel Business Intelligence
+                            </td>
+                            <td>1</td>
+                            <td class="price">4,900</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">29</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="course-code">MSE-L6</td>
+                            <td class="course-name">
+                                <span class="excel-icon">📊</span>Microsoft Excel Power Query
+                            </td>
+                            <td>2</td>
+                            <td class="price">8,500</td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag green">21 - 22</span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">24 - 25</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="course-code">MSE-NF</td>
+                            <td class="course-name">
+                                <span class="excel-icon">📊</span>Microsoft Excel New Functions for Business Excellence
+                            </td>
+                            <td>1</td>
+                            <td class="price">4,900</td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag green">21</span>
+                            </td>
+                            <td class="date-cell">
+                                <span class="date-tag">15</span>
+                            </td>
+                            <td></td>
+                            <td class="date-cell">
+                                <span class="date-tag">14</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Private Training Page -->
+            <div class="private-page" id="privatePage">
+                <div class="private-header">
+                    <div class="private-title">
+                        <div class="laptop-icon"></div>
+                        <span>อบรมภายในองค์กร/Private (In-House)</span>
+                    </div>
+                    <button class="quote-btn">
+                        <span>✏️</span>
+                        <span>ขอใบเสนอราคา</span>
+                    </button>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">วัตถุประสงค์</h2>
+                    <ol class="objectives-list">
+                        <li>ผู้อบรมสามารถอ่านค่าประไฟฟ้าอย่างถูกต้องโปรแกรม Microsoft Excel</li>
+                        <li>ผู้อบรมสามารถสร้างแฟ้มใหม่ การบันทึกเอกสารได้</li>
+                        <li>ผู้อบรมสามารถทำการคำนวณด้วย Microsoft Excel</li>
+                        <li>ผู้อบรมสามารถใช้สูตรพื้นฐานกับคำนวณสูตรปฏิเวียนของสูตรได้อย่างคล่องคลาย</li>
+                        <li>ผู้อบรมสามารถทำงานกับข้อมูล (Data) กับเรื่องการ Sort, Filter ได้</li>
+                        <li>ผู้อบรมสามารถสร้างกราฟแก้ไข กราฟ/วิจิตรกม กราฟสีสวก ได้</li>
+                    </ol>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">หลักสูตรนี้เหมาะสำหรับ</h2>
+                    <ul class="curriculum-list">
+                        <li>ผู้ใช้งานทั่วไป</li>
+                        <li>ผู้ที่ต้องการเรียนพื้นที่ Excel อย่างเป็นระบบ</li>
+                        <li>ผู้ที่ต้องการใช้ Excel ทำงานแแบบเดิมว่าง ๆ</li>
+                        <li>ผู้ที่ต้องการใช้ Excel สร้างกราฟ/วิจิตรอบสถิติได้อย่างนาเรียน</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">ความต้องการของระบบ</h2>
+                    <ol class="requirements-list">
+                        <li>ระบบปฏิบัติการ Windows 11 / Windows 10</li>
+                        <li>โปรแกรม Microsoft Excel | Microsoft 365</li>
+                    </ol>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">หัวข้อการฝึกอบรม</h2>
+                    <p style="color: #666; font-style: italic; margin-top: 10px;">เนื้อหาหลักสูตรจะถูกปรับให้เหมาะสมกับความต้องการของแต่ละองค์กร</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSchedule() {
+            // Hide private page
+            document.getElementById('privatePage').classList.remove('active');
+            document.querySelector('.schedule-content').style.display = 'block';
+            
+            // Update tab styles
+            document.querySelectorAll('.tab')[0].classList.remove('inactive');
+            document.querySelectorAll('.tab')[1].classList.add('inactive');
+        }
+
+        function showPrivate() {
+            // Show private page
+            document.getElementById('privatePage').classList.add('active');
+            document.querySelector('.schedule-content').style.display = 'none';
+            
+            // Update tab styles
+            document.querySelectorAll('.tab')[0].classList.add('inactive');
+            document.querySelectorAll('.tab')[1].classList.remove('inactive');
+        }
+    </script>

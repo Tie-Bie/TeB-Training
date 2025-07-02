@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางการฝึกอบรม / Training Schedule</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .training-note {
+            background: #e8f4fd;
+            border-left: 5px solid #007bff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        .training-note a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .training-note a:hover {
+            text-decoration: underline;
+        }
+
+        .category {
+            margin-bottom: 50px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        .excel-header {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        }
+
+        .ai-header {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+        }
+
+        .powerpoint-header {
+            background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+        }
+
+        .powerbi-header {
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+        }
+
+        .rpa-header {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .python-header {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        .web-header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .db-header {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+        }
+
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .course-table th {
+            background: #f8f9fa;
+            color: #495057;
+            font-weight: 600;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #dee2e6;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .course-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .course-table tr:hover {
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .course-code {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .course-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .course-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        .days {
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.85rem;
+        }
+
+        .price {
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.85rem;
+        }
+
+        .month-cell {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.8rem;
+            padding: 8px 4px;
+        }
+
+        .schedule-classroom {
+            background: #007bff;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 1px;
+            min-width: 35px;
+        }
+
+        .schedule-hybrid {
+            background: #e91e63;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 1px;
+            min-width: 35px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-classroom {
+            background: #007bff;
+        }
+
+        .legend-hybrid {
+            background: #e91e63;
+        }
+
+        .course-list {
+            padding: 0;
+            margin: 0;
+        }
+
+        .course-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .course-item:last-child {
+            border-bottom: none;
+        }
+
+        .course-item img {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .course-table {
+                font-size: 0.8rem;
+            }
+
+            .course-table th,
+            .course-table td {
+                padding: 8px;
+            }
+
+            .course-name {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ตารางการฝึกอบรม / Training Schedule</h1>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot legend-classroom"></div>
+                <span>Class Room</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot legend-hybrid"></div>
+                <span>Hybrid(ลูกค้าอบรมแบบ Class Room หรือ Live)</span>
+            </div>
+        </div>
+
+        <!-- Microsoft Office/Automation -->
+        <div class="category">
+            <div class="category-header excel-header">
+                Microsoft Office/Automation
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">MSA-L1.1</td>
+                        <td class="course-name">
+                            <span>🔴</span>
+                            <span>Microsoft Access Intermediate</span>
+                        </td>
+                        <td class="days">2</td>
+                        <td class="price">8,500</td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">07 - 08</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">12 - 13</span></td>
+                        <td class="month-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MSE-L1</td>
+                        <td class="course-name">
+                            <span>📊</span>
+                            <span>Microsoft Excel Intermediate</span>
+                        </td>
+                        <td class="days">2</td>
+                        <td class="price">7,900</td>
+                        <td class="month-cell"><span class="schedule-hybrid">08 - 09</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-classroom">11 - 12</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">06 - 07</span></td>
+                        <td class="month-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MSE-L2</td>
+                        <td class="course-name">
+                            <span>📊</span>
+                            <span>Microsoft Excel Advanced</span>
+                        </td>
+                        <td class="days">2</td>
+                        <td class="price">8,500</td>
+                        <td class="month-cell"><span class="schedule-hybrid">22 - 23</span></td>
+                        <td class="month-cell"><span class="schedule-hybrid">14 - 15</span></td>
+                        <td class="month-cell"><span class="schedule-classroom">18 - 19</span></td>
+                        <td class="month-cell"><span class="schedule-classroom">16 - 17</span></td>
+                        <td class="month-cell"><span class="schedule-hybrid">10 - 11</span></td>
+                        <td class="month-cell"><span class="schedule-hybrid">08 - 09</span></td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MSE-L3</td>
+                        <td class="course-name">
+                            <span>📊</span>
+                            <span>Microsoft Excel Macro and VBA</span>
+                        </td>
+                        <td class="days">3</td>
+                        <td class="price">9,990</td>
+                        <td class="month-cell"><span class="schedule-hybrid">29 - 31</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-classroom">22 - 24</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">26 - 28</span></td>
+                        <td class="month-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MSE-L4</td>
+                        <td class="course-name">
+                            <span>📊</span>
+                            <span>Microsoft Excel Advanced PivotTable and PivotChart</span>
+                        </td>
+                        <td class="days">2</td>
+                        <td class="price">8,500</td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">28 - 29</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">17 - 18</span></td>
+                        <td class="month-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MSE-L5</td>
+                        <td class="course-name">
+                            <span>📊</span>
+                            <span>Microsoft Excel Business Intelligence</span>
+                        </td>
+                        <td class="days">1</td>
+                        <td class="price">4,900</td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-classroom">29</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MSE-L6</td>
+                        <td class="course-name">
+                            <span>📊</span>
+                            <span>Microsoft Excel Power Query</span>
+                        </td>
+                        <td class="days">2</td>
+                        <td class="price">8,500</td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">21 - 22</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">24 - 25</span></td>
+                        <td class="month-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MSE-NF</td>
+                        <td class="course-name">
+                            <span>📊</span>
+                            <span>Microsoft Excel New Functions for Business Excellence</span>
+                        </td>
+                        <td class="days">1</td>
+                        <td class="price">4,900</td>
+                        <td class="month-cell"><span class="schedule-hybrid">21</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-classroom">15</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">14</span></td>
+                        <td class="month-cell"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Artificial Intelligence -->
+        <div class="category">
+            <div class="category-header ai-header">
+                Artificial Intelligence
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">COPILOT-M365</td>
+                        <td class="course-name">
+                            <span>🤖</span>
+                            <span>AI Agents with Microsoft Copilot Studio</span>
+                        </td>
+                        <td class="days">2</td>
+                        <td class="price">12,500</td>
+                        <td class="month-cell"><span class="schedule-classroom">15 - 16</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">25 - 26</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-classroom">19 - 20</span></td>
+                        <td class="month-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">AI-BT-01</td>
+                        <td class="course-name">
+                            <span>🤖</span>
+                            <span>Generative AI for Business Transformation</span>
+                        </td>
+                        <td class="days">1</td>
+                        <td class="price">6,900</td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">12</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-classroom">14</span></td>
+                        <td class="month-cell"></td>
+                        <td class="month-cell"><span class="schedule-hybrid">16</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Microsoft PowerPoint / Canva -->
+        <div class="category">
+            <div class="category-header powerpoint-header">
+                Microsoft PowerPoint / Canva
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">CANVA-L1</td>
+                        <td>
+                            <div class="course-list">
+                                <div class="course-item">
+                                    <span>🎨</span>
+                                    <span>Microsoft PowerPoint Advanced</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>🎨</span>
+                                    <span>Infographics & Digital Media with Advanced Microsoft PowerPoint</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="days">2</td>
+                        <td class="price">฿ 8,000</td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Project Management -->
+        <div class="category">
+            <div class="category-header project-header">
+                Project Management
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">MSJ-L1</td>
+                        <td>
+                            <div class="course-list">
+                                <div class="course-item">
+                                    <span>📋</span>
+                                    <span>Microsoft Project Professional</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="days">3</td>
+                        <td class="price">฿ 10,000</td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Power BI Technology -->
+        <div class="category">
+            <div class="category-header powerbi-header">
+                Power BI Technology
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">MS-FB-101</td>
+                        <td>
+                            <div class="course-list">
+                                <div class="course-item">
+                                    <span>📊</span>
+                                    <span>Power BI Desktop for Business Analytics</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>📊</span>
+                                    <span>Power BI Advanced Visualization and AI</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>📊</span>
+                                    <span>Data Analysis Expression (DAX) for Power BI</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>📊</span>
+                                    <span>Power BI Advanced Power Query</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>📊</span>
+                                    <span>Data Model for Power BI</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="days">3-4</td>
+                        <td class="price">฿ 14,000</td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RPA Group -->
+        <div class="category">
+            <div class="category-header rpa-header">
+                RPA Group
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">PAM-CLD</td>
+                        <td>
+                            <div class="course-list">
+                                <div class="course-item">
+                                    <span>⚙️</span>
+                                    <span>Advanced Power Automate (Cloud)</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>⚙️</span>
+                                    <span>Power Automate (Desktop) for Business Automation</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>⚙️</span>
+                                    <span>Advanced Power Automate (Desktop)</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>⚙️</span>
+                                    <span>UiPath for Business Automation</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="days">3-5</td>
+                        <td class="price">฿ 16,000</td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Python Technology -->
+        <div class="category">
+            <div class="category-header python-header">
+                Python Technology
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">PYTHON-L1</td>
+                        <td>
+                            <div class="course-list">
+                                <div class="course-item">
+                                    <span>🐍</span>
+                                    <span>Machine Learning using Python</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="days">5</td>
+                        <td class="price">฿ 18,000</td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Web Development / Programming -->
+        <div class="category">
+            <div class="category-header web-header">
+                Web Development / Programming
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">DEV-VS-01</td>
+                        <td>
+                            <div class="course-list">
+                                <div class="course-item">
+                                    <span>💻</span>
+                                    <span>ASP.NET Core MVC</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>💻</span>
+                                    <span>ASP.NET Core Web API & Security</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>💻</span>
+                                    <span>Power Apps for Business</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>💻</span>
+                                    <span>Advanced Power Apps for Business</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="days">4-5</td>
+                        <td class="price">฿ 20,000</td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Database / System / Server -->
+        <div class="category">
+            <div class="category-header db-header">
+                Database / System / Server
+            </div>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>รหัส</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>วัน</th>
+                        <th>ราคา</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-code">SQL-101</td>
+                        <td>
+                            <div class="course-list">
+                                <div class="course-item">
+                                    <span>🗄️</span>
+                                    <span>Microsoft SQL Server Database Administration</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>🗄️</span>
+                                    <span>Microsoft SQL Server Performance Tuning</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>🗄️</span>
+                                    <span>ETL with SQL Server Integration Service (SSIS)</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>🗄️</span>
+                                    <span>Querying Data with T-SQL</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>🗄️</span>
+                                    <span>SQL Server Programming - Stored Procedure</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="days">3-5</td>
+                        <td class="price">฿ 15,000</td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                        <td class="month-cell"><span class="schedule-available">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

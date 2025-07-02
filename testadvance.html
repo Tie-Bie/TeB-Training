@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Excel Intermediate Training Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .course-code {
+            background: linear-gradient(45deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .main-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #495057;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+           background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
+        }
+
+        .info-item:hover {
+            transform: scale(1.05);
+        }
+
+        .info-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .info-value {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .schedule-item {
+           background: linear-gradient(to right, #11998e, #38ef7d);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
+        }
+
+        .status-badge {
+            background: #dc3545;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .objectives-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .objectives-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+
+        .objectives-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .curriculum {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .curriculum-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.05) 0%, rgba(40, 167, 69, 0.05) 100%);
+            border-radius: 10px;
+            border-left: 4px solid #007bff;
+        }
+
+        .curriculum-title {
+            font-weight: bold;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .curriculum-details {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(40, 167, 69, 0.4);
+        }
+
+        .note-section {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .note-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="course-code">รหัสหลักสูตร : MSE-L1</div>
+            <h1 class="main-title">อบรมการใช้งาน Microsoft Excel Advanced</h1>
+            <p class="subtitle">สำหรับผู้เริ่มต้นจนถึงระดับกลาง - เพิ่มทักษะและความเชี่ยวชาญของคุณ โดยรวบรวมความสามารถต่าง ๆ ทั้งเรื่อง สูตรการคำนวณ การสรุปผลข้อมูลด้วยสูตรคำนวณ การทำงานกับข้อมูล การนำเสนอด้วยกราฟ เพื่อใช้ Excel แก้ไขปัญหาทางธุรกิจได้อย่างมีประสิทธิภาพ!</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-title">ระยะเวลาอบรม</div>
+                <div class="info-value">2 วัน (12 ชั่วโมง)<br>9.00 - 16.00 น.</div>
+            </div>
+            <div class="info-item">
+                <div class="info-title">ค่าฝึกอบรม</div>
+                <div class="info-value">7,900 บาท<br><small>*ยังไม่รวม VAT</small></div>
+            </div>
+            <div class="info-item">
+                <div class="info-title">รูปแบบการอบรม</div>
+                <div class="info-value">Online Training<br>Class Room</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">ตารางฝึกอบรม Public</h2>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <strong>08 - 09 กรกฎาคม 2568</strong>
+                    <div class="status-badge">ใกล้เต็ม</div>
+                </div>
+                <div class="schedule-item">
+                    <strong>11 - 12 กันยายน 2568</strong>
+                    <div class="status-badge">ใกล้เต็ม</div>
+                </div>
+                <div class="schedule-item">
+                    <strong>06 - 07 พฤศจิกายน 2568</strong>
+                    <div class="status-badge">เปิดรับสมัคร</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">วัตถุประสงค์</h2>
+            <ul class="objectives-list">
+                <li>ผู้อบรมสามารถบอกถึงประโยชน์ของโปรแกรม Microsoft Excel</li>
+                <li>ผู้อบรมสามารถสร้าง/แก้ไข ตารางเอกสารได้</li>
+                <li>ผู้อบรมสามารถทำการคำนวณด้วย Microsoft Excel</li>
+                <li>ผู้อบรมสามารถใช้สูตรเพื่อคำนวณสรุปผลของข้อมูลได้หลากหลาย</li>
+                <li>ผู้อบรมสามารถทำงานกับข้อมูล (Data) ทั้งเรื่องการ Sort, Filter ได้</li>
+                <li>ผู้อบรมสามารถสร้างกราฟแท่ง กราฟวงกลม กราฟเส้น ได้</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">หลักสูตรนี้เหมาะสำหรับ</h2>
+            <ul class="objectives-list">
+                <li>ผู้ใช้งานทั่วไป</li>
+                <li>ผู้ที่ต้องการเริ่มต้นกับ Excel อย่างเป็นระบบ</li>
+                <li>ผู้ที่ต้องการใช้ Excel คำนวณแบบง่าย ๆ</li>
+                <li>ผู้ที่ต้องการใช้ Excel สร้างกราฟจากข้อมูลที่ไม่ซับซ้อน</li>
+            </ul>
+        </div>
+
+        <div class="curriculum">
+            <h2 class="card-title">หัวข้อการฝึกอบรม</h2>
+            
+            <div class="curriculum-section">
+                <div class="curriculum-title">เริ่มต้นกับ Microsoft Excel</div>
+                <div class="curriculum-details">
+                    ส่วนประกอบของโปรแกรม Microsoft Excel, ความสามารถของ Microsoft Excel, การจัดมุมมองการทำงานกับไฟล์, การจัดการไฟล์เอกสาร Excel
+                </div>
+            </div>
+
+            <div class="curriculum-section">
+                <div class="curriculum-title">เทคนิคการทำงานพื้นฐาน</div>
+                <div class="curriculum-details">
+                    คีย์ลัดในการทำงาน, การเคลื่อนไปยังส่วนต่าง ๆ ของ Excel, การเลือกข้อมูลแบบรวดเร็ว, การจัดรูปแบบข้อมูลแบบรวดเร็ว
+                </div>
+            </div>
+
+            <div class="curriculum-section">
+                <div class="curriculum-title">การทำงานกับวันที่และการทำงานอัตโนมัติ</div>
+                <div class="curriculum-details">
+                    การทำงานกับวันที่, เทคนิคการตรวจสอบรูปแบบวันที่, การทำงานอัตโนมัติด้วย Auto Fill และ Flash Fill, การทำ Dropdown List
+                </div>
+            </div>
+
+            <div class="curriculum-section">
+                <div class="curriculum-title">การจัดรูปแบบขั้นสูง</div>
+                <div class="curriculum-details">
+                    การจัดรูปแบบเซลล์ให้เหมาะกับเนื้อหา, การจัดรูปแบบด้วยเงื่อนไข (Conditional Formatting), เทคนิคการจัดรูปแบบต่าง ๆ
+                </div>
+            </div>
+
+            <div class="curriculum-section">
+                <div class="curriculum-title">การคำนวณและสูตรใน Microsoft Excel</div>
+                <div class="curriculum-details">
+                    เครื่องหมายการคำนวณ, การอ้างอิง Cell/Worksheet/Workbook, สูตร IF, การ Lock Cell, สูตรคำนวณพื้นฐาน (SUM, AVERAGE, MAX, MIN, COUNT), สูตรข้อความ, สูตรวันที่, VLOOKUP
+                </div>
+            </div>
+
+            <div class="curriculum-section">
+                <div class="curriculum-title">การสร้างกราฟเพื่อนำเสนอข้อมูล</div>
+                <div class="curriculum-details">
+                    การสร้างกราฟและกำหนดโครงสร้างข้อมูล, กราฟแท่ง, กราฟวงกลม, กราฟเส้น, กราฟ 2 แกน พร้อมกรณีศึกษาต่าง ๆ
+                </div>
+            </div>
+
+            <div class="curriculum-section">
+                <div class="curriculum-title">การทำงานกับข้อมูล</div>
+                <div class="curriculum-details">
+                    การเรียงข้อมูลตามลำดับ (Sorting), การกรองข้อมูล (Filter) ด้วย Auto Filter, การกำหนดเงื่อนไขต่าง ๆ, Top 10, เทคนิคการกรองข้อมูลตามต้องการ
+                </div>
+            </div>
+
+            <div class="curriculum-section">
+                <div class="curriculum-title">Tips และเทคนิคขั้นสูง</div>
+                <div class="curriculum-details">
+                    เครื่องมือแยกตัวอักษร (Text to Columns), การสร้างลิสต์รายการอัตโนมัติ, การตั้งค่าเวลาป้องกันความเสี่ยง, เทคนิคการคัดลอกสูตรรวดเร็ว, การทำเลขรันอัตโนมัติ
+                </div>
+            </div>
+
+            <div class="curriculum-section">
+                <div class="curriculum-title">การรักษาความปลอดภัย</div>
+                <div class="curriculum-details">
+                    การกำหนดรหัสผ่านให้ไฟล์ Excel, การป้องกัน Worksheet & Workbook (Protect Sheet, Protect Workbook)
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">ความต้องการของระบบ</h2>
+            <ul class="objectives-list">
+                <li>ระบบปฏิบัติการ Windows 11 / Windows 10</li>
+                <li>โปรแกรม Microsoft Excel | Microsoft 365</li>
+            </ul>
+        </div>
+
+        <div class="note-section">
+            <div class="note-title">หมายเหตุ</div>
+            <p>• โปรโมชั่นหลักสูตรต่อเนื่อง เรียนต่อเนื่องของกลุ่มวิชานั้นๆ ได้รับส่วนลด 15%</p>
+            <p>• เปิดอบรมเมื่อมีผู้สมัครตั้งแต่ 4 ท่านขึ้นไป</p>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="margin-bottom: 20px;">พร้อมเริ่มต้นเรียนรู้ Excel แล้วหรือยัง?</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">ลงทะเบียนเลยวันนี้เพื่อเสริมสร้างทักษะ Excel ของคุณ!</p>
+            <a href="#" class="cta-button">สมัครเรียน Public Class</a>
+            <a href="#" class="cta-button">ขอใบเสนอราคา In-House</a>
+        </div>
+    </div>
+</body>
+</html>

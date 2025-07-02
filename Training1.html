@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Office/Automation Course Schedule</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px;
+        }
+        
+        .top-nav {
+            background: linear-gradient(135deg, #00BFFF, #1E90FF);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .nav-item.active {
+            background-color: rgba(255,255,255,0.3);
+        }
+        
+        .home-icon {
+            font-size: 18px;
+        }
+        
+        .training-info {
+            background: linear-gradient(135deg, #0066CC, #004499);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .virtual-training, .class-room {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        
+        .virtual-training {
+            background: #FF4444;
+        }
+        
+        .class-room {
+            background: #6B46C1;
+        }
+        
+        .contact-info {
+            margin-left: auto;
+            font-size: 13px;
+        }
+        
+        .breadcrumb {
+            background: rgba(0,102,204,0.1);
+            padding: 12px 20px;
+            font-size: 14px;
+            color: #0066CC;
+        }
+        
+        .breadcrumb a {
+            color: #0066CC;
+            text-decoration: none;
+        }
+        
+        .page-title {
+            background: linear-gradient(135deg, #0066CC, #004499);
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .main-content {
+            display: flex;
+            margin: 20px;
+            gap: 20px;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: #4A5568;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .sidebar-header {
+            background: #2D3748;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .menu-item {
+            color: white;
+            padding: 12px 20px;
+            border-bottom: 1px solid #5A6B7D;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-item:hover {
+            background-color: #5A6B7D;
+        }
+        
+        .menu-item.active {
+            background-color: #3182CE;
+            color: white;
+        }
+        
+        .menu-arrow {
+            font-size: 12px;
+        }
+        
+        .submenu {
+            background: #E2E8F0;
+            border-left: 3px solid #3182CE;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .submenu.open {
+            max-height: 600px;
+        }
+        
+        .submenu-item {
+            color: #2D3748;
+            padding: 10px 25px;
+            border-bottom: 1px solid #CBD5E0;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .submenu-item:hover {
+            background-color: #CBD5E0;
+        }
+        
+        .content-area {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .tab-navigation {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6c757d;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: #0066CC;
+            border-bottom-color: #0066CC;
+            background: white;
+        }
+        
+        .tab-btn:hover {
+            color: #0066CC;
+            background: #f1f3f4;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 0;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .private-training {
+            padding: 20px;
+        }
+        
+        .private-header {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .private-header .icon {
+            font-size: 24px;
+        }
+        
+        .quote-btn {
+            background: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quote-btn:hover {
+            background: #c82333;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: #0066CC;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #0066CC;
+        }
+        
+        .objective-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .objective-list li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .objective-list li::before {
+            content: counter(item);
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            top: 8px;
+            background: #0066CC;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .objective-list {
+            counter-reset: item;
+        }
+        
+        .target-list, .requirement-list, .curriculum-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .target-list li, .requirement-list li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .target-list li::before, .requirement-list li::before {
+            content: "•";
+            color: #0066CC;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+        
+        .curriculum-list {
+            margin-left: 20px;
+        }
+        
+        .curriculum-list > li {
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .curriculum-list ul {
+            list-style: none;
+            margin: 8px 0 0 0;
+            padding: 0;
+        }
+        
+        .curriculum-list ul li {
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+            font-weight: normal;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .curriculum-list ul li::before {
+            content: "▪";
+            color: #0066CC;
+            position: absolute;
+            left: 0;
+            font-size: 14px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4472C4, #5B9BD5);
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .legend {
+            background: #4472C4;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .classroom { background-color: #70AD47; }
+        .hybrid { background-color: #E83A8C; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        th {
+            background-color: #4472C4;
+            color: white;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #2F5597;
+        }
+        
+        td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #D1D5DB;
+            vertical-align: middle;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #F8F9FA;
+        }
+        
+        tr:hover {
+            background-color: #E7F3FF;
+        }
+        
+        .course-code {
+            font-weight: 600;
+            color: #1F2937;
+        }
+        
+        .course-name {
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .excel-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #217346;
+            border-radius: 2px;
+            margin-right: 6px;
+            position: relative;
+        }
+        
+        .excel-icon::after {
+            content: "E";
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .access-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #A4373A;
+            border-radius: 2px;
+            margin-right: 6px;
+            position: relative;
+        }
+        
+        .access-icon::after {
+            content: "A";
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .schedule-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+        
+        .price {
+            font-weight: 600;
+            color: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <span class="home-icon">🏠</span>
+        <a href="#" class="nav-item">หลักสูตร</a>
+        <a href="#" class="nav-item active">ตารางฝึกอบรม</a>
+        <a href="#" class="nav-item">ลงทะเบียน / เพิ่มข้าราคม</a>
+        <a href="#" class="nav-item">โปรโมชั่น</a>
+        <a href="#" class="nav-item">บทความ</a>
+        <a href="#" class="nav-item">ผลงานของเรา</a>
+        <a href="#" class="nav-item">ติดต่อเรา</a>
+    </div>
+    
+    <div class="training-info">
+        <div class="virtual-training">
+            📹 Virtual Training สอบสะดวก Microsoft Teams
+        </div>
+        <span>หรือ</span>
+        <div class="class-room">
+            👥 Class Room
+        </div>
+        <div class="contact-info">
+            สอบถามโทร 0-2219-4304-6
+        </div>
+    </div>
+    
+    <div class="breadcrumb">
+        <a href="#">หน้าหลัก</a> » ตารางการฝึกอบรม / Training Schedule
+    </div>
+    
+    <div class="page-title">
+        ตารางการฝึกอบรม / Training Schedule
+    </div>
+    
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="sidebar-header">หลักสูตรกำหนด</div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('ai-menu')">
+                <span>Artificial Intelligence</span>
+                <span class="menu-arrow" id="ai-arrow">▶</span>
+            </div>
+            <div class="submenu" id="ai-menu">
+                <div class="submenu-item">AI Fundamentals</div>
+                <div class="submenu-item">Machine Learning</div>
+                <div class="submenu-item">Deep Learning</div>
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('power-platform-menu')">
+                <span>Power Platform</span>
+                <span class="menu-arrow" id="power-platform-arrow">▶</span>
+            </div>
+            <div class="submenu" id="power-platform-menu">
+                <div class="submenu-item">Power Apps</div>
+                <div class="submenu-item">Power Automate</div>
+                <div class="submenu-item">Power Virtual Agents</div>
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('power-bi-menu')">
+                <span>Power BI</span>
+                <span class="menu-arrow" id="power-bi-arrow">▶</span>
+            </div>
+            <div class="submenu" id="power-bi-menu">
+                <div class="submenu-item">Power BI Desktop</div>
+                <div class="submenu-item">Power BI Service</div>
+                <div class="submenu-item">Power BI Mobile</div>
+            </div>
+            
+            <div class="menu-item active" onclick="toggleSubmenu('excel-menu')">
+                <span>Microsoft Excel</span>
+                <span class="menu-arrow" id="excel-arrow">▼</span>
+            </div>
+            
+            <div class="submenu open" id="excel-menu">
+                <div class="submenu-item">All Courses</div>
+                <div class="submenu-item">
+        <a href="Excel Basic.html" class="submenu-link">Microsoft Excel Basice</a>
+    </div>        
+                <div class="submenu-item">
+        <a href="Excel Intermediate.html" class="submenu-link">Microsoft Excel Intermediate</a>
+    </div>        
+                <div class="submenu-item">
+        <a href="testadvance.html" class="submenu-link">Microsoft Excel Advanced</a>
+    </div>                
+                <div class="submenu-item">Microsoft Excel Macro and VBA</div>
+                <div class="submenu-item">Microsoft Excel Advanced PivotTable and PivotChart</div>
+                <div class="submenu-item">Microsoft Excel Power Query</div>
+                
+                
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('powerpoint-menu')">
+                <span>Microsoft PowerPoint / Canva</span>
+                <span class="menu-arrow" id="powerpoint-arrow">▶</span>
+            </div>
+            <div class="submenu" id="powerpoint-menu">
+                <div class="submenu-item">PowerPoint Basics</div>
+                <div class="submenu-item">Advanced PowerPoint</div>
+                <div class="submenu-item">Canva Design</div>
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('access-menu')">
+                <span>Microsoft Access</span>
+                <span class="menu-arrow" id="access-arrow">▶</span>
+            </div>
+            <div class="submenu" id="access-menu">
+                <div class="submenu-item">Access Fundamentals</div>
+                <div class="submenu-item">Database Design</div>
+                <div class="submenu-item">Advanced Access</div>
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('sql-menu')">
+                <span>SQL Server</span>
+                <span class="menu-arrow" id="sql-arrow">▶</span>
+            </div>
+            <div class="submenu" id="sql-menu">
+                <div class="submenu-item">SQL Basics</div>
+                <div class="submenu-item">Advanced SQL</div>
+                <div class="submenu-item">Database Administration</div>
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('rpa-menu')">
+                <span>Robotic Process Automation (RPA)</span>
+                <span class="menu-arrow" id="rpa-arrow">▶</span>
+            </div>
+            <div class="submenu" id="rpa-menu">
+                <div class="submenu-item">RPA Fundamentals</div>
+                <div class="submenu-item">UiPath</div>
+                <div class="submenu-item">Power Automate Desktop</div>
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('web-menu')">
+                <span>Web Development / Programming</span>
+                <span class="menu-arrow" id="web-arrow">▶</span>
+            </div>
+            <div class="submenu" id="web-menu">
+                <div class="submenu-item">HTML/CSS</div>
+                <div class="submenu-item">JavaScript</div>
+                <div class="submenu-item">React</div>
+                <div class="submenu-item">Node.js</div>
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('python-menu')">
+                <span>Python</span>
+                <span class="menu-arrow" id="python-arrow">▶</span>
+            </div>
+            <div class="submenu" id="python-menu">
+                <div class="submenu-item">Python Basics</div>
+                <div class="submenu-item">Data Analysis with Python</div>
+                <div class="submenu-item">Web Scraping</div>
+            </div>
+            
+            <div class="menu-item" onclick="toggleSubmenu('other-menu')">
+                <span>Other</span>
+                <span class="menu-arrow" id="other-arrow">▶</span>
+            </div>
+            <div class="submenu" id="other-menu">
+                <div class="submenu-item">Project Management</div>
+                <div class="submenu-item">Digital Marketing</div>
+                <div class="submenu-item">Business Analysis</div>
+            </div>
+        </div>
+        
+        <div class="content-area">
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="showTab('schedule')">ตารางเรียน</button>
+                <button class="tab-btn" onclick="showTab('private')">อบรมภายในองค์กร/Private</button>
+            </div>
+            
+            <div class="tab-content active" id="schedule-tab">
+                <div class="header">
+                    Microsoft Office/Automation
+                </div>
+                
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-dot classroom"></div>
+                        <span>Class Room</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot hybrid"></div>
+                        <span>Hybrid(ผู้ถือกรรมสิทธิ์ Class Room หรือ Live)</span>
+                    </div>
+                </div>
+                
+                <table>
+            <thead>
+                <tr>
+                    <th>รหัส</th>
+                    <th>ชื่อหลักสูตร</th>
+                    <th>วัน</th>
+                    <th>ราคา</th>
+                    <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Mar</th>
+                            <th>Apr</th>
+                            <th>May</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>Aug</th>
+                            <th>Sep</th>
+                            <th>Oct</th>
+                            <th>Nov</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="course-code">MSA-L1.1</td>
+                    <td class="course-name">
+                        <span class="access-icon"></span>
+                        Microsoft Access Intermediate
+                    </td>
+                    <td>2</td>
+                    <td class="price">8,500</td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>12 - 13</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                
+                    
+                </tr>
+                <tr>
+                    <td class="course-code">MSE-L1</td>
+                    <td class="course-name">
+                        <span class="excel-icon"></span>
+                        Microsoft Excel Intermediate
+                    </td>
+                    <td>2</td>
+                    <td class="price">7,900</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>12 - 13</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>07 - 08</td>
+                  
+                </tr>
+                <tr>
+                    <td class="course-code">MSE-L2</td>
+                    <td class="course-name">
+                        <span class="excel-icon"></span>
+                        Microsoft Excel Advanced
+                    </td>
+                    <td>2</td>
+                    <td class="price">8,500</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>22 - 23</td>
+                    <td><span class="schedule-dot classroom"></span>14 - 15</td>
+                    <td><span class="schedule-dot hybrid"></span>18 - 19</td>
+                    <td><span class="schedule-dot hybrid"></span>16 - 17</td>
+                    <td><span class="schedule-dot hybrid"></span>10 - 11</td>
+                </tr>
+                <tr>
+                    <td class="course-code">MSE-L3</td>
+                    <td class="course-name">
+                        <span class="excel-icon"></span>
+                        Microsoft Excel Macro and VBA
+                    </td>
+                    <td>3</td>
+                    <td class="price">9,990</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>29 - 31</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>22 - 24</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>26 - 28</td>
+                </tr>
+                <tr>
+                    <td class="course-code">MSE-L4</td>
+                    <td class="course-name">
+                        <span class="excel-icon"></span>
+                        Microsoft Excel Advanced PivotTable and PivotChart
+                    </td>
+                    <td>2</td>
+                    <td class="price">8,500</td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>28 - 29</td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>17 - 18</td>
+                </tr>
+                <tr>
+                    <td class="course-code">MSE-L5</td>
+                    <td class="course-name">
+                        <span class="excel-icon"></span>
+                        Microsoft Excel Business Intelligence
+                    </td>
+                    <td>1</td>
+                    <td class="price">4,900</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>29</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="course-code">MSE-L6</td>
+                    <td class="course-name">
+                        <span class="excel-icon"></span>
+                        Microsoft Excel Power Query
+                    </td>
+                    <td>2</td>
+                    <td class="price">8,500</td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="schedule-dot classroom"></span>21 - 22</td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>24 - 25</td>
+                </tr>
+                <tr>
+                    <td class="course-code">MSE-NF</td>
+                    <td class="course-name">
+                        <span class="excel-icon"></span>
+                        Microsoft Excel New Functions for Business Excellence
+                    </td>
+                    <td>1</td>
+                    <td class="price">4,900</td>
+                    <td></td>
+                    <td><span class="schedule-dot classroom"></span>21</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>15</td>
+                    <td></td>
+                    <td><span class="schedule-dot hybrid"></span>14</td>
+                </tr>
+            </tbody>
+                </table>
+            </div>
+            
+            
+
+    <script>
+        function toggleSubmenu(menuId) {
+            const submenu = document.getElementById(menuId);
+            const arrow = document.getElementById(menuId.replace('-menu', '-arrow'));
+            const menuItem = submenu.previousElementSibling;
+            
+            if (submenu.classList.contains('open')) {
+                submenu.classList.remove('open');
+                arrow.innerHTML = '▶';
+                menuItem.classList.remove('active');
+            } else {
+                // Close all other submenus
+                const allSubmenus = document.querySelectorAll('.submenu');
+                const allArrows = document.querySelectorAll('.menu-arrow');
+                const allMenuItems = document.querySelectorAll('.menu-item');
+                
+                allSubmenus.forEach(sub => sub.classList.remove('open'));
+                allArrows.forEach(arr => arr.innerHTML = '▶');
+                allMenuItems.forEach(item => item.classList.remove('active'));
+                
+                // Open clicked submenu
+                submenu.classList.add('open');
+                arrow.innerHTML = '▼';
+                menuItem.classList.add('active');
+            }
+        }
+        
+        function showTab(tabName) {
+            // Hide all tab contents
+            const allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all tab buttons
+            const allButtons = document.querySelectorAll('.tab-btn');
+            allButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab content
+            const selectedTab = document.getElementById(tabName + '-tab');
+            selectedTab.classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
