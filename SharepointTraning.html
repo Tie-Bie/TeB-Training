@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การใช้งาน SharePoint สำหรับองค์กร - Expert Training</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .course-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        /* Course Info Section */
+        .course-info {
+            background: white;
+            padding: 3rem 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-card p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Course Outline */
+        .course-outline {
+            background: white;
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        
+        .module {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .module:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .module-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .module-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .module-content {
+            padding: 2rem;
+            background: #f8f9fa;
+        }
+        
+        .module-section {
+            margin-bottom: 2rem;
+        }
+        
+        .module-section h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .module-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .module-section li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .module-section li::before {
+            content: '•';
+            color: #667eea;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+        }
+        
+        .practical-activities {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .practical-activities h4 {
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        
+        .practical-activities ul li::before {
+            content: '✅';
+            font-size: 1rem;
+            top: 0.5rem;
+        }
+        
+        /* Assessment Section */
+        .assessment {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .assessment h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .assessment-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .assessment-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .module {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .module:nth-child(even) {
+            animation-delay: 0.1s;
+        }
+        
+        .module:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1><i class="fas fa-share-alt"></i> การใช้งาน SharePoint สำหรับองค์กร</h1>
+                <p class="subtitle">เน้นฝึกปฏิบัติ - พร้อมใช้งานจริง</p>
+                <div class="course-badges">
+                    <div class="badge"><i class="fas fa-clock"></i> 1-2 วัน (6-12 ชั่วโมง)</div>
+                    <div class="badge"><i class="fas fa-users"></i> พนักงานทั่วไป / ทีม IT / ผู้จัดการ</div>
+                    <div class="badge"><i class="fas fa-hands-helping"></i> Workshop + Hands-on Lab</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="course-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-target"></i>
+                    <h3>กลุ่มเป้าหมาย</h3>
+                    <p>พนักงานทั่วไป<br>ทีม IT<br>ผู้จัดการ<br>Admin SharePoint</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>รูปแบบ</h3>
+                    <p>อบรมเชิงปฏิบัติ<br>Workshop<br>Hands-on Lab</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>ผลลัพธ์</h3>
+                    <p>ใช้งาน SharePoint<br>ได้อย่างมืออาชีพ<br>พร้อมใช้งานจริง</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-outline">
+        <div class="container">
+            <h2 class="section-title">🏢 หลักสูตรและเนื้อหา</h2>
+            
+            <div class="module">
+                <div class="module-header">
+                    <h3>🔹 Module 1: แนะนำ SharePoint Online</h3>
+                    <p><strong>วัตถุประสงค์:</strong> เข้าใจว่า SharePoint คืออะไร ใช้ทำอะไรได้บ้าง</p>
+                </div>
+                <div class="module-content">
+                    <div class="module-section">
+                        <h4>📚 เนื้อหา:</h4>
+                        <ul>
+                            <li>ความสามารถหลักของ SharePoint</li>
+                            <li>ความแตกต่างระหว่าง SharePoint และ OneDrive / Teams</li>
+                            <li>ตัวอย่างการใช้งาน SharePoint ในองค์กร</li>
+                        </ul>
+                    </div>
+                    <div class="practical-activities">
+                        <h4>🎯 กิจกรรมฝึกปฏิบัติ:</h4>
+                        <ul>
+                            <li>เข้าเว็บไซต์ SharePoint</li>
+                            <li>สำรวจหน้าต่าง UI ของ SharePoint</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <h3>🔹 Module 2: การสร้างและจัดการ Team Site / Communication Site</h3>
+                    <p><strong>วัตถุประสงค์:</strong> สร้างพื้นที่การทำงานร่วมกันในองค์กร</p>
+                </div>
+                <div class="module-content">
+                    <div class="module-section">
+                        <h4>📚 เนื้อหา:</h4>
+                        <ul>
+                            <li>ความแตกต่างระหว่าง Team Site และ Communication Site</li>
+                            <li>การกำหนดสิทธิ์ในการเข้าถึง</li>
+                            <li>การเชื่อมโยงกับ Microsoft Teams</li>
+                        </ul>
+                    </div>
+                    <div class="practical-activities">
+                        <h4>🎯 กิจกรรมฝึกปฏิบัติ:</h4>
+                        <ul>
+                            <li>สร้าง Team Site ของตนเอง</li>
+                            <li>เชิญสมาชิกเข้า Site</li>
+                            <li>ตั้งค่าการอนุญาต (Permissions)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <h3>🔹 Module 3: การจัดการเอกสารและ Library</h3>
+                    <p><strong>วัตถุประสงค์:</strong> ใช้งาน Document Library อย่างมีประสิทธิภาพ</p>
+                </div>
+                <div class="module-content">
+                    <div class="module-section">
+                        <h4>📚 เนื้อหา:</h4>
+                        <ul>
+                            <li>การสร้าง Document Library</li>
+                            <li>การอัปโหลด / แชร์ / เวอร์ชันเอกสาร</li>
+                            <li>การกำหนดสิทธิ์รายไฟล์หรือโฟลเดอร์</li>
+                            <li>Metadata และการจัดหมวดหมู่เอกสาร</li>
+                        </ul>
+                    </div>
+                    <div class="practical-activities">
+                        <h4>🎯 กิจกรรมฝึกปฏิบัติ:</h4>
+                        <ul>
+                            <li>สร้าง Document Library</li>
+                            <li>อัปโหลดเอกสารหลายไฟล์</li>
+                            <li>ตั้งเวอร์ชันเอกสารและลอง Check in / Check out</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <h3>🔹 Module 4: การสร้างหน้า Page และ Web Parts</h3>
+                    <p><strong>วัตถุประสงค์:</strong> สร้างหน้าข้อมูล (Pages) ที่ดึงดูดและใช้งานง่าย</p>
+                </div>
+                <div class="module-content">
+                    <div class="module-section">
+                        <h4>📚 เนื้อหา:</h4>
+                        <ul>
+                            <li>การสร้างหน้า News / Site Page</li>
+                            <li>การใช้ Web Parts เช่น Text, Quick Links, Image, List, Embed</li>
+                            <li>การออกแบบหน้า Dashboard</li>
+                        </ul>
+                    </div>
+                    <div class="practical-activities">
+                        <h4>🎯 กิจกรรมฝึกปฏิบัติ:</h4>
+                        <ul>
+                            <li>สร้างหน้าเว็บประชาสัมพันธ์ข่าวสาร</li>
+                            <li>ใส่ Web Part ที่จำเป็น</li>
+                            <li>แชร์หน้าเว็บให้เพื่อนร่วมทีมดู</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <h3>🔹 Module 5: การสร้าง List และ Automation ด้วย Power Automate</h3>
+                    <p><strong>วัตถุประสงค์:</strong> จัดการข้อมูลและเอกสารอย่างอัตโนมัติ</p>
+                </div>
+                <div class="module-content">
+                    <div class="module-section">
+                        <h4>📚 เนื้อหา:</h4>
+                        <ul>
+                            <li>การสร้าง Custom List เช่น แบบฟอร์มขอลา / แบบประเมิน</li>
+                            <li>การสร้าง Flow พื้นฐาน (Power Automate)</li>
+                            <li>ตัวอย่าง Automation เช่น การแจ้งเตือนเมื่อมีการอัปโหลดเอกสาร</li>
+                        </ul>
+                    </div>
+                    <div class="practical-activities">
+                        <h4>🎯 กิจกรรมฝึกปฏิบัติ:</h4>
+                        <ul>
+                            <li>สร้าง List สำหรับเก็บคำขอลา</li>
+                            <li>สร้าง Flow แจ้งเตือนเมื่อมีรายการใหม่</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <h3>🔹 Module 6: การดูแลระบบและ Best Practices</h3>
+                    <p><strong>วัตถุประสงค์:</strong> ดูแลระบบและการใช้งานอย่างถูกต้อง</p>
+                </div>
+                <div class="module-content">
+                    <div class="module-section">
+                        <h4>📚 เนื้อหา:</h4>
+                        <ul>
+                            <li>การสำรองข้อมูล</li>
+                            <li>การตรวจสอบกิจกรรมใน Site</li>
+                            <li>การวางโครงสร้าง Site และ Naming Convention</li>
+                            <li>แนวทางการใช้งาน SharePoint อย่างปลอดภัย</li>
+                        </ul>
+                    </div>
+                    <div class="practical-activities">
+                        <h4>🎯 กิจกรรมฝึกปฏิบัติ:</h4>
+                        <ul>
+                            <li>สำรวจ Audit log</li>
+                            <li>ออกแบบโครงสร้าง Site Map เบื้องต้น</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assessment">
+                <h3>✅ แบบทดสอบ/สรุปผลการอบรม</h3>
+                <div class="assessment-items">
+                    <div class="assessment-item">
+                        <h4><i class="fas fa-quiz"></i> Quiz</h4>
+                        <p>แบบทดสอบสั้น ๆ ทบทวนความรู้</p>
+                    </div>
+                    <div class="assessment-item">
+                        <h4><i class="fas fa-project-diagram"></i> Project</h4>
+                        <p>ฝึกออกแบบ Site จำลองสำหรับแผนกของตนเอง</p>
+                    </div>
+                    <div class="assessment-item">
+                        <h4><i class="fas fa-comments"></i> Feedback</h4>
+                        <p>รับฟีดแบ็คและตอบคำถาม Q&A</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>พร้อมเริ่มต้นแล้วใช่ไหม?</h2>
+            <p>ลงทะเบียนเลยวันนี้ และเป็นผู้เชี่ยวชาญ SharePoint ในองค์กรของคุณ</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn">📞 ติดต่อสอบถาม</a>
+                <a href="#" class="btn btn-secondary">📋 ดูรายละเอียดเพิ่มเติม</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Expert Training. All rights reserved. | เพิ่มพูนทักษะ พัฒนาองค์กร</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Add click-to-expand functionality for modules
+            document.querySelectorAll('.module-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isVisible = content.style.display !== 'none';
+                    
+                    if (isVisible) {
+                        content.style.display = 'none';
+                        this.style.background = 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)';
+                    } else {
+                        content.style.display = 'block';
+                        this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                    }
+                });
+            });
+
+            // Add hover effects for cards
+            document.querySelectorAll('.info-card, .module').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add scroll animation effects
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.module, .info-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
