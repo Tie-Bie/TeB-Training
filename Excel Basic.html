@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microsoft Excel Intermediate Training Course</title>
+    <title>Microsoft Excel Basic Training Course</title>
     <style>
         * {
             margin: 0;
@@ -14,9 +14,22 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #1e3a2e;
+            background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 25%, #81c784 50%, #66bb6a 75%, #4caf50 100%);
             min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            pointer-events: none;
+            z-index: -1;
         }
 
         .container {
@@ -27,65 +40,119 @@
 
         .header {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
             padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(76, 175, 80, 0.3);
+            border: 2px solid rgba(76, 175, 80, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4caf50 0%, #8bc34a 25%, #4caf50 50%, #2e7d32 75%, #1b5e20 100%);
         }
 
         .course-code {
-            background: linear-gradient(45deg, #28a745 0%, #20c997 100%);
+            background: linear-gradient(45deg, #2e7d32 0%, #4caf50 50%, #66bb6a 100%);
             color: white;
-            padding: 8px 16px;
-            border-radius: 25px;
+            padding: 10px 20px;
+            border-radius: 30px;
             display: inline-block;
             font-weight: bold;
             margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            margin-right: 15px;
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .course-code:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(46, 125, 50, 0.5);
+        }
+
+        .back-home-btn {
+            background: linear-gradient(45deg, #388e3c 0%, #66bb6a 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(56, 142, 60, 0.3);
+        }
+
+        .back-home-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(56, 142, 60, 0.4);
         }
 
         .main-title {
             font-size: 2.5em;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, #007bff, #0056b3);
+            background: linear-gradient(45deg, #1b5e20 0%, #2e7d32 25%, #388e3c 50%, #4caf50 75%, #66bb6a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 700;
+            text-shadow: 0 2px 10px rgba(27, 94, 32, 0.3);
         }
 
         .subtitle {
             font-size: 1.2em;
-            color: #666;
+            color: #2e7d32;
             margin-bottom: 30px;
             line-height: 1.8;
+            text-shadow: 0 1px 3px rgba(46, 125, 50, 0.1);
         }
 
         .card {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 25px 50px rgba(76, 175, 80, 0.2);
+            border: 2px solid rgba(129, 199, 132, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4caf50 0%, #8bc34a 50%, #4caf50 100%);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 35px 70px rgba(76, 175, 80, 0.25);
+            border-color: rgba(76, 175, 80, 0.5);
         }
 
         .card-title {
             font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #495057;
-            border-bottom: 3px solid #007bff;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            color: #1b5e20;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, #4caf50 0%, #8bc34a 100%) 1;
+            padding-bottom: 15px;
             display: inline-block;
+            font-weight: 600;
         }
 
         .info-grid {
@@ -96,13 +163,13 @@
         }
 
         .info-item {
-           background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 25%, #81c784 50%, #a5d6a7 100%);
             color: white;
-            padding: 25px;
-            border-radius: 15px;
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.4);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -114,61 +181,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.15) 100%);
             pointer-events: none;
         }
 
         .info-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 20px 45px rgba(76, 175, 80, 0.5);
         }
 
         .info-title {
-            font-size: 1.2em;
+            font-size: 1.3em;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(27, 94, 32, 0.3);
         }
 
         .info-value {
             font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .schedule-item {
-           background: linear-gradient(to right, #11998e, #38ef7d);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .schedule-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            pointer-events: none;
-        }
-
-        .status-badge {
-            background: #dc3545;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin-top: 10px;
-            display: inline-block;
+            opacity: 0.95;
+            line-height: 1.4;
         }
 
         .objectives-list {
@@ -177,101 +209,200 @@
         }
 
         .objectives-list li {
-            padding: 12px 0;
-            padding-left: 30px;
+            padding: 15px 0;
+            padding-left: 40px;
             position: relative;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(76, 175, 80, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .objectives-list li:hover {
+            background: rgba(76, 175, 80, 0.05);
+            border-radius: 10px;
+            padding-left: 50px;
         }
 
         .objectives-list li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            top: 12px;
-            background: linear-gradient(45deg, #007bff, #0056b3);
+            top: 15px;
+            background: linear-gradient(45deg, #4caf50 0%, #66bb6a 100%);
             color: white;
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
 
         .curriculum {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 50px rgba(76, 175, 80, 0.2);
+            border: 2px solid rgba(129, 199, 132, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curriculum::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4caf50 0%, #8bc34a 50%, #4caf50 100%);
         }
 
         .curriculum-section {
             margin-bottom: 25px;
-            padding: 20px;
-            background: linear-gradient(135deg, rgba(0, 123, 255, 0.05) 0%, rgba(40, 167, 69, 0.05) 100%);
-            border-radius: 10px;
-            border-left: 4px solid #007bff;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(139, 195, 74, 0.05) 100%);
+            border-radius: 15px;
+            border-left: 5px solid;
+            border-image: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%) 1;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curriculum-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+
+        .curriculum-section:hover::before {
+            transform: scaleY(1);
+        }
+
+        .curriculum-section:hover {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.12) 0%, rgba(139, 195, 74, 0.08) 100%);
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.15);
         }
 
         .curriculum-title {
             font-weight: bold;
-            color: #4a5568;
-            margin-bottom: 10px;
-            font-size: 1.1em;
+            color: #1b5e20;
+            margin-bottom: 12px;
+            font-size: 1.2em;
         }
 
         .curriculum-details {
-            color: #666;
+            color: #2e7d32;
             font-size: 0.95em;
             line-height: 1.6;
         }
 
         .cta-section {
             text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            padding: 50px;
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 25%, #4caf50 50%, #66bb6a 75%, #81c784 100%);
             color: white;
-            border-radius: 20px;
+            border-radius: 25px;
             margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(46, 125, 50, 0.4);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+            pointer-events: none;
         }
 
         .cta-button {
-            background: linear-gradient(45deg, #28a745 0%, #20c997 100%);
+            background: linear-gradient(45deg, #1b5e20 0%, #2e7d32 25%, #388e3c 50%, #4caf50 100%);
             color: white;
-            padding: 15px 40px;
+            padding: 18px 45px;
             border: none;
-            border-radius: 30px;
+            border-radius: 35px;
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            margin: 10px;
-            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+            margin: 15px;
+            box-shadow: 0 12px 30px rgba(27, 94, 32, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(40, 167, 69, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(27, 94, 32, 0.5);
         }
 
         .note-section {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            padding: 20px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(139, 195, 74, 0.15) 0%, rgba(174, 213, 129, 0.1) 100%);
+            padding: 25px;
+            border-radius: 20px;
             margin-top: 20px;
-            border-left: 4px solid #ffc107;
+            border-left: 5px solid #8bc34a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .note-section::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            width: 20px;
+            height: 20px;
+            background: #8bc34a;
+            border-radius: 50%;
+            opacity: 0.3;
         }
 
         .note-title {
             font-weight: bold;
-            color: #856404;
-            margin-bottom: 10px;
+            color: #33691e;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .note-section p {
+            color: #2e7d32;
+            margin-bottom: 8px;
         }
 
         @media (max-width: 768px) {
@@ -280,7 +411,7 @@
             }
             
             .header {
-                padding: 20px;
+                padding: 25px;
             }
             
             .main-title {
@@ -291,28 +422,71 @@
                 grid-template-columns: 1fr;
             }
             
-            .schedule-grid {
-                grid-template-columns: 1fr;
+            .card {
+                padding: 25px;
             }
+            
+            .cta-section {
+                padding: 35px 20px;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+
+        /* Excel-like animations */
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card:nth-child(even) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(odd) {
+            animation-delay: 0.2s;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <a href="Main.html" class="back-home-btn">🏠</a> &nbsp;&nbsp;&nbsp;
+            <a href="Main.html" class="back-home-btn">🏠</a>
 
             <a href="Excel Intermediate.html" class="course-code">Excel Intermediate : MSE-LB02</a>
 
             <a href="Excel Advance.html" class="course-code">Excel Advanced : MSE-LB02</a>
 
-              <h1 class="main-title">อบรมการใช้งาน Microsoft Excel Basice</h1>
+            <h1 class="main-title">อบรมการใช้งาน Microsoft Excel Basic</h1>
             <p class="subtitle">สำหรับผู้เริ่มต้นจนถึงระดับกลาง - เพิ่มทักษะและความเชี่ยวชาญของคุณ โดยรวบรวมความสามารถต่าง ๆ ทั้งเรื่อง 
                 สูตรการคำนวณ การสรุปผลข้อมูลด้วยสูตรคำนวณ การทำงานกับข้อมูล การนำเสนอด้วยกราฟ 
                 เพื่อใช้ Excel แก้ไขปัญหาทางธุรกิจได้อย่างมีประสิทธิภาพ!</p>
         </div>
-
-       
 
         <div class="card">
             <h2 class="card-title">วัตถุประสงค์</h2>
@@ -403,15 +577,14 @@
             </div>
         </div>
 
-         <div class="info-grid">
+        <div class="info-grid">
             <div class="info-item">
                 <div class="info-title">ระยะเวลาอบรม</div>
-                <div class="info-value"> 1 วัน (6 ชั่วโมง)<br>9.00 - 16.00 น.</div>
+                <div class="info-value">1 วัน (6 ชั่วโมง)<br>9.00 - 16.00 น.</div>
             </div>
             <div class="info-item">
                 <div class="info-title">ราคาคอร์ส</div>
-                <div class="info-value">on-line 3,490 บาท<br></div>
-                <div class="info-value">on-site 5,490 บาท<br></div>
+                <div class="info-value">on-line 3,490 บาท<br>on-site 5,490 บาท</div>
             </div>
             <div class="info-item">
                 <div class="info-title">รูปแบบการอบรม</div>
@@ -419,7 +592,6 @@
             </div>
         </div>
 
-      
         <div class="card">
             <h2 class="card-title">ความต้องการของระบบ</h2>
             <ul class="objectives-list">
