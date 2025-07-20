@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Desktop Business Analytics Training Course - เรียนรู้การวิเคราะห์ธุรกิจ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #FFD700;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #B8860B;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "📊";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #B8860B;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #FF8C00;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.9), rgba(255, 140, 0, 0.9));
+            color: #2c3e50;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: slideInUp 1s ease-out;
+            color: #8B4513;
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 1s ease-out 0.2s both;
+            color: #5D4E37;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.6);
+        }
+
+        .back-home-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #8B4513;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Course Overview */
+        .course-overview {
+            background: white;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #B8860B;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 2px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, #FFF8DC, #FFFACD);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.3);
+        }
+
+        .overview-card h3 {
+            color: #B8860B;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .overview-card p {
+            color: #8B7355;
+            line-height: 1.7;
+        }
+
+        /* Course Content */
+        .course-content {
+            background: linear-gradient(135deg, #FFFACD, #FFF8DC);
+            padding: 4rem 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #FFD700;
+        }
+
+        .content-section h3 {
+            color: #B8860B;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 0.5rem;
+        }
+
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            padding: 0.5rem 0;
+            color: #8B7355;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .content-list li::before {
+            content: "✓";
+            color: #FF8C00;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Features */
+        .features {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+            color: white;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+
+        .feature-card p {
+            color: #5D4E37;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(135deg, #B8860B, #8B4513);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .pricing-card {
+            background: white;
+            color: #B8860B;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            max-width: 400px;
+            margin: 2rem auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FF8C00;
+            margin-bottom: 1rem;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .price-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #FFF8DC;
+        }
+
+        /* Footer */
+        footer {
+            background: #8B4513;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .footer-section a {
+            color: #F5DEB3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">DataPro Academy</a>
+            <ul class="nav-links">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#course">คอร์สเรียน</a></li>
+                <li><a href="#features">จุดเด่น</a></li>
+                <li><a href="#pricing">ราคา</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <a href="Main.html" class="back-home-btn">Home</a> 
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Power BI Desktop<br>Business Analytics Training</h1>
+                <p>เรียนรู้การวิเคราะห์ข้อมูลธุรกิจด้วย Power BI อย่างเข้าใจง่าย พร้อมสร้างแดชบอร์ดที่น่าประทับใจ</p>
+                 
+            </div>
+        </div>
+    </section>
+
+    <section class="course-overview" id="course">
+        <div class="container">
+            <h2 class="section-title">ทำไมต้องเรียน Power BI?</h2>
+            <div class="overview-grid">
+                <div class="overview-card fade-in">
+                    <h3>📈 เครื่องมือวิเคราะห์ข้อมูลยอดนิยม</h3>
+                    <p>Power BI เป็นเครื่องมือ Business Intelligence ที่ได้รับความนิยมสูงสุดในองค์กรทั่วโลก ช่วยให้คุณสามารถวิเคราะห์ข้อมูลและสร้างรายงานได้อย่างมืออาชีพ</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <h3>🎯 เหมาะกับทุกสายงาน</h3>
+                    <p>ไม่ว่าคุณจะทำงานด้านการตลาด, การขาย, การเงิน, หรือฝ่ายบริหาร Power BI จะช่วยให้คุณตัดสินใจได้อย่างมีข้อมูลเป็นฐาน</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <h3>💼 เพิ่มโอกาสก้าวหน้าในอาชีพ</h3>
+                    <p>ทักษะ Power BI เป็นสกิลที่นายจ้างต้องการมากที่สุด ช่วยเพิ่มโอกาสในการหางานและเพิ่มเงินเดือน</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <h3>🚀 เรียนรู้ได้ง่าย ใช้งานได้จริง</h3>
+                    <p>ด้วยคอร์สที่ออกแบบมาเพื่อผู้เริ่มต้น พร้อมตัวอย่างจากงานจริง คุณจะเรียนรู้และนำไปใช้ได้ทันที</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-content">
+        <div class="container">
+            <h2 class="section-title">เนื้อหาในคอร์ส</h2>
+            <div class="content-grid">
+                <div class="content-section fade-in">
+                    <h3>🔰 พื้นฐาน Power BI</h3>
+                    <ul class="content-list">
+                        <li>การติดตั้งและเริ่มต้นใช้งาน Power BI Desktop</li>
+                        <li>ทำความเข้าใจ Interface และเครื่องมือต่างๆ</li>
+                        <li>การเชื่อมต่อข้อมูลจากแหล่งต่างๆ</li>
+                        <li>การนำเข้าข้อมูลจาก Excel, CSV, Database</li>
+                        <li>Power Query และการเตรียมข้อมูล</li>
+                    </ul>
+                </div>
+                <div class="content-section fade-in">
+                    <h3>📊 การสร้างรายงานและแดชบอร์ด</h3>
+                    <ul class="content-list">
+                        <li>การสร้างแผนภูมิและกราฟประเภทต่างๆ</li>
+                        <li>การออกแบบแดชบอร์ดที่สวยงามและใช้งานง่าย</li>
+                        <li>การใช้ Filters และ Slicers</li>
+                        <li>การสร้าง KPIs และ Cards</li>
+                        <li>การใช้ Conditional Formatting</li>
+                    </ul>
+                </div>
+                <div class="content-section fade-in">
+                    <h3>🔍 DAX และการวิเคราะห์ข้อมูล</h3>
+                    <ul class="content-list">
+                        <li>พื้นฐาน DAX (Data Analysis Expressions)</li>
+                        <li>การสร้าง Calculated Columns และ Measures</li>
+                        <li>Time Intelligence Functions</li>
+                        <li>การวิเคราะห์แบบ What-If</li>
+                        <li>Advanced DAX Functions</li>
+                    </ul>
+                </div>
+                <div class="content-section fade-in">
+                    <h3>🌐 การแชร์และเผยแพร่รายงาน</h3>
+                    <ul class="content-list">
+                        <li>Power BI Service และ Power BI Online</li>
+                        <li>การเผยแพร่รายงานไปยัง Power BI Service</li>
+                        <li>การแชร์และให้สิทธิ์การเข้าถึง</li>
+                        <li>การสร้าง Apps และ Workspaces</li>
+                        <li>การตั้งค่า Data Refresh</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">จุดเด่นของคอร์ส</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>ผู้สอนมีประสบการณ์</h3>
+                    <p>วิทยากรมีประสบการณ์ในการใช้ Power BI ในองค์กรจริงมากกว่า 8 ปี</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📚</div>
+                    <h3>เอกสารครบถ้วน</h3>
+                    <p>ได้รับเอกสารประกอบการเรียนและไฟล์ตัวอย่างที่ใช้ในการสอน</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎓</div>
+                    <h3>วุฒิบัตรรับรอง</h3>
+                    <p>ได้รับวุฒิบัตรรับรองการเรียนรู้ที่สามารถนำไปใช้ในการสมัครงานได้</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💬</div>
+                    <h3>ปรึกษาหลังเรียน</h3>
+                    <p>สามารถปรึกษาและถามคำถามได้ภายใน 30 วันหลังจบคอร์ส</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>เรียนออนไลน์</h3>
+                    <p>เรียนผ่าน Zoom แบบ Live หรือดูบันทึกย้อนหลังได้ตลอด 1 ปี</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔄</div>
+                    <h3>อัปเดตเนื้อหา</h3>
+                    <p>เนื้อหาอัปเดตตาม Version ใหม่ของ Power BI อย่างสม่ำเสมอ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ติดต่อเรา</h3>
+                    <p>📧 info@datapro.academy</p>
+                    <p>📞 02-123-4567</p>
+                    <p>📱 Line: @datapro</p>
+                </div>
+                <div class="footer-section">
+                    <h3>คอร์สอื่นๆ</h3>
+                    <p><a href="#">Excel Advanced</a></p>
+                    <p><a href="#">Python for Data Analysis</a></p>
+                    <p><a href="#">Tableau Desktop</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>ติดตามเรา</h3>
+                    <p><a href="#">🌐 Facebook</a></p>
+                    <p><a href="#">📘 LinkedIn</a></p>
+                    <p><a href="#">📺 YouTube</a></p>
+                </div>
+            </div>
+            <hr style="margin: 2rem 0; border: 1px solid #A0522D;">
+            <p>&copy; 2025 DataPro Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add floating animation to cards
+        const cards = document.querySelectorAll('.overview-card, .feature-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Dynamic pricing animation
+        const priceElement = document.querySelector('.price');
+        if (priceElement) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'pulse 2s ease-in-out infinite';
+                    }
+                });
+            });
+            observer.observe(priceElement);
+        }
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
