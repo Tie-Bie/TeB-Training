@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel ขั้นสูงสำหรับการจัดการและวิเคราะห์ข้อมูล</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f9f4;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: #e8f5e8;
+            color: #2d5a2d;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #d1e7dd;
+        }
+
+        .header::before {
+            display: none;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            color: #1a5f1a;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .module {
+            margin-bottom: 20px;
+            border: 1px solid #d1e7dd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #ffffff;
+        }
+
+        .module:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-color: #a3d9a5;
+        }
+
+        .module-header {
+            background: #f8fdf8;
+            color: #2d5a2d;
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #d1e7dd;
+        }
+
+        .module-header:hover {
+            background: #e8f5e8;
+        }
+
+        .module-number {
+            background: #52b788;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+            font-size: 0.9em;
+        }
+
+        .module-title {
+            flex: 1;
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #1a5f1a;
+        }
+
+        .toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            color: #52b788;
+        }
+
+        .module-content {
+            padding: 25px;
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        .module.active .module-content {
+            display: block;
+        }
+
+        .module.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        .topic-list {
+            list-style: none;
+        }
+
+        .topic-item {
+            margin-bottom: 12px;
+            padding: 15px 20px;
+            background: #fafffe;
+            border-left: 3px solid #52b788;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            color: #2d5a2d;
+        }
+
+        .topic-item::before {
+            content: '✓';
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #52b788;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: #f0f9f4;
+            transform: translateX(8px);
+            box-shadow: 0 3px 12px rgba(82, 183, 136, 0.15);
+        }
+
+        .topic-item:hover::before {
+            left: -15px;
+        }
+
+        .course-info {
+            background: #f0f9f4;
+            border: 1px solid #a3d9a5;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .course-info h3 {
+            color: #1a5f1a;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .course-info p {
+            color: #2d5a2d;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: #f8fdf8;
+            padding: 18px;
+            border-radius: 6px;
+            border-left: 4px solid #52b788;
+            margin-top: 15px;
+        }
+
+        .highlight h4 {
+            color: #1a5f1a;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .highlight p {
+            color: #2d5a2d;
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .module-header {
+                padding: 15px 20px;
+            }
+            
+            .module-title {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Excel ขั้นสูงสำหรับการจัดการและวิเคราะห์ข้อมูล</h1>
+            <div class="subtitle">Advanced Excel for Data Management and Analysis</div>
+        </div>
+
+        <div class="content">
+            <div class="course-info">
+                <h3>🎯 เป้าหมายของคอร์ส</h3>
+                <p>พัฒนาทักษะ Excel ในระดับขั้นสูง สำหรับการจัดการข้อมูลขนาดใหญ่ การวิเคราะห์ข้อมูลเชิงธุรกิจ และการสร้าง Dashboard ที่มีประสิทธิภาพ</p>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <div class="module-number">1</div>
+                    <div class="module-title">พื้นฐานการจัดการข้อมูลขนาดใหญ่</div>
+                    <div class="toggle-icon">▼</div>
+                </div>
+                <div class="module-content">
+                    <ul class="topic-list">
+                        <li class="topic-item">การใช้ Excel Table กับข้อมูลหลายหมื่นแถว</li>
+                        <li class="topic-item">การตั้งชื่อช่วงแบบ Dynamic Named Ranges</li>
+                        <li class="topic-item">การใช้ Power Query สำหรับโหลดและแปลงข้อมูล</li>
+                        <li class="topic-item">การเชื่อมต่อข้อมูลจาก CSV, SQL, SharePoint ฯลฯ</li>
+                    </ul>
+                    <div class="highlight">
+                        <h4>🔥 ไฮไลท์</h4>
+                        <p>เรียนรู้การจัดการข้อมูลขนาดใหญ่อย่างมีประสิทธิภาพ และการเชื่อมต่อข้อมูลจากแหล่งต่าง ๆ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <div class="module-number">2</div>
+                    <div class="module-title">เทคนิคการทำความสะอาดข้อมูล (Data Cleaning)</div>
+                    <div class="toggle-icon">▼</div>
+                </div>
+                <div class="module-content">
+                    <ul class="topic-list">
+                        <li class="topic-item">การจัดการ Missing Values, Duplicate Rows</li>
+                        <li class="topic-item">การแปลงประเภทข้อมูล (Text → Date, Number)</li>
+                        <li class="topic-item">การใช้ฟังก์ชันเช่น TEXT, VALUE, TRIM, CLEAN, SUBSTITUTE</li>
+                        <li class="topic-item">การจัดการข้อมูลหลายคอลัมน์พร้อมกันใน Power Query</li>
+                    </ul>
+                    <div class="highlight">
+                        <h4>🧹 ไฮไลท์</h4>
+                        <p>เทคนิคการทำความสะอาดข้อมูลที่จำเป็นก่อนการวิเคราะห์ เพื่อให้ได้ผลลัพธ์ที่ถูกต้องและน่าเชื่อถือ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <div class="module-number">3</div>
+                    <div class="module-title">การจัดโครงสร้างข้อมูลเพื่อการวิเคราะห์</div>
+                    <div class="toggle-icon">▼</div>
+                </div>
+                <div class="module-content">
+                    <ul class="topic-list">
+                        <li class="topic-item">การ Normalize / Unpivot ข้อมูล</li>
+                        <li class="topic-item">การสร้าง Pivot Table จากข้อมูลหลายแสนแถว</li>
+                        <li class="topic-item">การใช้ Power Pivot และ Data Model</li>
+                        <li class="topic-item">การสร้าง Relationship ระหว่างตาราง</li>
+                    </ul>
+                    <div class="highlight">
+                        <h4>🏗️ ไฮไลท์</h4>
+                        <p>เรียนรู้การจัดโครงสร้างข้อมูลที่เหมาะสมสำหรับการวิเคราะห์และการสร้างรายงาน</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <div class="module-number">4</div>
+                    <div class="module-title">สูตรขั้นสูงสำหรับการวิเคราะห์</div>
+                    <div class="toggle-icon">▼</div>
+                </div>
+                <div class="module-content">
+                    <ul class="topic-list">
+                        <li class="topic-item">การใช้ INDEX, MATCH, XLOOKUP, FILTER, LET, LAMBDA</li>
+                        <li class="topic-item">การจัดการข้อมูลแบบ Array ด้วย SEQUENCE, SORT, UNIQUE</li>
+                        <li class="topic-item">การเขียนสูตรแบบ Dynamic Array (Excel 365)</li>
+                    </ul>
+                    <div class="highlight">
+                        <h4>⚡ ไฮไลท์</h4>
+                        <p>เชี่ยวชาญสูตรขั้นสูงที่ทำให้การวิเคราะห์ข้อมูลเป็นไปอย่างรวดเร็วและมีประสิทธิภาพ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <div class="module-number">5</div>
+                    <div class="module-title">การวิเคราะห์เชิงธุรกิจ</div>
+                    <div class="toggle-icon">▼</div>
+                </div>
+                <div class="module-content">
+                    <ul class="topic-list">
+                        <li class="topic-item">การสร้าง Dashboard ด้วย Pivot Chart และ Slicer</li>
+                        <li class="topic-item">การใช้ Conditional Formatting กับข้อมูลจำนวนมาก</li>
+                        <li class="topic-item">การวิเคราะห์แนวโน้ม (Trend), การจัดกลุ่ม (Clustering), การคาดการณ์ (Forecast)</li>
+                        <li class="topic-item">การใช้ Excel ร่วมกับ Power BI</li>
+                    </ul>
+                    <div class="highlight">
+                        <h4>📊 ไฮไลท์</h4>
+                        <p>สร้าง Dashboard และรายงานที่สามารถนำไปใช้ในการตัดสินใจทางธุรกิจได้จริง</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <div class="module-number">6</div>
+                    <div class="module-title">การเพิ่มประสิทธิภาพการทำงาน</div>
+                    <div class="toggle-icon">▼</div>
+                </div>
+                <div class="module-content">
+                    <ul class="topic-list">
+                        <li class="topic-item">การใช้ VBA สำหรับงานซ้ำ ๆ เช่น การล้างข้อมูล, การรวมไฟล์</li>
+                        <li class="topic-item">การใช้ Power Automate Desktop ร่วมกับ Excel</li>
+                        <li class="topic-item">การตั้งค่าการคำนวณ (Manual vs Automatic) เพื่อให้ Excel ไม่ช้า</li>
+                    </ul>
+                    <div class="highlight">
+                        <h4>🚀 ไฮไลท์</h4>
+                        <p>เทคนิคการเพิ่มประสิทธิภาพและการทำงานอัตโนมัติเพื่อประหยัดเวลาและลดข้อผิดพลาด</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleModule(element) {
+            const module = element.parentElement;
+            const isActive = module.classList.contains('active');
+            
+            // Close all modules
+            document.querySelectorAll('.module').forEach(mod => {
+                mod.classList.remove('active');
+            });
+            
+            // Open clicked module if it wasn't active
+            if (!isActive) {
+                module.classList.add('active');
+            }
+        }
+
+        // Add smooth scrolling effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const modules = document.querySelectorAll('.module');
+            modules.forEach((module, index) => {
+                module.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Add hover effects for better interactivity
+        document.querySelectorAll('.topic-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
