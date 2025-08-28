@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel for Business Intelligence | Professional Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:0.1" /><stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:0" /></radialGradient></defs><rect width="11" height="11" fill="url(%23a)" rx="2" ry="2"/><rect x="20" width="11" height="11" fill="url(%23a)" rx="2" ry="2"/><rect x="40" width="11" height="11" fill="url(%23a)" rx="2" ry="2"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            animation: none;
+        }
+
+        .course-overview {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .module-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .module-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .module-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .module-content li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        .module-content li:last-child {
+            border-bottom: none;
+        }
+
+        .module-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .code-highlight {
+            background: #f8f9fa;
+            color: #e74c3c;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .course-benefits {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-item {
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .enrollment {
+            background: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price-detail {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .module-card {
+                padding: 30px 20px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Excel for <span class="highlight">Business Intelligence</span></h1>
+                <p class="subtitle">เชี่ยวชาญการวิเคราะห์ข้อมูลด้วย Excel ในระดับมืออาชีพ<br>สำหรับผู้ที่ต้องการความเป็นเลิศในการจัดการข้อมูลธุรกิจ</p>
+                <a href="#enroll" class="cta-button">เริ่มต้นเรียนเลย</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="course-overview">
+        <div class="container">
+            <h2 class="section-title">หลักสูตรที่จะยกระดับทักษะของคุณ</h2>
+            
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-number">1</div>
+                    <h3 class="module-title">พื้นฐานการวิเคราะห์ข้อมูลด้วย Excel</h3>
+                    <div class="module-content">
+                        <ul>
+                            <li>การจัดโครงสร้างข้อมูลเพื่อการวิเคราะห์ (Data Structuring)</li>
+                            <li>การใช้ Named Ranges, Tables และ Dynamic Arrays</li>
+                            <li>การใช้ฟังก์ชันพื้นฐานและฟังก์ชันใหม่ใน Excel เช่น <span class="code-highlight">FILTER</span>, <span class="code-highlight">SORT</span>, <span class="code-highlight">UNIQUE</span>, <span class="code-highlight">LET</span>, <span class="code-highlight">LAMBDA</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">2</div>
+                    <h3 class="module-title">การคำนวณขั้นสูงใน Excel</h3>
+                    <div class="module-content">
+                        <ul>
+                            <li>เทคนิคการใช้ฟังก์ชันเชิงตรรกะและการคำนวณซับซ้อน (<span class="code-highlight">IF</span>, <span class="code-highlight">IFS</span>, <span class="code-highlight">XLOOKUP</span>, <span class="code-highlight">INDEX/MATCH</span>)</li>
+                            <li>การจัดการวันที่และเวลาอย่างมืออาชีพ (<span class="code-highlight">TEXT</span>, <span class="code-highlight">DATEDIF</span>, <span class="code-highlight">WORKDAY</span>, <span class="code-highlight">EOMONTH</span>)</li>
+                            <li>การสร้างสูตรแบบ Dynamic และ Reusable ด้วย <span class="code-highlight">LET</span> และ <span class="code-highlight">LAMBDA</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">3</div>
+                    <h3 class="module-title">การจัดการข้อมูลขนาดใหญ่ (Big Data Handling)</h3>
+                    <div class="module-content">
+                        <ul>
+                            <li>การใช้ Power Query เพื่อแปลงและรวมข้อมูลจากหลายแหล่ง</li>
+                            <li>เทคนิคการลดขนาดไฟล์และเพิ่มความเร็วในการประมวลผล</li>
+                            <li>การใช้ Excel ร่วมกับฐานข้อมูล (SQL Integration)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">4</div>
+                    <h3 class="module-title">เครื่องมือขั้นเทพสำหรับการวิเคราะห์</h3>
+                    <div class="module-content">
+                        <ul>
+                            <li>การใช้ Pivot Table เพื่อสรุปข้อมูลอย่างมีประสิทธิภาพ</li>
+                            <li>การสร้าง Pivot Chart และการใช้ Slicer เพื่อการนำเสนอแบบ Interactive</li>
+                            <li>การจัดการ Field Settings, Calculated Fields และ Grouping</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">5</div>
+                    <h3 class="module-title">การสร้างกราฟและการนำเสนอข้อมูล</h3>
+                    <div class="module-content">
+                        <ul>
+                            <li>การเลือกประเภทกราฟให้เหมาะกับข้อมูล (Bar, Line, Combo, Waterfall, etc.)</li>
+                            <li>การใช้ Conditional Formatting กับกราฟ เช่น การเปลี่ยนสีแท่งกราฟตามค่า</li>
+                            <li>เทคนิคใหม่ใน Excel เช่น Data Bars, Sparklines, และ Dynamic Chart Titles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">6</div>
+                    <h3 class="module-title">Case Study & Workshop</h3>
+                    <div class="module-content">
+                        <ul>
+                            <li>วิเคราะห์ข้อมูลยอดขาย/การผลิต/การเงินจากไฟล์จริง</li>
+                            <li>สร้าง Dashboard แบบ Interactive ด้วย Excel</li>
+                            <li>โปรเจคจบหลักสูตรที่นำไปใช้งานได้จริง</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-benefits">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">ประโยชน์ที่จะได้รับ</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">📊</span>
+                    <h3 class="benefit-title">เชี่ยวชาญเครื่องมือวิเคราะห์</h3>
+                    <p>เรียนรู้เครื่องมือและเทคนิคขั้นสูงที่ใช้ในองค์กรชั้นนำทั่วโลก</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <h3 class="benefit-title">เพิ่มประสิทธิภาพการทำงาน</h3>
+                    <p>ลดเวลาในการประมวลผลข้อมูลจากชั่วโมงเป็นนาที</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💼</span>
+                    <h3 class="benefit-title">ยกระดับอาชีพการงาน</h3>
+                    <p>เพิ่มโอกาสในการเลื่อนตำแหน่งและเพิ่มเงินเดือน</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎯</span>
+                    <h3 class="benefit-title">ตัดสินใจด้วยข้อมูล</h3>
+                    <p>วิเคราะห์และนำเสนอข้อมูลให้เข้าใจง่ายและชัดเจน</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="enrollment" id="enroll">
+        <div class="container">
+            <h2 class="section-title">ลงทะเบียนเรียน</h2>
+            <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">หลักสูตรที่ครบครันและเข้มข้น พร้อมด้วยเอกสารและไฟล์ตัวอย่างจากงานจริง</p>
+            
+            <div class="price-box">
+                <div class="price">฿12,900</div>
+                <div class="price-detail">รวมใบประกาศนียบัตร + เอกสารประกอบการเรียน</div>
+            </div>
+            
+            <a href="#" class="cta-button" style="font-size: 1.2rem; padding: 20px 50px;">ลงทะเบียนเลย</a>
+            
+            <div style="margin-top: 40px; color: #666;">
+                <p><strong>รับประกันความพึงพอใจ</strong> คืนเงิน 100% หากไม่พอใจภายใน 7 วัน</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Excel for Business Intelligence Course. สงวนสิทธิ์ทุกประการ</p>
+            <p style="margin-top: 10px; opacity: 0.8;">หลักสูตรออนไลน์คุณภาพสูง เรียนเมื่อไหร่ก็ได้ ที่ไหนก็ได้</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all module cards
+        document.querySelectorAll('.module-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add hover effects to CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.background = 'linear-gradient(45deg, #ee5a24, #ff6b6b)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a24)';
+            });
+        });
+    </script>
+</body>
+</html>
