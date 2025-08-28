@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI for Business - Course Outline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef9e7 0%, #f7dc6f 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #f39c12;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .module {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.1);
+            border: 1px solid rgba(243, 156, 18, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInLeft 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(243, 156, 18, 0.15);
+        }
+
+        .module:nth-child(even) {
+            animation-name: fadeInRight;
+        }
+
+        .module-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f39c12;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .module-number {
+            background: linear-gradient(45deg, #f39c12, #f1c40f);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .module-content {
+            color: #34495e;
+        }
+
+        .module-content ul {
+            list-style: none;
+        }
+
+        .module-content li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .module-content li::before {
+            content: "•";
+            color: #f39c12;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(243, 156, 18, 0.1);
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #f39c12, #f1c40f);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .module {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Add animation delays for staggered effect */
+        .module:nth-child(1) { animation-delay: 0.1s; }
+        .module:nth-child(2) { animation-delay: 0.2s; }
+        .module:nth-child(3) { animation-delay: 0.3s; }
+        .module:nth-child(4) { animation-delay: 0.4s; }
+        .module:nth-child(5) { animation-delay: 0.5s; }
+        .module:nth-child(6) { animation-delay: 0.6s; }
+        .module:nth-child(7) { animation-delay: 0.7s; }
+        .module:nth-child(8) { animation-delay: 0.8s; }
+        .module:nth-child(9) { animation-delay: 0.9s; }
+        .module:nth-child(10) { animation-delay: 1s; }
+        .module:nth-child(11) { animation-delay: 1.1s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Power BI for Business</h1>
+            <p class="subtitle">Master Business Intelligence with Hands-on Experience</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>10 โมดูลครบครัน</h3>
+                <p>เรียนรู้ทุกขั้นตอนจากพื้นฐานถึงขั้นสูง</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💼</div>
+                <h3>เน้นการใช้งานจริง</h3>
+                <p>กรณีศึกษาธุรกิจและ Hands-on Practice</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <h3>Project จบคอร์ส</h3>
+                <p>สร้าง Dashboard สำหรับธุรกิจจริง</p>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">1</div>
+                <span>Introduction to Power BI</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>ความเข้าใจพื้นฐานเกี่ยวกับ Business Intelligence</li>
+                    <li>ภาพรวมของ Power BI: Desktop, Service, Mobile</li>
+                    <li>การติดตั้งและการตั้งค่าเบื้องต้น</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">2</div>
+                <span>Data Preparation & Cleaning</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>การนำเข้าข้อมูลจาก Excel, CSV, SQL Server ฯลฯ</li>
+                    <li>การใช้ Power Query เพื่อแปลงและทำความสะอาดข้อมูล</li>
+                    <li>การจัดการ Missing Values, Duplicates และ Data Types</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">3</div>
+                <span>Data Modeling for Business</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>การสร้าง Relationships และการใช้ Cardinality</li>
+                    <li>การออกแบบ Data Model ที่มีหลายตาราง</li>
+                    <li>การใช้ DAX เบื้องต้นเพื่อสร้าง Measures และ Calculated Columns</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">4</div>
+                <span>Business-Oriented Visualizations</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>การเลือก Visual ที่เหมาะสมกับประเภทข้อมูล</li>
+                    <li>การสร้าง Dashboard สำหรับการตัดสินใจ</li>
+                    <li>การใช้ Slicers, Filters และ Drill-through</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">5</div>
+                <span>Advanced Analytics with DAX</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>การคำนวณยอดขายสะสม (Cumulative Sales), YOY, MOM</li>
+                    <li>การวิเคราะห์แนวโน้มและการเปรียบเทียบตามช่วงเวลา</li>
+                    <li>การสร้าง KPI และ Card Visuals</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">6</div>
+                <span>Real-World Business Scenarios</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>การวิเคราะห์ยอดขายตามภูมิภาคและผลิตภัณฑ์</li>
+                    <li>การวิเคราะห์ต้นทุนและกำไร</li>
+                    <li>การสร้างรายงานสำหรับฝ่ายบริหาร</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">7</div>
+                <span>Sharing & Collaboration</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>การเผยแพร่รายงานผ่าน Power BI Service</li>
+                    <li>การตั้งค่า Row-Level Security (RLS)</li>
+                    <li>การสร้าง Workspace และการแชร์กับทีม</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">8</div>
+                <span>Automation & Integration</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>การตั้งค่า Refresh Schedule</li>
+                    <li>การเชื่อมต่อกับ Power Automate เพื่อแจ้งเตือน</li>
+                    <li>การฝังรายงานใน Excel, Teams หรือ SharePoint</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">9</div>
+                <span>Best Practices & Optimization</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>การออกแบบรายงานให้โหลดเร็วและใช้งานง่าย</li>
+                    <li>การตั้งชื่อ Measures และ Columns อย่างมีระบบ</li>
+                    <li>การจัดการ Version และการบำรุงรักษาระยะยาว</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">
+                <div class="module-number">10</div>
+                <span>Final Project & Certification</span>
+            </div>
+            <div class="module-content">
+                <ul>
+                    <li>สร้าง Dashboard สำหรับกรณีศึกษาธุรกิจจริง</li>
+                    <li>การนำเสนอและ Feedback</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="margin-bottom: 20px; color: #f39c12;">พร้อมเริ่มเรียนรู้ Power BI แล้วหรือยัง?</h2>
+            <p style="margin-bottom: 30px; color: #7f8c8d;">เข้าร่วมคอร์สและเริ่มสร้าง Dashboard ที่มีประสิทธิภาพสำหรับธุรกิจของคุณ</p>
+            <a href="#" class="cta-button">ลงทะเบียนเรียน</a>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scroll effect for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to modules
+            const modules = document.querySelectorAll('.module');
+            modules.forEach((module, index) => {
+                module.style.animationDelay = `${index * 0.1}s`;
+                
+                module.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                module.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add parallax effect to background
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = scrolled * 0.5;
+                document.body.style.backgroundPosition = `center ${parallax}px`;
+            });
+        });
+    </script>
+</body>
+</html>
