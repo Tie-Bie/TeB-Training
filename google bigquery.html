@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คอร์ส Google BigQuery สำหรับผู้เริ่มต้น</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .objectives {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .objective-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .objective-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .curriculum {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 5rem 2rem;
+            color: white;
+        }
+
+        .module {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .module:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .module-number {
+            background: white;
+            color: #667eea;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .module-title {
+            font-size: 1.8rem;
+            flex: 1;
+        }
+
+        .module-duration {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .module-content {
+            padding-left: 4rem;
+        }
+
+        .module-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .module-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .module-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .activity-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .activity-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #fbbf24;
+        }
+
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .module-content {
+                padding-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🚀 เรียนรู้ Google BigQuery</h1>
+            <p class="subtitle">คอร์สสำหรับผู้เริ่มต้น — จากศูนย์สู่การวิเคราะห์ข้อมูลขนาดใหญ่</p>
+            <button class="cta-button" onclick="document.getElementById('curriculum').scrollIntoView({behavior: 'smooth'})">
+                เริ่มเรียนเลย
+            </button>
+        </div>
+    </section>
+
+    <section class="objectives">
+        <div class="container">
+            <h2 class="section-title">🎯 สิ่งที่คุณจะได้เรียนรู้</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon">💡</div>
+                    <h3>พื้นฐาน Data Warehouse</h3>
+                    <p>เข้าใจแนวคิดและความแตกต่างของ BigQuery</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">⚡</div>
+                    <h3>ใช้งาน BigQuery Console</h3>
+                    <p>เริ่มต้นใช้งานได้อย่างมืออาชีพ</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">📝</div>
+                    <h3>เขียน SQL</h3>
+                    <p>Query และวิเคราะห์ข้อมูลได้จริง</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">🗂️</div>
+                    <h3>ออกแบบตาราง</h3>
+                    <p>จัดเก็บข้อมูลอย่างมีประสิทธิภาพ</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">🔗</div>
+                    <h3>เชื่อมต่อเครื่องมือ</h3>
+                    <p>ใช้ร่วมกับ Sheets และ Looker Studio</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">ชั่วโมง</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5,500</div>
+                    <div class="stat-label">บาท</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">หัวข้อหลัก</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">ความรู้ที่ได้รับ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <h2 class="section-title">📚 โครงสร้างหลักสูตร</h2>
+
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-number">1</div>
+                    <h3 class="module-title">แนะนำแนวคิดพื้นฐาน</h3>
+                    <div class="module-duration">⏱️</div>
+                </div>
+                <div class="module-content">
+                    <ul>
+                        <li>ทำไมต้องใช้ Data Warehouse?</li>
+                        <li>ความแตกต่างระหว่าง Database กับ Data Warehouse</li>
+                        <li>ภาพรวมของ Google Cloud Platform (GCP)</li>
+                        <li>BigQuery คืออะไร? จุดเด่นและจุดแข็ง</li>
+                        <li>Use cases จริง: ยอดขาย, การตลาด, Log Analysis</li>
+                    </ul>
+                    <div class="activity-section">
+                        <div class="activity-title">✨ กิจกรรม:</div>
+                        <p>ดู Demo การ Query dataset สาธารณะใน BigQuery และเข้าใจการทำงานของระบบ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-number">2</div>
+                    <h3 class="module-title">รู้จักโครงสร้างของ BigQuery</h3>
+                    <div class="module-duration">⏱️</div>
+                </div>
+                <div class="module-content">
+                    <ul>
+                        <li>Project, Dataset, Table, View คืออะไร</li>
+                        <li>โครงสร้างของตาราง (Schema, Field, Data Type)</li>
+                        <li>การนำเข้าข้อมูลจาก CSV, Google Sheets, Cloud Storage</li>
+                        <li>ค่าการคิดราคาเบื้องต้น (Query cost & Storage cost)</li>
+                    </ul>
+                    <div class="activity-section">
+                        <div class="activity-title">✨ กิจกรรม:</div>
+                        <p>สร้าง Dataset และ Import ไฟล์ CSV เข้า BigQuery พร้อมสำรวจ Schema</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-number">3</div>
+                    <h3 class="module-title">การเขียน SQL พื้นฐาน</h3>
+                    <div class="module-duration">⏱️</div>
+                </div>
+                <div class="module-content">
+                    <ul>
+                        <li>SELECT, FROM, WHERE, ORDER BY, LIMIT</li>
+                        <li>Aggregation: COUNT, SUM, AVG, MAX, MIN</li>
+                        <li>GROUP BY, HAVING</li>
+                        <li>Alias และการกรองข้อมูลด้วยเงื่อนไข</li>
+                        <li>ฟังก์ชันวันที่, String, และคณิตศาสตร์</li>
+                    </ul>
+                    <div class="activity-section">
+                        <div class="activity-title">✨ กิจกรรม:</div>
+                        <p>แบบฝึกหัด Query กับ Dataset สาธารณะ เช่น bigquery-public-data.samples.natality</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-number">4</div>
+                    <h3 class="module-title">การจัดการข้อมูลขั้นพื้นฐาน</h3>
+                    <div class="module-duration">⏱️</div>
+                </div>
+                <div class="module-content">
+                    <ul>
+                        <li>การสร้างและแก้ไข Table / View</li>
+                        <li>การ JOIN ข้อมูลระหว่างตาราง</li>
+                        <li>การใช้ Subquery และ CTE (WITH)</li>
+                        <li>การเขียน Query ให้ประหยัดค่าใช้จ่าย</li>
+                    </ul>
+                    <div class="activity-section">
+                        <div class="activity-title">✨ กิจกรรม:</div>
+                        <p>แบบฝึก JOIN dataset สองชุด (ข้อมูลผู้ใช้ + คำสั่งซื้อ) และอธิบาย Execution Plan</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-number">5</div>
+                    <h3 class="module-title">การเชื่อมต่อและนำเสนอข้อมูล</h3>
+                    <div class="module-duration">⏱️</div>
+                </div>
+                <div class="module-content">
+                    <ul>
+                        <li>การเชื่อม BigQuery กับ Google Sheets</li>
+                        <li>การสร้าง Dashboard ด้วย Looker Studio</li>
+                        <li>การ Export ข้อมูลออกเป็น CSV / Google Sheet</li>
+                    </ul>
+                    <div class="activity-section">
+                        <div class="activity-title">✨ กิจกรรม:</div>
+                        <p>สร้าง Dashboard แสดงผลข้อมูลที่วิเคราะห์ด้วย Looker Studio</p>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h3>พร้อมเริ่มต้นการเรียนรู้แล้วหรือยัง?</h3>
+            <p style="margin-top: 1rem; opacity: 0.8;">เหมาะสำหรับใช้ในการอบรม, สอนในห้องเรียน, หรือทำคอร์สออนไลน์</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.6;">© 2025 Google BigQuery Course. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
