@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เรียนรู้ Office 365 ออนไลน์</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+            color: #0f68e4; /* Slate-700 */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        /* Custom scrollbar for demonstration, usually handled by browser or global styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* Slate-300 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* Slate-400 */
+        }
+    </style>
+    
+</head>
+
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container flex justify-between items-center">
+            <!-- Logo/Site Title -->
+            <a href="#" class="text-2xl font-bold text-indigo-300 rounded-lg p-2 hover:bg-indigo-30 transition-colors">
+                
+            </a>
+
+            <!-- Navigation Bar -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors p-2 rounded-lg hover:bg-gray-100">หน้าหลัก</a>
+                <a href="#courses" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors p-2 rounded-lg hover:bg-gray-100">หลักสูตร</a>
+                <a href="course_price.html" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors p-2 rounded-lg hover:bg-gray-100">ราคาการอบรม</a>
+                <a href="#articles" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors p-2 rounded-lg hover:bg-gray-100">บทความ</a>
+                <a href="Profile.html" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors p-2 rounded-lg hover:bg-gray-100">ผู้สอน</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors p-2 rounded-lg hover:bg-gray-100">ติดต่อเรา</a>
+            </nav>
+
+            <!-- Mobile Menu Button (for future implementation) -->
+            <button class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </header>
+            
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-indigo-300 to-purple-600 text-white py-20 md:py-10 rounded-b-3xl shadow-lg mx-4 mt-4">
+        <div class="container text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-3xl font-extrabold leading-tight mb-4 animate-fade-in-down">
+                เรียนรู้ ให้เชี่ยวชาญ <br class="hidden md:block"> เพื่อเพิ่มประสิทธิภาพการทำงานของคุณ
+            </h1>
+            <p class="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up">
+               ผู้เชี่ยวชาญ Office 365, Excel, Power BI และ Looker Studio เปลี่ยนข้อมูลยุ่งยากให้เป็นรายงานและแดชบอร์ดที่เข้าใจง่าย<br>
+                พร้อมสอนและทำโปรเจกต์จริงเพื่อผลลัพธ์ที่จับต้องได้ รับสอนทุกระดับ ตั้งแต่พื้นฐานจนถึงมือโปร<br>
+                รวมทั้งออกแบบคอร์สและบริการตามความต้องการของคุณ พร้อมสร้างสรรค์งานที่ช่วยให้คุณทำงานได้เร็วและมีประสิทธิภาพ
+            </p>
+            <a href="course_price.html" class="inline-block bg-white text-indigo-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 transform">
+                ตารางการฝึกอบรม / Training Schedule
+            </a>
+        </div>
+    </section>
+    <!-- Featured Courses Section -->
+    <section id="courses" class="py-8 md:py-10">
+        <div class="container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">หลักสูตร ที่เปิดสอน </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Card 1: Microsoft Word -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    <img src="https://placehold.co/600x200/f9e79f/FFC300?text=Power%20BI+Course%22" alt="Microsoft Word Course" class="w-full h-40 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Power Bi: หลักสูตรพื้นฐานจนเป็นผู้เชี่ยวชาญ</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            เปลี่ยนข้อมูล Big Data ให้มีประสิทธิภาพ พร้อมยกระดับการตัดสินใจด้วย Power BI!
+                            หลักสูตรนี้จะพาคุณก้าวจากมือใหม่สู่มือโปรอย่างมั่นใจ
+                            เรียนรู้การสร้างแดชบอร์ดสุดล้ำ วิเคราะห์ข้อมูลอย่างมืออาชีพ
+                            เข้าใจตั้งแต่พื้นฐาน จนสามารถออกแบบรายงานเชิงลึกได้ด้วยตนเอง
+                            เหมาะสำหรับทุกสายงาน ที่ต้องการใช้ข้อมูลให้เกิดประโยชน์สูงสุด!
+                        </p>
+                        <ul class="text-sm text-gray-700 list-disc list-inside mb-4">
+                            <li>นำเข้าข้อมูล (Data Loading & Transformation)</li>
+                            <li>สร้าง Model และการวิเคราะห์ด้วย DAX</li>
+                            <li>การสร้าง Visualization</li>
+                             <li>การเผยแพร่และการใช้งาน Power BI Service</li>
+                        </ul>
+                        <a href="Power BI.html" class="block w-full text-center bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors font-medium">
+                            ดูรายละเอียด
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course Card 2: Microsoft Excel -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    <img src="https://placehold.co/600x200/DCFCE7/16A34A?text=Excel+Course" alt="Microsoft Excel Course" class="w-full h-40 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Microsoft Excel: วิเคราะห์ข้อมูลอย่างชาญฉลาด</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            เปลี่ยน Excel ให้เป็นเครื่องมือวิเคราะห์ข้อมูลอัจฉริยะ!"
+                            เรียนรู้เทคนิคการจัดการข้อมูล วิเคราะห์เชิงลึก และสร้างรายงานอย่างมีประสิทธิภาพ
+                            ตั้งแต่สูตรพื้นฐานจนถึงเครื่องมือขั้นสูง เช่น PivotTable, Power Query และ Charts
+                            เหมาะสำหรับทุกสายงาน ที่ต้องการตัดสินใจด้วยข้อมูลอย่างแม่นยำและรวดเร็ว
+                        </p>
+                        <ul class="text-sm text-gray-700 list-disc list-inside mb-4">
+                            <li>สูตรและฟังก์ชันขั้นสูงที่จำเป็นต้องรู้ในการทำงาน</li>
+                            <li>เครื่องมือวิเคราะห์ข้อมูล PivotTables และ PivotCharts</li>
+                            <li>การวิเคราะห์ข้อมูลเบื้องต้นจนถึงการใช้สูตรขั้นสูง</li>
+                            <li>การนำเสนอผลลัพธ์และสื่อสารด้วยข้อมูล</li>
+                        </ul>
+                        <a href="Excel Basic.html" class="block w-full text-center bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors font-medium">
+                            ดูรายละเอียด
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course Card 3: Microsoft PowerPoint -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    <img src="https://placehold.co/600x200/81d4fa/0033FF?text=Looker%20Studio+Course" alt="Microsoft PowerPoint Course" class="w-full h-40 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Google Looker Studio: สร้างรายงานแบบสมาร์ท</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Google Looker Studio: สร้างรายงานแบบสมาร์ทสำหรับองค์กรยุคใหม่
+                            หลักสูตรออนไลน์ที่ออกแบบมาเพื่อมืออาชีพในยุค Data-Driven
+                            เรียนรู้การสร้างรายงานและแดชบอร์ดแบบอินเตอร์แอคทีฟ ด้วย Google Looker Studio เครื่องมือฟรีจาก Google 
+                            ที่สามารถเชื่อมต่อข้อมูลจากหลากหลายแหล่ง เช่น Google Sheets, Google Analytics, BigQuery และอื่น ๆ
+                        </p>
+                        <ul class="text-sm text-gray-700 list-disc list-inside mb-4">
+                            <li>การเชื่อมต่อแหล่งข้อมูล</li>
+                            <li>การสร้างรายงานและแดชบอร์ด</li>
+                            <li>เทคนิคการวิเคราะห์ข้อมูลและการแชร์</li>
+                        </ul>
+                        <a href="#" class="block w-full text-center bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors font-medium">
+                            ดูรายละเอียด
+                        </a>
+                    </div>
+                </div>
+               
+            </div>            
+        </div>
+    </section>
+    <!-- Articles & Tips Section -->
+    <section id="articles" class="bg-gray-50 py-10 md:py-12">
+        <div class="container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">งาน</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article Card 1 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    <img src="https://placehold.co/600x200/f4eca0/FFBF00?text=Power%20BI%20Dashboard" alt="Outlook Tips" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">📊 รับสร้าง Dashboard ด้วย Power BI</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            เปลี่ยนข้อมูลดิบของคุณให้กลายเป็น Dashboard ที่เข้าใจง่าย ใช้งานได้จริง
+                        </p>
+
+                        <ul class="text-sm text-gray-700 list-disc list-inside mb-4">
+                            <li>🔹 วิเคราะห์ข้อมูลอย่างมืออาชีพ พร้อมการออกแบบรายงานที่ตอบโจทย์การตัดสินใจ</li>
+                            <li>🔹 รองรับแหล่งข้อมูลหลากหลาย: Excel, SQL Server, Google Sheets, และอื่น ๆ</li>
+                            <li>🔹สร้าง Dashboard Interactive พร้อม Drill-down, Filter, KPI, และ Visuals ที่เข้าใจง่าย</li>
+                        </ul>
+                        <a href="#" class="text-indigo-600 hover:underline font-medium">รายละเอียดงาน &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 2 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    <img src="https://placehold.co/600x200/1e9dbf/39ecf4?text=Google%20Looker%20Studio" alt="Excel Shortcuts" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">📊รับสร้าง Dashboard ด้วย Google Looker Studio</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            ถ้ามีข้อมูลแต่ไม่รู้จะเริ่มยังไง ทีมเราช่วยวางระบบให้
+                        </p>
+                        <ul class="text-sm text-gray-700 list-disc list-inside mb-4">
+                            <li>🔹 เชื่อมต่อข้อมูลจาก Google Sheets, GA4, BigQuery, Meta Ads, ฯลฯ</li>
+                            <li>🔹 สร้าง Dashboard Interactive ที่สวย ดูง่าย ใช้ได้ทั้งบน Desktop และมือถือ</li>
+                            <li>🔹 พร้อมเทรนวิธีใช้งาน ส่งมอบงานพร้อมคู่มือ หรือดูแลต่อในระยะยาวได้</li>
+                        </ul>
+                        <a href="#" class="text-indigo-600 hover:underline font-medium">รายละเอียดงาน &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 3 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    <img src="https://placehold.co/600x200/FFBF00/edeadf?text=Power%20BI%20Dashboard" alt="Teams Collaboration" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">🛠️ บริการรับเขียนระบบด้วย Google AppSheet & Apps Script</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            แปลงงาน Manual เป็นแอปอัจฉริยะ ใช้งานง่าย เชื่อมต่อ Google Workspace ได้เต็มระบบ
+                        </p>
+                         <ul class="text-sm text-gray-700 list-disc list-inside mb-4">
+                            <li>🔹 ออกแบบและพัฒนา AppSheet ตามความต้องการ</li>
+                            <li>🔹 เขียน Google Apps Script: Automation, Trigger, Email Alerts</li>
+                            <li>🔹 พร้อมให้คำปรึกษาและสอนใช้งานระบบที่พัฒนาขึ้น</li>
+                        </ul>
+                        <a href="#" class="text-indigo-600 hover:underline font-medium">รายละเอียดงาน &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+   
+    <!-- Call to Action Section (Optional) -->
+    <section class="bg-indigo-700 text-white py-12 md:py-14 my-10 mx-4 rounded-lg shadow-xl">
+        <div class="container text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">พร้อมที่จะยกระดับทักษะ Office 365 ของคุณแล้วหรือยัง?</h2>
+            <p class="text-lg md:text-xl mb-8 opacity-90">
+                เริ่มต้นการเรียนรู้กับเราวันนี้เพื่ออนาคตการทำงานที่สดใสยิ่งขึ้น
+            </p>
+            <a href="#courses" class="inline-block bg-white text-indigo-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 transform">
+                เริ่มเรียนรู้เลย!
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-gray-800 text-gray-300 py-10 rounded-t-3xl shadow-inner mx-4 mb-4">
+        <div class="container text-center md:text-left grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-white text-lg font-semibold mb-4">IT Solution Partner</h4>
+                <p class="text-sm">
+                    แพลตฟอร์มการเรียนรู้ Office 365 ออนไลน์ ที่มุ่งเน้นการเพิ่มประสิทธิภาพการทำงานของคุณ
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white text-lg font-semibold mb-4">ลิงก์ด่วน</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">หน้าหลัก</a></li>
+                    <li><a href="#courses" class="hover:text-white transition-colors">หลักสูตร</a></li>
+                    <li><a href="#articles" class="hover:text-white transition-colors">บทความ</a></li>
+                    <li><a href="Profile.html" class="hover:text-white transition-colors">ผู้สอน</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-lg font-semibold mb-4">ติดต่อเรา</h4>
+                <p class="text-sm mb-2">อีเมล: sirinthiya.ch@mgail.com</p>
+                <p class="text-sm mb-4">โทร: 099-296-3593</p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Social Media Icons (Placeholder) -->
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.5 2h-15A2.5 2.5 0 002 4.5v15A2.5 2.5 0 004.5 22h15a2.5 2.5 0 002.5-2.5v-15A2.5 2.5 0 0019.5 2zM12 16.5a4.5 4.5 0 110-9 4.5 4.5 0 010 9zM12 14a2 2 0 100-4 2 2 0 000 4zm6.5-7.5a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 2.007a1.006 1.006 0 011.006-1.006h21.874a1.006 1.006 0 011.006 1.006v19.986a1.006 1.006 0 01-1.006 1.006H1.063a1.006 1.006 0 01-1.006-1.006zm7.224 16.486H4.25V9.467h2.991v9.026zm-1.496-10.02a1.666 1.666 0 100-3.332 1.666 1.666 0 000 3.332zm13.197 10.02h-2.99V14.8c0-1.076-.02-2.462-1.5-2.462-1.502 0-1.732 1.173-1.732 2.383v4.285h-2.99V9.467h2.875v1.314h.04c.4-.76 1.378-1.55 2.83-1.55 3.03 0 3.593 1.99 3.593 4.577v5.278z" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-8">
+            &copy; 2025 IT Solution Expert. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
