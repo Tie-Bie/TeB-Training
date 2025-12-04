@@ -363,15 +363,33 @@
   .back-home-btn:hover {
     background-color: #e78fd4; /* สีเทาอ่อนขึ้นเมื่อ hover */
   }
+        .profile-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-avatar .avatar-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    border: 6px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
 </style>
 </head>
 <body>
    <div class="profile-card">
     <div class="header-section">
 
-        <div class="profile-avatar">
-            <img src="images/bie.jpg" alt="profile photo">
-        </div>
+      <div class="profile-avatar">
+    <img src="images/bie.jpg" alt="profile photo" class="avatar-img">
+</div>
+
 
         <h1 class="instructor-name">ศรินทิยา ชัยธานี</h1>
         <p class="instructor-title">
@@ -548,5 +566,6 @@
 </body>
 
 </html>
+
 
 
