@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body class="bg-light">
+
+
+<div class="container mt-5">
+<div class="row justify-content-center">
+<div class="col-lg-6">
+<div class="card shadow">
+<div class="card-body">
+<h4 class="mb-4">📩 ติดต่อเรา</h4>
+
+
+<form id="contactForm">
+<div class="mb-3">
+<label class="form-label">ชื่อ</label>
+<input type="text" name="name" class="form-control" required>
+</div>
+
+
+<div class="mb-3">
+<label class="form-label">อีเมล</label>
+<input type="email" name="email" class="form-control" required>
+</div>
+
+
+<div class="mb-3">
+<label class="form-label">หัวข้อ</label>
+<input type="text" name="subject" class="form-control" required>
+</div>
+
+
+<div class="mb-3">
+<label class="form-label">ข้อความ</label>
+<textarea name="message" class="form-control" rows="5" required></textarea>
+</div>
+
+
+<button type="submit" class="btn btn-primary w-100">ส่งข้อความ</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+// ==============================
+// ใส่ค่า EmailJS ของคุณตรงนี้
+// ==============================
+emailjs.init("D4LDMWgPcdKBB8Ynk");
+
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+
+emailjs.send("service_cnszkgc", "contact_form", {
+name: this.name.value,
+email: this.email.value,
+subject: this.subject.value,
+message: this.message.value
+}).then(() => {
+Swal.fire("สำเร็จ", "ส่งอีเมลเรียบร้อยแล้ว", "success");
+this.reset();
+}, () => {
+Swal.fire("ผิดพลาด", "ไม่สามารถส่งอีเมลได้", "error");
+});
+});
+</script>
+
+
+</body>
+</html>
