@@ -1,44 +1,65 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'sirinthiya.ch@mgail.com';
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+header('Content-Type: application/json');
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+// =====================
+// reCAPTCHA
+// =====================
+$secretKey = "YOUR_SECRET_KEY";
+$response  = $_POST['g-recaptcha-response'] ?? '';
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+$verify = file_get_contents(
+  "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response"
+);
+$captcha = json_decode($verify);
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  if(isset($_POST['phone'])) {
-    $contact->add_message( $_POST['phone'], 'Phone');
-  }
-  $contact->add_message( $_POST['message'], 'Message', 10);
+if (!$captcha->success) {
+  echo json_encode(["status"=>"error","message"=>"กรุณายืนยันว่าไม่ใช่บอท"]);
+  exit;
+}
 
-  echo $contact->send();
-?>
+// =====================
+// รับค่าฟอร์ม
+// =====================
+$name    = htmlspecialchars($_POST['name']);
+$email   = htmlspecialchars($_POST['email']);
+$subject = htmlspecialchars($_POST['subject']);
+$message = nl2br(htmlspecialchars($_POST['message']));
+
+try {
+    $mail = new PHPMailer(true);
+
+    // SMTP Gmail
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'YOUR_GMAIL@gmail.com';
+    $mail->Password   = 'APP_PASSWORD';
+    $mail->SMTPSecure = 'tls';
+    $mail->Port       = 587;
+    $mail->CharSet    = 'UTF-8';
+
+    $mail->setFrom($mail->Username, 'Website Contact');
+    $mail->addAddress('sirinthiya.ch@gmail.com'); // ✔ แก้ domain ถูกแล้ว
+
+    $mail->isHTML(true);
+    $mail->Subject = "Contact Form: $subject";
+    $mail->Body    = "
+        <b>ชื่อ:</b> $name <br>
+        <b>อีเมล:</b> $email <br><br>
+        <b>ข้อความ:</b><br>$message
+    ";
+
+    $mail->send();
+
+    echo json_encode(["status"=>"success","message"=>"ส่งข้อความเรียบร้อยแล้ว"]);
+
+} catch (Exception $e) {
+    echo json_encode(["status"=>"error","message"=>"ไม่สามารถส่งอีเมลได้"]);
+}
