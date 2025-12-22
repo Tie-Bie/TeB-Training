@@ -51,6 +51,10 @@
 
 
 
+<!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <!-- =======================================================
 
@@ -1091,28 +1095,27 @@ i-Solutions คือแพลตฟอร์มการเรียนรู�
 
 
 <script>
-// ==============================
-// ใส่ค่า EmailJS ของคุณตรงนี้
-// ==============================
-emailjs.init("D4LDMWgPcdKBB8Ynk");
+  // 🔑 Public Key ของคุณ
+  emailjs.init("D4LDMWgPcdKBB8Ynk");
 
+  document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-document.getElementById("contactForm").addEventListener("submit", function(e){
-e.preventDefault();
-
-
-emailjs.send("service_cnszkgc", "contact_form", {
-name: this.name.value,
-email: this.email.value,
-subject: this.subject.value,
-message: this.message.value
-}).then(() => {
-Swal.fire("สำเร็จ", "ส่งอีเมลเรียบร้อยแล้ว", "success");
-this.reset();
-}, () => {
-Swal.fire("ผิดพลาด", "ไม่สามารถส่งอีเมลได้", "error");
-});
-});
+    emailjs.send("service_cnszkgc", "template_majo6cq", {
+      name: this.name.value,
+      email: this.email.value,
+      subject: this.subject.value,
+      message: this.message.value
+    })
+    .then(() => {
+      Swal.fire("สำเร็จ", "ส่งอีเมลเรียบร้อยแล้ว", "success");
+      this.reset();
+    })
+    .catch(err => {
+      console.error(err);
+      Swal.fire("ผิดพลาด", "EmailJS ปฏิเสธข้อมูล (400)", "error");
+    });
+  });
 </script>
 
 
