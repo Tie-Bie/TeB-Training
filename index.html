@@ -48,6 +48,10 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <!-- =======================================================
 
   
@@ -1086,7 +1090,30 @@ i-Solutions คือแพลตฟอร์มการเรียนรู�
   <script src="assets/js/main.js"></script>
 
 
+<script>
+// ==============================
+// ใส่ค่า EmailJS ของคุณตรงนี้
+// ==============================
+emailjs.init("D4LDMWgPcdKBB8Ynk");
 
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+
+emailjs.send("service_cnszkgc", "contact_form", {
+name: this.name.value,
+email: this.email.value,
+subject: this.subject.value,
+message: this.message.value
+}).then(() => {
+Swal.fire("สำเร็จ", "ส่งอีเมลเรียบร้อยแล้ว", "success");
+this.reset();
+}, () => {
+Swal.fire("ผิดพลาด", "ไม่สามารถส่งอีเมลได้", "error");
+});
+});
+</script>
 
 
 
