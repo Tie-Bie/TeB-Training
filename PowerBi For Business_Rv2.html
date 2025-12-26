@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Data Analysis สำหรับวัยทำงาน | TeB Training</title>
+  <meta name="description" content="Data Analysis สำหรับวัยทำงาน เรียนวิเคราะห์ข้อมูลด้วย Excel และ Google Sheet เข้าใจง่าย ใช้ได้จริง">
+  <meta name="keywords" content="Data Analysis สำหรับวัยทำงาน, วิเคราะห์ข้อมูล, Data Analytics, Excel วิเคราะห์ข้อมูล, Google Sheet">
+  <meta name="author" content="TeB Training">
+  <meta name="robots" content="index, follow">
+
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Data Analysis สำหรับวัยทำงาน | TeB Training">
+  <meta property="og:description" content="เรียน Data Analysis สำหรับวัยทำงาน วิเคราะห์ข้อมูลอย่างเข้าใจง่าย ใช้ได้จริง">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tie-bie.github.io/TeB-Training/">
+  <meta property="og:image" content="https://tie-bie.github.io/TeB-Training/assets/img/og-cover.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Slick -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css">
+
+  <!-- Main CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- JS (โหลดครั้งเดียว) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
+
+
+<!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- =======================================================
+
+  
+  * Template Name: Arsha
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Updated: Feb 22 2025 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+<style>
+  /* ให้รูปภาพขยายเต็มคอลัมน์และคงสัดส่วน */
+.col-xl-4.col-md-6 .swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* ถ้าต้องการให้ภาพไม่ถูกตัดใช้แทนเป็น contain */
+  display: block;
+}
+.col-xl-4.col-md-6 .swiper-slide {
+  height: 250px; /* ปรับตามต้องการ */
+}
+
+.col-xl-4.col-md-6 .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.portfolio-details-slider .swiper-slide img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+
+.btn-custom{
+    color: #0099CC;
+    border-color: #0099CC;
+}
+
+.btn-custom:hover{
+    background-color: #0099CC;
+    color: #ffffff;
+    border-color: #0099CC;
+}
+
+
+</style>
+
+
+</head>
+<body class="starter-page-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.webp" alt=""> -->
+        <p style="color: white; font-size: 40px; font-weight: bold; margin: 0;">
+    i-Solutions</p>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+      <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+
+           <li class="dropdown"><a href="#"><span>หลักสูตร</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="bi-page.html" target="_blank" rel="noopener noreferrer">Power BI Course</a></li>
+  
+              <li class="dropdown"><a href="#"><span>Excel Course</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="excel_intermediate.html">Microsoft Excel Intermediate</a></li>
+              <li><a href="excel_advanced.html">Microsoft Excel Advanced</a></li>
+              <!-- <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li> -->
+            </ul>
+          </li>
+
+              <li><a href="#">Lookers Studio Course</a></li>
+                </ul>
+          </li>
+          <li><a href="#recent-blog-postst">บริการของเรา</a></li>
+     
+          <li><a href="schedule.html">ราคา</a></li>
+          <li><a href="about.html">ผู้สอน</a></li>
+          <li><a href="about.html">บทความ</a></li>
+          <li><a href="contact.html">ติดต่อเรา</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#about">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Starter Page</li>
+          </ol>
+        </nav>
+        <h1>Starter Page</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+     <!-- Subscribe Section -->
+    <section id="subscribe" class="subscribe section">
+     
+      <div class="container px-5 py-5" data-aos="fade-up" data-aos-delay="100">
+       
+        <div class="row gy-4 justify-content-between align-items-center">
+          <div class="col-lg-7">
+                 <div>
+        <div class="">
+          🔵 Power BI For Business
+          <span>| Live Virtual & In-house</span>
+        </div>
+        <h2 class="hero-title">
+          สร้าง Business Dashboard ที่ผู้บริหารใช้ตัดสินใจได้จริง ด้วย Power BI
+        </h2>
+        <p class="hero-subtitle">
+          คอร์ส Power BI for Business เน้นภาคปฏิบัติ 100% จากไฟล์ดิบในองค์กร
+          ไปสู่ Dashboard ที่ดูง่าย ใช้งานได้จริง เหมาะสำหรับคนทำงานธุรกิจที่อยากอัปสกิลด้าน Data & Analytics
+        </p>
+       
+          
+          <p>  <i class="bi bi-check-circle-fill"></i>
+เรียนรู้การเตรียมข้อมูล, สร้าง Data Model, เขียน DAX และออกแบบ Dashboard สำหรับผู้บริหาร
+
+          </p>
+          <p>  <i class="bi bi-check-circle-fill"></i>
+เน้น Workshop จากเคสธุรกิจจริง: Sales, Finance, HR, Operation
+
+          </p>
+                    <p>  <i class="bi bi-check-circle-fill"></i>
+จบคอร์สมี Portfolio Dashboard ใช้ยื่นสมัครงาน หรือเสนอหัวหน้าได้ทันที
+
+          </p>
+
+        <div class="hero-cta">
+          <button type="button" class="btn btn-outline-primary btn-custom">สมัครคอร์ส / ขอรายละเอียดเพิ่มเติม</button>
+          <button type="button" class="btn btn-outline-primary btn-custom">ดาวน์โหลด Course Outline (PDF)</button>
+           <br> <br>
+          <h5>
+            สอนสดออนไลน์ + รองรับจัดอบรมแบบ In-house สำหรับองค์กร
+          </h5>
+          <br>
+        </div>
+      </div>  
+          </div>
+          <div class="col-lg-5">
+            <div class="container px-5 py-2" data-aos="fade-up" data-aos-delay="50">
+
+        <div class="hero-card-header">
+         <div class="row">
+    <div class="col-md-6 text-start">
+      <div class="hero-card-title">Power BI for Business</div>
+            <div style="font-size:12px;color:#9ca3af;">เน้นใช้งานจริงสำหรับงานออฟฟิศและองค์กร</div>
+
+    </div>
+
+    <div class="col-md-6 text-end">
+        <button type="button" class="btn btn-outline-primary btn-custom">
+            Hands-on Workshop
+        </button>
+    </div>
+</div>
+
+       </div>
+
+<br>
+        <div class="hero-card-header">
+         <div class="row">
+    <div class="col-md-4 text-start">
+      <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#9ca3af;">ระยะเวลาเรียน</p>12–16 ชม.</button>
+    </div>
+
+    <div class="col-md-4 text-end">
+        <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#9ca3af;">รูปแบบ</p>Live Online</button>
+    </div>
+     <div class="col-md-4 text-end">
+        <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#9ca3af;">ระยะเวลาเรียน</p>12–16 ชม.</button>
+    </div>
+</div>
+
+       </div>
+
+
+<br>
+        <div>
+          ✨ เหมาะสำหรับ: ผู้เริ่มต้นใช้ Power BI, คนทำงานที่ต้องทำรายงาน, ทีมที่ต้องการยกระดับรายงานจาก Excel ไปสู่ Dashboard
+        </div>
+  <br>   
+            </div>
+        </div>
+      </div>
+    </section><!-- /Subscribe Section -->
+
+
+ <!-- หลักสูตรSection -->
+<section id="work-process" class="work-process section py-0">
+
+
+      <!-- Section Title -->
+            
+<div class="container section-title" data-aos="fade-up">
+      <h2>สิ่งที่จะได้เรียน (Course Outline)</h2>
+  <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร </p>
+<br><strong>🚀เรายินดีให้คำปรึกษาฟรี </strong>
+      </div>
+
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+                 <h3>Module 1: พื้นฐาน Power BI สำหรับคนทำงานธุรกิจ</h3>
+               
+               <p>ทำความเข้าใจภาพรวมของ Power BI และการนำไปใช้ในองค์กร</p>
+                  <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>รู้จัก Power BI Desktop / Service / Mobile</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>เข้าใจโครงสร้าง Report, Model, Dashboard</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>เตรียมเครื่องมือและไฟล์ตัวอย่าง</span>
+                  </div>                                  
+                </div>                
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+ <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+          <h3>Module 2: เตรียมและจัดการข้อมูล (Power Query)</h3>
+          <p>ดึงข้อมูลจากหลายแหล่งและจัดรูปแบบให้พร้อมวิเคราะห์</p>
+                  <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>นำเข้าข้อมูลจาก Excel / CSV / Database</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>ลบข้อมูลซ้ำ แยก/รวมคอลัมน์ แก้ประเภทข้อมูล</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>สร้าง Date Table สำหรับวิเคราะห์ตามเวลา</span>
+                  </div>                                  
+                </div>                
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+     <h3>Module 3: Data Modeling for Business</h3>
+          <p>ออกแบบ Data Model ที่ดีสำหรับการวิเคราะห์เชิงธุรกิจ</p>
+                  <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>แนวคิด Star Schema แบบเข้าใจง่าย</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>กำหนด Relationships ระหว่างตาราง</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Best Practice ในการออกแบบ Model</span>
+                  </div>                                  
+                </div>                
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+    <h3>Module 4: สร้าง KPI ด้วย DAX</h3>
+          <p>สร้าง Measure เพื่อวัดผลและตอบคำถามทางธุรกิจ</p>
+                  <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>SUM, COUNTROWS, AVERAGE, DIVIDE</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>ยอดขาย, กำไร, % Growth, เทียบเป้าหมาย</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>เตรียมเครื่องมือและไฟล์ตัวอย่าง</span>
+                  </div>                                  
+                </div>                
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+ <h3>Module 5: ออกแบบ Report & Dashboard ระดับผู้บริหาร</h3>
+          <p>ออกแบบหน้ารายงานให้ทั้งสวยและใช้งานง่าย</p>
+                  <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>หลัก Data Visualization สำหรับคนธุรกิจ</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>ใช้ Slicer, Filter, Drill-through, Tooltip</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>สร้าง Executive Dashboard 1 หน้า</span>
+                  </div>                                  
+                </div>                
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+          <h3>Module 6–7: ใช้งานจริงในองค์กร + Business Case Workshop</h3>
+          <p>ปิดท้ายด้วยโปรเจกต์จากเคสธุรกิจจริง</p>
+                  <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Publish & Share Report บน Power BI Service</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>ตั้งค่า Scheduled Refresh ให้ข้อมูลอัปเดตอัตโนมัติ</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>ทำโปรเจกต์จริง 1 ชิ้น: Sales / Finance / HR Dashboard</span>
+                  </div>                                  
+                </div>                
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+             
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Work Process Section -->
+
+
+<!-- Recent Blog Postst Section -->
+    <section id="recent-blog-postst" class="recent-blog-postst section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+      <h2>ทักษะที่ได้หลังเรียนจบ (Learning Outcomes)</h2>
+<p>
+คุณจะได้ทั้งความเข้าใจ แนวคิด และทักษะเชิงปฏิบัติที่ใช้ได้จริงในงาน <strong>Data Analysis สำหรับวัยทำงาน</strong>  
+ที่เน้นการเรียนรู้จากประสบการณ์จริง เข้าใจง่าย และนำไปใช้งานได้จริง
+</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-5">
+ <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+       <div class="post-content d-flex flex-column">
+
+                     <h3>เข้าใจ Power BI ในบริบทธุรกิจ</h3>
+          <p>มองเห็นภาพว่าควรใช้ Power BI เมื่อไร และช่วยองค์กรยังไง</p>
+          <div class="pill-row">
+
+         <button type="button" class="btn btn-outline-primary btn-custom">
+            Business Analytics
+        </button>
+ <button type="button" class="btn btn-outline-primary btn-custom">
+            Decision Support
+        </button>
+        
+</div>
+
+            </div>
+          </div><!-- End post item -->
+        </div>
+
+<div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+       <div class="post-content d-flex flex-column">
+
+          <h3>เตรียมข้อมูลและสร้าง Data Model ที่ดี</h3>
+          <p>ออกแบบโครงสร้างข้อมูลที่รองรับการวิเคราะห์ระยะยาว</p>
+          <div class="pill-row">
+
+         <button type="button" class="btn btn-outline-primary btn-custom">
+            Data Cleaning
+        </button>
+ <button type="button" class="btn btn-outline-primary btn-custom">
+            Data Modeling
+        </button>
+        
+</div>
+
+            </div>
+          </div><!-- End post item -->
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+       <div class="post-content d-flex flex-column">
+
+          <h3>เขียน DAX เพื่อสร้าง KPI สำคัญของธุรกิจ</h3>
+          <p>สร้างตัววัดยอดขาย กำไร การเติบโต และตัวชี้วัดอื่นๆ</p>
+          <div class="pill-row">
+
+         <button type="button" class="btn btn-outline-primary btn-custom">
+            DAX Basics
+        </button>
+ <button type="button" class="btn btn-outline-primary btn-custom">
+            Business KPI
+        </button>
+        
+</div>
+
+            </div>
+          </div><!-- End post item -->
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+       <div class="post-content d-flex flex-column">
+
+          <h3>ออกแบบ Dashboard ที่ผู้บริหารใช้ได้จริง</h3>
+          <p>สร้างรายงานที่อ่านง่าย ตอบคำถามทางธุรกิจได้ในไม่กี่คลิก</p>
+          <div class="pill-row">
+
+         <button type="button" class="btn btn-outline-primary btn-custom">
+            Dashboard Design
+        </button>
+ <button type="button" class="btn btn-outline-primary btn-custom">
+            Data Storytelling
+        </button>
+        
+</div>
+
+            </div>
+          </div><!-- End post item -->
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+       <div class="post-content d-flex flex-column">
+
+          <h3>ใช้งาน Power BI ภายในองค์กร</h3>
+          <p>Publish, Share และตั้งค่า Refresh เพื่อให้รายงานอัปเดตอัตโนมัติ</p>
+          <div class="pill-row">
+
+         <button type="button" class="btn btn-outline-primary btn-custom">
+            Power BI Service
+        </button>
+ <button type="button" class="btn btn-outline-primary btn-custom">
+            Collaboration
+        </button>
+        
+</div>
+
+            </div>
+          </div><!-- End post item -->
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+       <div class="post-content d-flex flex-column">
+
+          <h3>มี Portfolio Dashboard จริง</h3>
+          <p>ใช้เป็นผลงานยื่นสมัครงาน หรือเสนอให้หัวหน้า / ผู้บริหาร</p>
+          <div class="pill-row">
+
+         <button type="button" class="btn btn-outline-primary btn-custom">
+            Portfolio
+        </button>
+ <button type="button" class="btn btn-outline-primary btn-custom">
+            Career Growth
+        </button>
+        
+</div>
+
+            </div>
+          </div><!-- End post item -->
+        </div>
+
+      </div>
+
+    </section><!-- /Recent Blog Postst Section -->
+
+
+<!-- หลักสูตรSection -->
+    <section id="work-process" class="work-process section">
+
+      <!-- Section Title -->
+            
+<div class="container section-title" data-aos="fade-up">
+      <h2>เหมาะสำหรับใคร</h2>
+  <p>คอร์สนี้ออกแบบมาโดยเฉพาะสำหรับ 3 กลุ่มต่อไปนี้</p>
+
+      </div>
+
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+                 <h3>① ผู้ที่กำลังจะหางาน / เปลี่ยนสายงาน </h3>
+               
+               <p>ต้องการเพิ่มสกิลด้าน Data & Dashboard ให้เรซูเม่น่าสนใจ มีผลงาน Power BI Dashboard 
+                จริงใช้เป็น Portfolio ในการสมัครงานสาย Data / Business Analyst / Reporting</p>
+                                  
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+ <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+          <h3>② พนักงานที่ต้องการเติบโตในสายงาน</h3>
+          <p>ใช้ Excel เป็นอยู่แล้ว แต่อยากยกระดับไปสู่การวิเคราะห์ข้อมูลและทำ Dashboard 
+            เพื่อลดงานรายงานซ้ำ ๆ และมีเวลาโฟกัสงานเชิงกลยุทธ์มากขึ้น</p>
+                                
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-content">
+     <h3>③ HR / ผู้จัดการฝ่ายอบรม (L&D) ในองค์กร</h3>
+          <p>มองหาคอร์สที่ช่วย Upskill พนักงานด้านการอ่านและวิเคราะห์ข้อมูล เปลี่ยนรายงานแบบเดิมๆ
+            ให้กลายเป็น Dashboard Interactive ที่ผู้บริหารใช้ตัดสินใจได้จริง</p>
+                                  
+             </div>              
+            </div><!-- End Steps Item -->            
+          </div>
+           
+           
+          
+             
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Work Process Section -->
+
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-6">
+            <div class="container section-title" data-aos="fade-up">
+      <h2>สำหรับองค์กร</h2>
+<p>
+สามารถปรับเนื้อหาและ Workshop  <strong>ให้ตรงกับข้อมูลจริงของบริษัทคุณได้ </strong>  (Custom Training)
+
+</p>
+      </div>
+
+            <form action="forms/newsletter.php" method="post" class="php-email-form">
+              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="ขอใบเสนอราคา"></div>
+              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="d-flex align-items-center">
+            <span class="sitename">i-Solutions</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <!-- <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p> -->
+            <p class="mt-3"><strong>แพลตฟอร์ม :</strong> <span>การเรียนรู้ Data Analysis สำหรับวัยทำงาน ออนไลน์
+พัฒนาทักษะการทำงาน วิเคราะห์ข้อมูล และเพิ่มประสิทธิภาพในการทำงานยุคดิจิทัล</span></p>
+          
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">หลักสูตร</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"> Power BI Dasboard </a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Looker Studio Dasboard </a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Gooele AppSheet & App Script</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Google Big query</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+          <h4>Contact Us</h4>
+          <p class="mt-3"><strong>Phone :</strong> <span>099-296-3593</span></p>
+            <p><strong>Email :</strong> <span>sirinthiya.ch@gmail.com</span></p>
+          <div class="social-links d-flex">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span> 2025 Copyright</span> <strong class="px-1 sitename">TeB-Training</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+       
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
