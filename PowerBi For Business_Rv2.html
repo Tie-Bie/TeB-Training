@@ -91,14 +91,45 @@
 
 
 .btn-custom{
-    color: #0099CC;
-    border-color: #0099CC;
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
 .btn-custom:hover{
-    background-color: #0099CC;
+    background-color: #ffffff;
     color: #ffffff;
-    border-color: #0099CC;
+    border-color: #ffffff;
+}
+
+    .hero {
+
+    background: radial-gradient(circle at top left, #0099CC 0, #0192c2 45%, #015c7a 100%);
+    border-radius: 24px;
+    padding: 20px;
+    color: white;
+    margin: 0 auto 24px;
+    max-width: 1300px;
+  
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+    gap: 16px;
+}
+
+.gradient-box {
+    background: linear-gradient(135deg, #E3F2FD, #90CAF9);
+    
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.hero .hero-title1 {
+    color: #ffffff;
+    font-weight: 700; /* ตัวหนามาตรฐาน */
+}
+
+.hero .hero-subtitle1 {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 
@@ -170,58 +201,63 @@
     </div><!-- End Page Title -->
 
      <!-- Subscribe Section -->
-    <section id="subscribe" class="subscribe section">
+    <section id="subscribe" class="hero py-1">
      
-      <div class="container px-5 py-5" data-aos="fade-up" data-aos-delay="100">
+      <div class="container px-5 py-2" data-aos="fade-up" data-aos-delay="100">
        
         <div class="row gy-4 justify-content-between align-items-center">
           <div class="col-lg-7">
                  <div>
         <div class="">
-          🔵 Power BI For Business
+          <span style="color:#0099CC;">🔵</span> Power BI For Business
           <span>| Live Virtual & In-house</span>
         </div>
-        <h2 class="hero-title">
+        <h2 class="hero-title1">
           สร้าง Business Dashboard ที่ผู้บริหารใช้ตัดสินใจได้จริง ด้วย Power BI
         </h2>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle1">
           คอร์ส Power BI for Business เน้นภาคปฏิบัติ 100% จากไฟล์ดิบในองค์กร
           ไปสู่ Dashboard ที่ดูง่าย ใช้งานได้จริง เหมาะสำหรับคนทำงานธุรกิจที่อยากอัปสกิลด้าน Data & Analytics
         </p>
        
-          
-          <p>  <i class="bi bi-check-circle-fill"></i>
-เรียนรู้การเตรียมข้อมูล, สร้าง Data Model, เขียน DAX และออกแบบ Dashboard สำหรับผู้บริหาร
+     <p style="color:#ffffff;">
+  <i class="bi bi-check-circle-fill"></i>
+  เรียนรู้การเตรียมข้อมูล, สร้าง Data Model, เขียน DAX และออกแบบ Dashboard สำหรับผู้บริหาร
+</p>
 
-          </p>
-          <p>  <i class="bi bi-check-circle-fill"></i>
-เน้น Workshop จากเคสธุรกิจจริง: Sales, Finance, HR, Operation
+<p style="color:#ffffff;">
+  <i class="bi bi-check-circle-fill"></i>
+  เน้น Workshop จากเคสธุรกิจจริง: Sales, Finance, HR, Operation
+</p>
 
-          </p>
-                    <p>  <i class="bi bi-check-circle-fill"></i>
-จบคอร์สมี Portfolio Dashboard ใช้ยื่นสมัครงาน หรือเสนอหัวหน้าได้ทันที
+<p style="color:#ffffff;">
+  <i class="bi bi-check-circle-fill"></i>
+  จบคอร์สมี Portfolio Dashboard ใช้ยื่นสมัครงาน หรือเสนอหัวหน้าได้ทันที
+</p>
 
-          </p>
 
         <div class="hero-cta">
           <button type="button" class="btn btn-outline-primary btn-custom">สมัครคอร์ส / ขอรายละเอียดเพิ่มเติม</button>
           <button type="button" class="btn btn-outline-primary btn-custom">ดาวน์โหลด Course Outline (PDF)</button>
            <br> <br>
-          <h5>
-            สอนสดออนไลน์ + รองรับจัดอบรมแบบ In-house สำหรับองค์กร
-          </h5>
-          <br>
+        <h5 style="color:rgba(255,255,255,0.9);">
+  สอนสดออนไลน์ + รองรับจัดอบรมแบบ In-house สำหรับองค์กร
+</h5>
+
         </div>
       </div>  
           </div>
           <div class="col-lg-5">
-            <div class="container px-5 py-2" data-aos="fade-up" data-aos-delay="50">
+            <div class="container px-3 py-2" 
+     style="border-radius:20px; border:1px solid rgba(255,255,255,0.4); background:rgba(255,255,255,0.06);">
+
+
 
         <div class="hero-card-header">
          <div class="row">
     <div class="col-md-6 text-start">
       <div class="hero-card-title">Power BI for Business</div>
-            <div style="font-size:12px;color:#9ca3af;">เน้นใช้งานจริงสำหรับงานออฟฟิศและองค์กร</div>
+            <div style="font-size:12px;color:#404040;">เน้นใช้งานจริงสำหรับงานออฟฟิศและองค์กร</div>
 
     </div>
 
@@ -238,14 +274,14 @@
         <div class="hero-card-header">
          <div class="row">
     <div class="col-md-4 text-start">
-      <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#9ca3af;">ระยะเวลาเรียน</p>12–16 ชม.</button>
+      <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#404040;">ระยะเวลาเรียน</p>12–16 ชม.</button>
     </div>
 
     <div class="col-md-4 text-end">
-        <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#9ca3af;">รูปแบบ</p>Live Online</button>
+        <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#404040;">รูปแบบ</p>Live Online</button>
     </div>
      <div class="col-md-4 text-end">
-        <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#9ca3af;">ระยะเวลาเรียน</p>12–16 ชม.</button>
+        <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#404040;">ระยะเวลาเรียน</p>12–16 ชม.</button>
     </div>
 </div>
 
@@ -258,13 +294,26 @@
         </div>
   <br>   
             </div>
+
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
         </div>
       </div>
     </section><!-- /Subscribe Section -->
 
 
  <!-- หลักสูตรSection -->
-<section id="work-process" class="work-process section py-0">
+<section id="work-process" class="work-process section py-3">
 
 
       <!-- Section Title -->
