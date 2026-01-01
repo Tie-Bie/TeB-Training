@@ -172,7 +172,7 @@
   margin-bottom: 10px;
 }
 
-  /* ✅ กล่อง Module: เพิ่มเส้นสีด้านซ้ายเหมือนตัวอย่าง */
+  /* /* ✅ กล่อง Module: เพิ่มเส้นสีด้านซ้ายเหมือนตัวอย่าง */
 .steps-item{
   position: relative;
   background: #fff;
@@ -192,7 +192,32 @@
   width: 6px;
   border-radius: 10px;
   background: #3b82f6; /* ค่า default (น้ำเงิน) */
+} */
+/* ✅ กล่องสไตล์เหมือนตัวอย่าง */
+.steps-item{
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;               /* ✅ ความโค้ง */
+  padding: 22px 22px 22px 30px;      /* ✅ เว้นที่ให้เส้นสี */
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
+
+/* ✅ เส้นสีด้านซ้าย */
+.steps-item::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;             /* ✅ ให้เส้นเต็มความสูง */
+  bottom: 0;
+  width: 6px;         /* ✅ ความหนาของเส้น */
+  border-radius: 18px 0 0 18px; /* ✅ ให้เส้นโค้งเข้ากับกล่อง */
+  background: #3b82f6; /* ค่า default */
+}
+.line-blue::before   { background:#3b82f6; }  /* ฟ้า */
+.line-green::before  { background:#22c55e; }  /* เขียว */
+.line-orange::before { background:#f59e0b; }  /* ส้ม */
+.line-red::before    { background:#ef4444; }  /* แดง */
 
 
 </style>
@@ -407,7 +432,8 @@
         <div class="row gy-5">
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="steps-item">
+            <!-- <div class="steps-item"> -->
+            <div class="steps-item line-blue">
               <div class="steps-content">
                  <h3>Module 1: พื้นฐาน Power BI สำหรับคนทำงานธุรกิจ</h3>
                
@@ -430,7 +456,9 @@
             </div><!-- End Steps Item -->            
           </div>
  <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="steps-item">
+            <!-- <div class="steps-item"> -->
+   <div class="steps-item line-green">
+
               <div class="steps-content">
           <h3>Module 2: เตรียมและจัดการข้อมูล (Power Query)</h3>
           <p>ดึงข้อมูลจากหลายแหล่งและจัดรูปแบบให้พร้อมวิเคราะห์</p>
@@ -858,6 +886,7 @@
 
 
 </html>
+
 
 
 
