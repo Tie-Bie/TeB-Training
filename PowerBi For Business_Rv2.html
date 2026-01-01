@@ -172,6 +172,29 @@
   margin-bottom: 10px;
 }
 
+  /* ✅ กล่อง Module: เพิ่มเส้นสีด้านซ้ายเหมือนตัวอย่าง */
+.steps-item{
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px 24px 24px 30px;  /* เว้นที่ให้เส้นสี */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+/* ✅ เส้นสีด้านซ้าย */
+.steps-item::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 6px;
+  border-radius: 10px;
+  background: #3b82f6; /* ค่า default (น้ำเงิน) */
+}
+
+
 </style>
 
 
@@ -835,6 +858,7 @@
 
 
 </html>
+
 
 
 
