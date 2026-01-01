@@ -138,6 +138,23 @@
     line-height: 1.25;
 }
 
+/* ✅ ชิดขึ้นเล็กน้อย แต่ยังอ่านสบาย */
+.hero .hero-subtitle1{
+  line-height: 1.4;        /* เดิม 1.6 → ลดลงนิดหน่อย */
+  margin-bottom: 14px;     /* เว้นห่างกำลังดี */
+}
+
+.hero p{
+  margin-bottom: 10px;     /* ลดช่องว่างระหว่างบรรทัด p */
+}
+
+/* ✅ สำหรับบรรทัดเช็ค (3 บรรทัด) ให้ดูเป็น list แบบสบายตา */
+.hero-check{
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
 
 </style>
 
@@ -233,7 +250,7 @@
   เรียนรู้การเตรียมข้อมูล, สร้าง Data Model, เขียน DAX และออกแบบ Dashboard สำหรับผู้บริหาร
 </p> -->
 
-   <p style="font-size:16px; color:#ffffff;">
+   <!-- <p style="font-size:16px; color:#ffffff;">
   <i class="bi bi-check-circle-fill" style="margin-right:8px; color:#00ff99;"></i>
   เรียนรู้การเตรียมข้อมูล, สร้าง Data Model, เขียน DAX และออกแบบ Dashboard สำหรับผู้บริหาร
 </p>
@@ -246,6 +263,20 @@
 
 <p style="font-size: 16px; color:#ffffff;">
   <i class="bi bi-check-circle-fill"></i>
+  จบคอร์สมี Portfolio Dashboard ใช้ยื่นสมัครงาน หรือเสนอหัวหน้าได้ทันที
+</p> -->
+<p class="hero-check">
+  <i class="bi bi-check-circle-fill" style="margin-right:8px; color:#00ff99;"></i>
+  เรียนรู้การเตรียมข้อมูล, สร้าง Data Model, เขียน DAX และออกแบบ Dashboard สำหรับผู้บริหาร
+</p>
+
+<p class="hero-check">
+  <i class="bi bi-check-circle-fill" style="margin-right:8px; color:#00ff99;"></i>
+  เน้น Workshop จากเคสธุรกิจจริง: Sales, Finance, HR, Operation
+</p>
+
+<p class="hero-check">
+  <i class="bi bi-check-circle-fill" style="margin-right:8px; color:#00ff99;"></i>
   จบคอร์สมี Portfolio Dashboard ใช้ยื่นสมัครงาน หรือเสนอหัวหน้าได้ทันที
 </p>
 
@@ -786,6 +817,7 @@
 
 
 </html>
+
 
 
 
