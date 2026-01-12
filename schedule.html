@@ -1,497 +1,747 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="th">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-   <!-- SEO Meta -->
-  <title>Data Analysis สำหรับวัยทำงาน</title>
-  <meta name="description" content="เรียน Data Analysis สำหรับวัยทำงาน เข้าใจง่าย ไม่ต้องมีพื้นฐาน วิเคราะห์ข้อมูลด้วย Excel, Google Sheet และเครื่องมือที่ใช้ได้จริงในที่ทำงาน">
-  <meta name="keywords" content="Data Analysis สำหรับวัยทำงาน, วิเคราะห์ข้อมูล, Data Analytics, Excel วิเคราะห์ข้อมูล, Google Sheet, พัฒนาทักษะการทำงาน">
-  <meta name="author" content="https://tie-bie.github.io/TeB-Training">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Arsha
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Updated: Feb 22 2025 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style>
-   /* สีพื้นหลังหัวตาราง */
-.table thead th {
-    background-color: #0099CC; /* ปรับสีได้ */
-    color: #fff; 
-    text-align: center;
-    vertical-align: middle;
-}
-
-/* เส้นตารางทั้งหมด */
-.table, 
-.table th, 
-.table td {
-    border: 1px solid #dee2e6 !important;
-}
-
-/* ให้เส้นตารางติดกันสวย */
-.table {
-    border-collapse: collapse !important;
-}
-
-/* จัดกึ่งกลางคอลัมน์ราคา */
-.price-cell {
-    text-align: center;
-}
-
-/* สลับสีแถวเล็กน้อยให้อ่านง่าย */
-.table tbody tr:nth-child(even) {
-    background-color: #f9fbff;
-}
-
-.section-title {
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
-}
-
-.img-circle-icon {
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #0099CC; /* สีกรอบ */
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายการราคาหลักสูตรอบรม - i-Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-blue: #0ea5e9;
+      --primary-dark: #0284c7;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-orange: #f59e0b;
+      --accent-green: #10b981;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Kanit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+      animation: float-particle 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes float-particle {
+      0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+      50% { transform: translate(50px, -50px); opacity: 0.6; }
+    }
+
+    /* Header Styles */
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--primary-blue);
+    }
+
+    .btn-get-started {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      color: white;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 15px;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-get-started:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 40px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 15px 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .breadcrumb a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--primary-blue);
+    }
+
+    .breadcrumb span {
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(140deg,
+        rgba(6, 182, 212, 0.95) 0%,
+        rgba(14, 165, 233, 0.9) 35%,
+        rgba(59, 130, 246, 0.88) 70%,
+        rgba(37, 99, 235, 0.85) 100%);
+      border-radius: 24px;
+      padding: 50px 40px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+      border-radius: 50%;
+      animation: float-glow 20s ease-in-out infinite;
+    }
+
+    @keyframes float-glow {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-30px, -30px) rotate(180deg); }
+    }
+
+    .hero-section h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 15px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section p {
+      font-size: 18px;
+      color: white;
+      font-weight: 400;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    /* Table Container */
+    .table-container {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      overflow-x: auto;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Modern Table */
+    .pricing-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 14px;
+    }
+
+    .pricing-table thead th {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      color: white;
+      padding: 16px 12px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .pricing-table thead th:first-child {
+      border-top-left-radius: 12px;
+    }
+
+    .pricing-table thead th:last-child {
+      border-top-right-radius: 12px;
+    }
+
+    .pricing-table thead th small {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .pricing-table tbody tr {
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .pricing-table tbody tr:hover {
+      background: linear-gradient(90deg, rgba(14, 165, 233, 0.05), transparent);
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.1);
+    }
+
+    .pricing-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-table tbody td {
+      padding: 16px 12px;
+      text-align: center;
+      border: none;
+      vertical-align: middle;
+    }
+
+    .course-code {
+      font-weight: 700;
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.3s ease;
+    }
+
+    .course-code:hover {
+      color: var(--accent-purple);
+      text-decoration: underline;
+    }
+
+    .course-name-cell {
+      text-align: left !important;
+      font-weight: 600;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-left: 20px !important;
+    }
+
+    .course-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 2px solid var(--primary-blue);
+      flex-shrink: 0;
+    }
+
+    .price-cell {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .online-standard {
+      color: var(--primary-blue);
+    }
+
+    .onsite-standard {
+      color: var(--accent-purple);
+    }
+
+    .discount-cell {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .discount-10 { color: #0277bd; }
+    .discount-15 { color: #2a36b1; }
+    .discount-20 { color: #1a237e; }
+
+    .onsite-large {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+      font-weight: 700;
+      color: var(--accent-purple);
+      font-size: 16px;
+      border-radius: 8px;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(140deg,
+        rgba(6, 182, 212, 0.95) 0%,
+        rgba(14, 165, 233, 0.9) 35%,
+        rgba(59, 130, 246, 0.88) 70%,
+        rgba(37, 99, 235, 0.85) 100%);
+      border-radius: 32px;
+      color: white;
+      padding: 40px 40px 20px;
+      margin: 60px 40px 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 25px 70px rgba(14, 165, 233, 0.35),
+        0 10px 40px rgba(139, 92, 246, 0.25);
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+      border-radius: 50%;
+      animation: float-glow 25s ease-in-out infinite;
+      filter: blur(40px);
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.3fr;
+      gap: 35px;
+      margin-bottom: 25px;
+    }
+
+    .footer-brand h3 {
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: white;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-brand p {
+      color: white;
+      line-height: 1.6;
+      font-size: 14px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-section h4 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, white, transparent);
+      border-radius: 10px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      transform: translateX(8px);
+      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .contact-item strong {
+      font-weight: 700;
+      min-width: 70px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .social-link {
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+      transition: all 0.4s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      transform: translateY(-8px) scale(1.15);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    .copyright-text {
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .container {
+        padding: 30px 20px;
+      }
+
+      .hero-section {
+        padding: 40px 30px;
+        border-radius: 20px;
+      }
+
+      .hero-section h1 {
+        font-size: 32px;
+      }
+
+      .table-container {
+        padding: 20px;
+        overflow-x: scroll;
+      }
+
+      .pricing-table {
+        font-size: 12px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        margin: 40px 20px 20px;
+        padding: 30px 25px 20px;
+      }
+    }
+  </style>
 </head>
-
-<body class="blog-page">
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <p style="color: white; font-size: 40px; font-weight: bold; margin: 0;">
-    i-Solutions</p>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-      <ul>
-          <li><a href="index.html" class="">Home</a></li>
- 
-           <li class="dropdown"><a href="#" ><span>หลักสูตร</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li class="dropdown"><a href="#"><span>Power BI Course</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="course/Power BI Desktop for Business Analytics.html">Power BI Desktop for Business Analytics</a></li>
-              <li><a href="course/Data Analysis Expression (DAX) for Power BI.html">Data Analysis Expression (DAX) for Power BI</a></li>
-              
-            </ul>
-              <li class="dropdown"><a href="#"><span>Excel Course</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="course/excel_tem_html.html">Microsoft Excel Intermediate</a></li>
-              <li><a href="course/Microsoft Excel for Business.html">Microsoft Excel for Business</a></li>
-              <li><a href="course/Excel Power Query & Data Analysis.html">Excel Power Query & Data Analysis</a></li>
-            </ul>
-          </li>
-
-              <li><a href="course/Google Looker Studio.html">Google Looker Studio</a></li>
-              <li><a href="course/AppSheet Apps Script.html">AppSheet Apps Script </a></li>
-              <li><a href="course/Google BigQuery สำหรับผู้เริ่มต้น.html">Google BigQuery  </a></li>
-           
-                
-      </ul>
-          </li>
-          <li><a href="#recent-blog-postst">บริการของเรา</a></li>
-     
-          <li><a href="schedule.html" class="active">ราคา</a></li>
-          <li><a href="about.html">ผู้สอน</a></li>
-          <li><a href="about.html">บทความ</a></li>
-          <li><a href="contact.html">ติดต่อเรา</a></li>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">i-Solutions</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#courses">หลักสูตร</a></li>
+          <li><a href="#services">บริการของเรา</a></li>
+          <li><a href="#pricing" class="active">ราคา</a></li>
+          <li><a href="#about">ผู้สอน</a></li>
+          <li><a href="#blog">บทความ</a></li>
+          <li><a href="#contact">ติดต่อเรา</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <a class="btn-getstarted" href="#about">Get Started</a>
-
+      <a href="#start" class="btn-get-started">Get Started</a>
     </div>
   </header>
 
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">รายการราคาหลักสูตรอบรม</li>
-          </ol>
-        </nav>
-      </div>
-    </div><!-- End Page Title -->
-
-
-
-    <div class="container">
-      <div class="row">
-
-        <div class="col-lg-12">
-
-          <!-- Blog Posts Section -->
-          <section id="blog-posts" class="blog-posts section">
-
-           <div class="container section-title" 
-     data-aos="fade-up" 
-     style="background-color:#0099CC; padding:10px; border-radius:12px; color:#fff;">
-          
-    <p>หลักสูตรการอบรมคุณภาพสูง พร้อมผู้สอนมืออาชีพ เหมาะสำหรับทุกระดับ </p>           
-    <br>
-<h2 style="color:#FFFFFF;">🎓 รายการราคาหลักสูตรอบรม</h2>
-<h3 style="color:#FFFFFF;">📊 ตารางราคาหลักสูตรอบรม || 💻 Online Training || 🏢 On-site Training</h3>
-
-
-</div>
-
-  <div class="col-lg-12">
-
-<div class="table-wrapper my-1">
-                <table class="table table-hover">
-                    <thead class="column-headers">
-                        <tr>
-                            <th>รหัสคอร์ส</th>
-                          <th>หลักสูตร</th>
-                            
-                            <th>วัน</th>
-                            <th class="group-size-header">Online<br><small>( 1 คน)</small></th>
-                            <th class="group-size-header">On-site<br><small>(1 คน)</small></th>
-                            <th class="group-size-header">On-site<br><small>(2 คน)</small></th>
-                            <th class="group-size-header">On-site<br><small>(3-6 คน)</small></th>
-                            <th class="group-size-header">On-site<br><small>(7-9 คน)</small></th>
-                            <th class="group-size-header">On-site<br><small>(10-20 คน)</small></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            <td class="price-cell online-standard"><a href="course/excel_tem_html.html">O25-001</a></td>
-                            <td class="course-name">
-<img src="assets/img/icon/excel.png" 
-     alt="Step 1" 
-     class="img-circle-icon">
-Microsoft Excel Intermediate
-
-</td>
-                            <td class="price-cell online-standard">1</td>
-                            <td class="price-cell online-standard">2,490</td>
-                            <td class="price-cell onsite-standard">4,500</td>
-                           <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">30,000</td>
-                        </tr>
-                        <tr class="course-row">
-                          <td class="price-cell online-standard"><a href="course/Microsoft Excel for Business.html">O25-002</a></td>
-                             <td class="course-name"> 
-                              <img src="assets/img/icon/excel.png" 
-     alt="Step 1" 
-     class="img-circle-icon"> Microsoft Excel for Business</td>                                                     
-                            <td class="price-cell online-standard">1</td>
-                            <td class="price-cell online-standard">3,500</td>
-                            <td class="price-cell onsite-standard">4,800</td>
-                            <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td>
-                        </tr>
-                        <!-- 
-                        <tr class="course-row">
-                            <td class="course-name">
-                                ⚡📈 Microsoft Excel For Finance
-                                <br><a href="excel advanced for finance.html" button class="details-btn">รายละเอียด</button></a> 
-                                 
-                              <td class="price-cell online-standard">3,500</td>
-                            <td class="price-cell onsite-standard">4,800</td>
-                            <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td>
-                        </tr> -->
-                        <tr class="course-row">
-                      <td class="price-cell online-standard"> <a href="course/Excel Power Query & Data Analysis.html">O25-003</a></td>    
-<td class="course-name">
-  
-    <img src="assets/img/icon/excel.png" 
-     alt="Step 1" 
-     class="img-circle-icon"> Excel Power Query & Data Analysis
-
-</td>
-                            
-                            
-                            <td class="price-cell online-standard">1</td>
-                            <td class="price-cell online-standard">3,500</td>
-                            <td class="price-cell onsite-standard">4,800</td>
-                           <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td>
-                        </tr>
-                    
-                        <tr class="course-row">
-                          <td class="price-cell online-standard"><a href="course/Power BI Desktop for Business Analytics.html">O25-004</a></td>
-                           <td class="course-name">
-   
-    <img src="assets/img/icon/powerbi_icon_0.png" 
-     alt="Step 1" 
-     class="img-circle-icon"> Power BI Desktop for Business Analytics
-</td>
-                            
-                            <td class="price-cell online-standard">1</td>
-                            <td class="price-cell online-standard">3,500</td>
-                            <td class="price-cell onsite-standard">4,800</td>
-                            <!-- <td class="price-cell online-small">ลด 10% ต่อ ท่าน</td> -->
-                           <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td>
-                        </tr>
-                        <!-- <tr class="course-row">
-                            <td class="course-name">
-                                🎨 Power BI Advanced Visualization and AI
-                                <br><button class="details-btn">รายละเอียด</button>
-                            </td>
-                            <td class="price-cell online-standard">3,500</td>
-                            <td class="price-cell onsite-standard">4,800</td>
-                             <!-- <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium">ลด 20% ต่อ ท่าน</td> -->
-                  <!-- <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td> -->
-                        </tr> 
-                        <tr class="course-row">
-                          <td class="price-cell online-standard"><a href="course/Data Analysis Expression (DAX) for Power BI.html">O25-005</a></td>
-                            <td class="course-name">
-   
-    <img src="assets/img/icon/powerbi_icon_0.png" 
-     alt="Step 1" 
-     class="img-circle-icon"> Data Analysis Expression (DAX) for Power BI
-      
-</td>
-                            
-                            <td class="price-cell online-standard">1</td>
-                            <td class="price-cell online-standard">3,500</td>
-                            <td class="price-cell onsite-standard">4,800</td>
-                            <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td>
-                        </tr>
-
-                        <tr class="course-row">
-                          <td class="price-cell online-standard"> <a href="course/Google BigQuery สำหรับผู้เริ่มต้น.html">O25-006</a></td>
- <td class="course-name">
-  
-    <img src="assets/img/icon/googlebigqr_icon_0.png" 
-     alt="Step 1" 
-     class="img-circle-icon"> สอน: Google BigQuery สำหรับผู้เริ่มต้น
-    
-</td>
-                            
-                            <td class="price-cell online-standard">1</td>
-                            <td class="price-cell online-standard">4,490</td>
-                            <td class="price-cell onsite-standard">5,490</td>
-                             <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td>
-                            
-                        </tr>
-                        <tr class="course-row">
-                          <td class="price-cell online-standard"><a href="course/AppSheet Apps Script.html">O25-007</a></td>
-                             <td class="course-name">
-   
-    <img src="assets/img/icon/appsheet_icon_0.jpg" 
-     alt="Step 1" 
-     class="img-circle-icon"> Google AppSheet Apps Script สำหรับผู้เริ่มต้น   
-</td>
-                            
-                            
-                            <td class="price-cell online-standard">1</td>
-                            <td class="price-cell online-standard">4,490</td>
-                            <td class="price-cell onsite-standard">5,490</td>
-                           <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td>
-                            
-                        </tr>
-                        <tr class="course-row">
-                          <td class="price-cell online-standard"><a href="course/Google Looker Studio.html">O25-008</a></td>
-                            <td class="course-name">
-   
-    <img src="assets/img/icon/looker_icon.png" 
-     alt="Step 1" 
-     class="img-circle-icon"> Dashboard : Google Looker Studio
-</td>
-                            
-                            <td class="price-cell online-standard">1</td>
-                            <td class="price-cell online-standard">4,490</td>
-                            <td class="price-cell onsite-standard">5,490</td>
-                           <td class="price-cell online-small" style="color: #01579b;">ลด 10% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-small" style="color: #2a36b1;">ลด 15% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-medium" style="color: #1a237e;">ลด 20% ต่อ ท่าน</td>
-                            <td class="price-cell onsite-large">35,000</td>
-                            
-                        </tr>
-
-                    </tbody>
-                </table>
-                  </article>
-                </div><!-- End post list item -->
-
-
-
-              </div><!-- End blog posts list -->
-
-            </div>
-
-          </section><!-- /Blog Posts Section -->
-
-        </div>
-
-      </div>
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="#home">Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>รายการราคาหลักสูตรอบรม</span>
     </div>
 
-
-   
-
-
-
-
-  </main>
-
-  <footer id="footer" class="footer">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <h4>📞 ติดต่อสอบถาม</h4>
-            <p>📧 Email: sirinthiya.ch@gmail.com | 📱 Tel: 099 296 3593</p>
-            <p>⭐ รับประกันคุณภาพการอบรม | 🎖️ วิทยากรมืออาชีพ | 📜 ใบประกาศนียบัตร</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="ขอใบเสนอราคาสำหรับองค์กร"></div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
-          </div>
-        </div>
-      </div>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h1>🎓 รายการราคาหลักสูตรอบรม</h1>
+      <p>หลักสูตรการอบรมคุณภาพสูง พร้อมผู้สอนมืออาชีพ เหมาะสำหรับทุกระดับ</p>
+      <p style="margin-top: 10px; font-size: 20px; font-weight: 600;">
+        📊 ตารางราคาหลักสูตรอบรม || 💻 Online Training || 🏢 On-site Training
+      </p>
     </div>
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">i-Solutions</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <!-- <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p> -->
-            <p class="mt-3"><strong>แพลตฟอร์ม :</strong> <span>การเรียนรู้ออนไลน์สำหรับวัยทำงาน  
-พัฒนาทักษะการทำงาน วิเคราะห์ข้อมูล และเพิ่มประสิทธิภาพในการทำงานยุคดิจิทัล</span></p>
-          
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">หลักสูตร</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-          </ul>
-        </div>
-
-       
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#"> Power BI Dasboard </a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Looker Studio Dasboard </a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Gooele AppSheet & App Script</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Google Big query</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12">
-          <h4>Contact Us</h4>
-          <p class="mt-3"><strong>Phone :</strong> <span>099-296-3593</span></p>
-            <p><strong>Email :</strong> <span>sirinthiya.ch@gmail.com</span></p>
-          <div class="social-links d-flex">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span> 2025 Copyright</span> <strong class="px-1 sitename">TeB-Training</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-       
-      </div>
-    </div>
-
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
+    <!-- Pricing Table -->
+    <div class="table-container">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>รหัสคอร์ส</th>
+            <th>หลักสูตร</th>
+            <th>วัน</th>
+            <th>Online<br><small>(1 คน)</small></th>
+            <th>On-site<br><small>(1 คน)</small></th>
+            <th>On-site<br><small>(2 คน)</small></th>
+            <th>On-site<br><small>(3-6 คน)</small></th>
+            <th>On-site<br><small>(7-9 คน)</small></th>
+            <th>On-site<br><small>(10-20 คน)</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#" class="course-code">O25-001</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">📊</span>
+              <span>Microsoft Excel Intermediate</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">2,490</td>
+            <td class="price-cell onsite-standard">4,500</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">30,000</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="course-code">O25-002</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">📊</span>
+              <span>Microsoft Excel for Business</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">3,500</td>
+            <td class="price-cell onsite-standard">4,800</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">35,000</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="course-code">O25-003</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">📊</span>
+              <span>Excel Power Query & Data Analysis</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">3,500</td>
+            <td class="price-cell onsite-standard">4,800</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">35,000</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="course-code">O25-004</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">📈</span>
+              <span>Power BI Desktop for Business Analytics</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">3,500</td>
+            <td class="price-cell onsite-standard">4,800</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">35,000</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="course-code">O25-005</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">📈</span>
+              <span>Data Analysis Expression (DAX) for Power BI</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">3,500</td>
+            <td class="price-cell onsite-standard">4,800</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">35,000</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="course-code">O25-006</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">☁️</span>
+              <span>Google BigQuery สำหรับผู้เริ่มต้น</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">4,490</td>
+            <td class="price-cell onsite-standard">5,490</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">35,000</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="course-code">O25-007</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">📱</span>
+              <span>Google AppSheet & Apps Script</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">4,490</td>
+            <td class="price-cell onsite-standard">5,490</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">35,000</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="course-code">O25-008</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">📊</span>
+              <span>Dashboard: Google Looker Studio</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">4,490</td>
+            <td class="price-cell onsite-standard">5,490</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">35,000</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="course-code">O25-009</a></td>
+            <td class="course-name-cell">
+              <span style="font-size: 20px;">☁️</span>
+              <span>Dashboard: Google Big Query</span>
+            </td>
+            <td>Call</td>
+            <td class="price-cell online-standard">4,490</td>
+            <td class="price-cell onsite-standard">5,490</td>
+            <td class="discount-cell discount-10">ลด 10%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
+            <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
+            <td class="price-cell onsite-large">35,000</td>
