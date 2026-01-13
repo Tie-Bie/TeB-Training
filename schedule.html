@@ -573,22 +573,18 @@
 <body>
   <!-- Header -->
   <header>
-    <div class="header-content">
-      <div class="logo">i-Solutions</div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#courses">หลักสูตร</a></li>
-          <li><a href="#services">บริการของเรา</a></li>
-          <li><a href="#pricing" class="active">ราคา</a></li>
-          <li><a href="#about">ผู้สอน</a></li>
-          <li><a href="#blog">บทความ</a></li>
-          <li><a href="#contact">ติดต่อเรา</a></li>
-        </ul>
-      </nav>
-      <a href="#start" class="btn-get-started">Get Started</a>
-    </div>
+    <div id="header"></div>
+
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+</script>
   </header>
+ <main class="main">
+   <section id="call-to-action" class="dark-background">
+
+    </section><!-- /Call To Action Section -->
 
   <!-- Main Content -->
   <div class="container">
@@ -750,3 +746,26 @@
             <td class="discount-cell discount-15">ลด 15%<br>ต่อท่าน</td>
             <td class="discount-cell discount-20">ลด 20%<br>ต่อท่าน</td>
             <td class="price-cell onsite-large">35,000</td>
+
+            </tr>
+      </tbody>
+      </table>
+      </div>
+      </div>
+</main>
+
+
+
+<div id="footer"></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+
+
+
+
+
+</body>
+            
