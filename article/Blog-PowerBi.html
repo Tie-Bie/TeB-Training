@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Power BI สำหรับองค์กร: จากข้อมูลดิบสู่ Dashboard ตัดสินใจ | i-Solutions</title>
+  <meta name="description" content="เรียนรู้ Power BI สำหรับองค์กร ตั้งแต่เริ่มต้น เชื่อมต่อข้อมูล สร้าง Dashboard และนำไปใช้ตัดสินใจธุรกิจอย่างมีประสิทธิภาพ">
+  <meta name="keywords" content="power bi สำหรับองค์กร, power bi คือ, power bi dashboard, เรียน power bi, power bi tutorial">
+  
+  <link rel="canonical" href="https://i-solutions.com/blog/power-bi/power-bi-for-business/">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --primary-blue: #0ea5e9;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-green: #10b981;
+      --accent-orange: #f59e0b;
+      --accent-yellow: #eab308;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .breadcrumb-container {
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding: 0 40px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-light);
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a {
+      color: var(--text-light);
+      text-decoration: none;
+    }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 40px 80px;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: linear-gradient(135deg, #f59e0b, #eab308);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 30px;
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .article-excerpt {
+      font-size: 20px;
+      color: var(--text-light);
+      padding: 20px;
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 4px solid var(--accent-orange);
+      border-radius: 8px;
+      margin: 30px 0;
+    }
+
+    .featured-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 40px 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 800;
+      margin: 60px 0 24px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid var(--accent-orange);
+    }
+
+    h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 40px 0 20px;
+    }
+
+    p { margin-bottom: 24px; }
+    ul, ol { margin: 24px 0 24px 40px; }
+    li { margin-bottom: 12px; }
+    strong { font-weight: 700; }
+
+    .highlight-box {
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 5px solid var(--accent-orange);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .highlight-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent-orange);
+      margin-bottom: 16px;
+    }
+
+    .success-box {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 5px solid var(--accent-green);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .success-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent-green);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .warning-box {
+      background: rgba(239, 68, 68, 0.08);
+      border-left: 5px solid #ef4444;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .warning-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ef4444;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .comparison-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .comparison-card h4 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-guide {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 24px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .step-content h4 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .benefit-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .benefit-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: white;
+      font-size: 24px;
+    }
+
+    .benefit-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+      border-radius: 20px;
+      padding: 50px;
+      text-align: center;
+      margin: 60px 0;
+      color: white;
+      box-shadow: 0 20px 60px rgba(245, 158, 11, 0.3);
+    }
+
+    .cta-section h3 {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .btn-cta-primary {
+      background: white;
+      color: var(--accent-orange);
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      margin: 10px;
+      transition: all 0.3s;
+    }
+
+    .btn-cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .article-title { font-size: 32px; }
+      h2 { font-size: 28px; }
+      h3 { font-size: 22px; }
+      .featured-image { height: 300px; }
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <a href="../../index.html" class="logo">i-Solutions</a>
+    </div>
+  </header>
+
+  <div class="breadcrumb-container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="../index.html">Blog</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="./index.html">Power BI</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>Power BI สำหรับองค์กร</span>
+    </div>
+  </div>
+
+  <article class="article-container">
+    <span class="article-category">Power BI Fundamentals</span>
+    <h1 class="article-title">Power BI สำหรับองค์กร: จากข้อมูลดิบสู่ Dashboard ตัดสินใจ</h1>
+    
+    <div class="article-meta">
+      <div class="meta-item">
+        <i class="bi bi-calendar3"></i>
+        <span>10 มกราคม 2025</span>
+      </div>
+      <div class="meta-item">
+        <i class="bi bi-clock"></i>
+        <span>15 นาทีในการอ่าน</span>
+      </div>
+      <div class="meta-item">
+        <i class="bi bi-person"></i>
+        <span>โดย i-Solutions Team</span>
+      </div>
+    </div>
+
+    <div class="article-excerpt">
+      <strong>ข้อมูลคือทรัพย์สินที่มีค่าที่สุดขององค์กร แต่ถ้าไม่สามารถนำมาใช้ได้จริง ก็เหมือนไม่มี!</strong> Power BI คือเครื่องมือที่จะช่วยเปลี่ยนข้อมูลดิบที่กระจัดกระจายให้กลายเป็น Dashboard ที่ผู้บริหารสามารถใช้ตัดสินใจได้ทันที บทความนี้จะพาคุณเข้าใจ Power BI ตั้งแต่พื้นฐานจนถึงการนำไปใช้งานจริงในองค์กร
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop" 
+         alt="Power BI Dashboard" 
+         class="featured-image">
+
+    <h2>Power BI คืออะไร? ทำไมองค์กรต้องใช้?</h2>
+    
+    <p><strong>Power BI</strong> (อ่านว่า "เพาเวอร์ บีไอ") คือ <strong>Business Intelligence Tool</strong> จาก Microsoft ที่ช่วยให้องค์กร:</p>
+
+    <div class="highlight-box">
+      <h4>🎯 ความสามารถหลักของ Power BI</h4>
+      <ul>
+        <li><strong>เชื่อมต่อข้อมูล:</strong> จากหลายแหล่ง (Excel, Database, Cloud, Web API)</li>
+        <li><strong>ทำความสะอาด & แปลงข้อมูล:</strong> ด้วย Power Query</li>
+        <li><strong>สร้าง Data Model:</strong> สร้างความสัมพันธ์ระหว่างตาราง</li>
+        <li><strong>คำนวณด้วย DAX:</strong> สร้าง Measures และ Calculated Columns</li>
+        <li><strong>Visualize:</strong> สร้าง Dashboard และ Report สวยงาม</li>
+        <li><strong>แชร์:</strong> เผยแพร่บน Power BI Service ให้ทีมดูร่วมกัน</li>
+      </ul>
+    </div>
+
+    <h3>📊 Power BI vs Excel: ต่างกันอย่างไร?</h3>
+
+    <div class="comparison-grid">
+      <div class="comparison-card">
+        <h4>
+          <i class="bi bi-file-earmark-excel" style="color: #107c41;"></i>
+          Microsoft Excel
+        </h4>
+        <ul style="font-size: 14px; color: var(--text-light);">
+          <li>ดีสำหรับข้อมูลขนาดเล็ก-กลาง</li>
+          <li>จำกัดที่ ~1 ล้านแถว</li>
+          <li>ต้องเปิดไฟล์เพื่ออัพเดท</li>
+          <li>แชร์ไฟล์ผ่าน Email/Cloud</li>
+          <li>กราฟพื้นฐาน</li>
+          <li>เหมาะสำหรับ Ad-hoc Analysis</li>
+        </ul>
+      </div>
+
+      <div class="comparison-card">
+        <h4>
+          <i class="bi bi-graph-up-arrow" style="color: #f59e0b;"></i>
+          Power BI
+        </h4>
+        <ul style="font-size: 14px; color: var(--text-light);">
+          <li>รองรับ Big Data (หลักล้าน-หลักพันล้านแถว)</li>
+          <li>ไม่จำกัดขนาดข้อมูล</li>
+          <li>Refresh อัตโนมัติ</li>
+          <li>แชร์ผ่าน Web/Mobile App</li>
+          <li>กราฟขั้นสูง + Interactive</li>
+          <li>เหมาะสำหรับ Enterprise Reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>ทำไมองค์กรต้องใช้ Power BI?</h2>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="bi bi-speedometer2"></i>
+        </div>
+        <div class="benefit-title">ตัดสินใจเร็วขึ้น</div>
+        <p style="font-size: 14px; color: var(--text-light);">ผู้บริหารเห็นข้อมูล Real-time ผ่าน Dashboard ไม่ต้องรอรายงานแบบเดิม</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="bi bi-graph-up"></i>
+        </div>
+        <div class="benefit-title">ลดเวลาทำรายงาน</div>
+        <p style="font-size: 14px; color: var(--text-light);">ทำครั้งเดียว Refresh ได้เรื่อยๆ ไม่ต้องทำ Manual ทุกเดือน</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <div class="benefit-title">ข้อมูลถูกต้องแม่นยำ</div>
+        <p style="font-size: 14px; color: var(--text-light);">Single Source of Truth ทุกคนดูข้อมูลเดียวกัน ไม่มีเวอร์ชันต่างกัน</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="bi bi-people"></i>
+        </div>
+        <div class="benefit-title">แชร์ง่าย ใช้ร่วมกันได้</div>
+        <p style="font-size: 14px; color: var(--text-light);">เผยแพร่ผ่าน Web/Mobile ทุกคนเข้าถึงได้ทุกที่ทุกเวลา</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="bi bi-cpu"></i>
+        </div>
+        <div class="benefit-title">รองรับ Big Data</div>
+        <p style="font-size: 14px; color: var(--text-light);">จัดการข้อมูลหลักล้านแถวได้อย่างราบรื่น</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="bi bi-currency-dollar"></i>
+        </div>
+        <div class="benefit-title">คุ้มค่า ROI สูง</div>
+        <p style="font-size: 14px; color: var(--text-light);">ประหยัดเวลาคน ลดต้นทุน เพิ่มประสิทธิภาพการทำงาน</p>
+      </div>
+    </div>
+
+    <h2>6 ขั้นตอน: จากข้อมูลดิบสู่ Dashboard</h2>
+
+    <div class="step-guide">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>เชื่อมต่อข้อมูล (Get Data)</h4>
+          <p><strong>Power BI เชื่อมต่อได้กับทุกอย่าง:</strong> Excel, CSV, SQL Server, MySQL, Oracle, SharePoint, Google Analytics, Salesforce, Web API และอื่นๆ อีกมากกว่า 100 connectors</p>
+          <p><strong>ตัวอย่าง:</strong> นำข้อมูลยอดขายจาก SQL Database, ข้อมูลลูกค้าจาก Excel, และ Marketing data จาก Google Analytics มารวมกัน</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>ทำความสะอาดข้อมูล (Transform Data)</h4>
+          <p>ใช้ <strong>Power Query Editor</strong> ทำความสะอาด: ลบข้อมูลซ้ำ, แก้รูปแบบวันที่, แยกคอลัมน์, รวมตาราง, กรองข้อมูลที่ไม่ต้องการ</p>
+          <p><strong>ข้อดี:</strong> บันทึกขั้นตอนไว้ครั้งเดียว เมื่อข้อมูลใหม่เข้ามา จะทำความสะอาดอัตโนมัติ</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>สร้าง Data Model</h4>
+          <p>กำหนด <strong>Relationships</strong> ระหว่างตาราง (เช่น ตาราง Orders เชื่อมกับ Products ผ่าน ProductID)</p>
+          <p><strong>Star Schema:</strong> แนะนำให้ใช้โครงสร้างแบบ Fact Table (ข้อมูลธุรกรรม) + Dimension Tables (ข้อมูล Master)</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>สร้าง Measures ด้วย DAX</h4>
+          <p>เขียนสูตร <strong>DAX</strong> (Data Analysis Expressions) เพื่อคำนวณ KPI เช่น:</p>
+          <ul style="font-size: 14px; color: var(--text-light); margin-top: 12px;">
+            <li><code>Total Sales = SUM(Orders[Sales])</code></li>
+            <li><code>YoY Growth = DIVIDE([Total Sales] - [Last Year Sales], [Last Year Sales])</code></li>
+            <li><code>Profit Margin = DIVIDE([Profit], [Total Sales])</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>สร้าง Visualizations</h4>
+          <p>ลาก Fields ไปยัง Visualizations: <strong>Line Chart</strong> (แนวโน้ม), <strong>Bar Chart</strong> (เปรียบเทียบ), <strong>Map</strong> (ตำแหน่งทางภูมิศาสตร์), <strong>Card</strong> (KPI), <strong>Table/Matrix</strong> (รายละเอียด)</p>
+          <p><strong>เทคนิค:</strong> ใช้ Slicers/Filters เพื่อให้ผู้ใช้กรองข้อมูลได้เอง</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h4>Publish & Share</h4>
+          <p>เผยแพร่ไปยัง <strong>Power BI Service</strong> (cloud) ตั้งค่า <strong>Scheduled Refresh</strong> ให้อัพเดทอัตโนมัติทุกวัน/ทุกชั่วโมง</p>
+          <p><strong>แชร์:</strong> สร้าง App, แชร์ Dashboard, ฝัง Report ใน SharePoint/Teams, หรือส่ง Email Report อัตโนมัติ</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Use Cases: Power BI ในแต่ละแผนก</h2>
+
+    <h3>💼 Sales & Marketing</h3>
+    <ul>
+      <li>ยอดขายแบบ Real-time ตาม Region/Product/Sales Rep</li>
+      <li>Sales Funnel Analysis - ติดตาม Lead จนถึง Closing</li>
+      <li>Marketing Campaign ROI - เทียบ Spend vs Revenue</li>
+      <li>Customer Segmentation - แบ่งกลุ่มลูกค้าตาม Behavior</li>
+    </ul>
+
+    <h3>💰 Finance & Accounting</h3>
+    <ul>
+      <li>P&L Report อัตโนมัติ - Income Statement แบบ Real-time</li>
+      <li>Cash Flow Forecast - คาดการณ์กระแสเงินสด</li>
+      <li>Budget vs Actual - เปรียบเทียบงบและการใช้จริง</li>
+      <li>Financial KPI Dashboard - Gross Margin, Net Profit, EBITDA</li>
+    </ul>
+
+    <h3>📦 Operations & Supply Chain</h3>
+    <ul>
+      <li>Inventory Management - สต็อกคงเหลือแบบ Real-time</li>
+      <li>Supplier Performance - ประเมินผลผู้ขาย</li>
+      <li>Production Dashboard - ติดตามกำลังการผลิต</li>
+      <li>Delivery Performance - On-time Delivery Rate</li>
+    </ul>
+
+    <h3>👥 HR & People Analytics</h3>
+    <ul>
+      <li>Headcount Dashboard - จำนวนพนักงานแต่ละแผนก</li>
+      <li>Turnover Rate - อัตราการลาออก</li>
+      <li>Recruitment Funnel - ติดตามกระบวนการสรรหา</li>
+      <li>Training & Development - ชั่วโมงอบรมต่อคน</li>
+    </ul>
+
+    <div class="success-box">
+      <h4><i class="bi bi-check-circle-fill"></i> ตัวอย่างผลลัพธ

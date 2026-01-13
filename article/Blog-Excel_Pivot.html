@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Excel PivotTable: สรุปข้อมูลเป็นพันๆ แถวในไม่กี่คลิก | i-Solutions</title>
+  <meta name="description" content="เรียนรู้ PivotTable ใน Excel เครื่องมือสรุปข้อมูลที่มีประสิทธิภาพ วิเคราะห์ข้อมูลหลักพันแถวได้ในไม่กี่วินาที พร้อมเทคนิคการใช้งานจริง">
+  <meta name="keywords" content="excel pivottable, pivot table คือ, สรุปข้อมูล excel, วิเคราะห์ข้อมูล excel, pivot table สอน">
+  <meta name="author" content="i-Solutions">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Excel PivotTable: สรุปข้อมูลเป็นพันๆ แถวในไม่กี่คลิก">
+  <meta property="og:description" content="เรียนรู้ PivotTable ใน Excel เครื่องมือสรุปข้อมูลที่มีประสิทธิภาพ">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://i-solutions.com/blog/excel/excel-pivottable-tutorial/">
+  <meta property="og:image" content="https://i-solutions.com/assets/img/blog/excel-pivot.jpg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://i-solutions.com/blog/excel/excel-pivottable-tutorial/">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-blue: #0ea5e9;
+      --primary-dark: #0284c7;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-orange: #f59e0b;
+      --accent-green: #10b981;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-container {
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding: 0 40px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-light);
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--primary-blue);
+    }
+
+    .breadcrumb i {
+      font-size: 12px;
+    }
+
+    /* Article Container */
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 40px 80px;
+    }
+
+    /* Article Header */
+    .article-header {
+      margin-bottom: 50px;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .article-title {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 30px;
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meta-item i {
+      color: var(--primary-blue);
+      font-size: 16px;
+    }
+
+    .article-excerpt {
+      font-size: 20px;
+      color: var(--text-light);
+      line-height: 1.7;
+      padding: 20px;
+      background: rgba(14, 165, 233, 0.05);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 8px;
+    }
+
+    /* Featured Image */
+    .featured-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 40px 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Article Content */
+    .article-content {
+      font-size: 18px;
+      line-height: 1.9;
+      color: var(--text-dark);
+    }
+
+    .article-content h2 {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin: 60px 0 24px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid var(--primary-blue);
+    }
+
+    .article-content h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 40px 0 20px;
+    }
+
+    .article-content h4 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 30px 0 16px;
+    }
+
+    .article-content p {
+      margin-bottom: 24px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin: 24px 0 24px 40px;
+    }
+
+    .article-content li {
+      margin-bottom: 12px;
+      padding-left: 8px;
+    }
+
+    .article-content strong {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    /* Highlight Box */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(6, 182, 212, 0.08));
+      border-left: 5px solid var(--primary-blue);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .highlight-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 16px;
+    }
+
+    /* Success Box */
+    .success-box {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 5px solid var(--accent-green);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .success-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent-green);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Warning Box */
+    .warning-box {
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 5px solid var(--accent-orange);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .warning-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent-orange);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Step by Step Guide */
+    .step-guide {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 24px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+    }
+
+    .step-content h4 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      border-radius: 20px;
+      padding: 50px;
+      text-align: center;
+      margin: 60px 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section h3 {
+      font-size: 32px;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 30px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-primary {
+      background: white;
+      color: var(--primary-blue);
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-cta-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 16px 36px;
+      border-radius: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-cta-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .article-title {
+        font-size: 32px;
+      }
+
+      .article-content {
+        font-size: 16px;
+      }
+
+      .article-content h2 {
+        font-size: 28px;
+      }
+
+      .article-content h3 {
+        font-size: 22px;
+      }
+
+      .cta-section {
+        padding: 30px 20px;
+      }
+
+      .cta-section h3 {
+        font-size: 24px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .featured-image {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <a href="../../index.html" class="logo">i-Solutions</a>
+      <nav>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../courses.html">หลักสูตร</a></li>
+          <li><a href="../../contact.html">ติดต่อเรา</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="../index.html">Blog</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="./index.html">Excel</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>Excel PivotTable Tutorial</span>
+    </div>
+  </div>
+
+  <!-- Article Container -->
+  <article class="article-container">
+    <!-- Article Header -->
+    <header class="article-header">
+      <span class="article-category">Excel Advanced</span>
+      <h1 class="article-title">Excel PivotTable: สรุปข้อมูลเป็นพันๆ แถวในไม่กี่คลิก</h1>
+      
+      <div class="article-meta">
+        <div class="meta-item">
+          <i class="bi bi-calendar3"></i>
+          <span>10 มกราคม 2025</span>
+        </div>
+        <div class="meta-item">
+          <i class="bi bi-clock"></i>
+          <span>10 นาทีในการอ่าน</span>
+        </div>
+        <div class="meta-item">
+          <i class="bi bi-person"></i>
+          <span>โดย i-Solutions Team</span>
+        </div>
+      </div>
+
+      <div class="article-excerpt">
+        <strong>คุณเคยต้องสรุปยอดขายหลักพันแถวหรือไม่?</strong> PivotTable คือเครื่องมือที่ทรงพลังที่สุดใน Excel สำหรับการวิเคราะห์และสรุปข้อมูลจำนวนมาก ภายในไม่กี่คลิก คุณสามารถเปลี่ยนข้อมูลดิบที่ดูยุ่งเหยิง ให้กลายเป็นรายงานที่เข้าใจได้ง่าย พร้อมกราฟที่สวยงาม
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop" 
+         alt="Excel PivotTable Dashboard" 
+         class="featured-image"
+         loading="lazy">
+
+    <!-- Article Content -->
+    <div class="article-content">
+      
+      <h2>PivotTable คืออะไร? ทำไมต้องใช้?</h2>
+      
+      <p><strong>PivotTable</strong> (พีวอตเทเบิล) คือเครื่องมือใน Excel ที่ช่วยให้คุณ<strong>สรุป วิเคราะห์ และจัดกลุ่มข้อมูล</strong>จำนวนมหาศาลได้อย่างรวดเร็ว โดยไม่ต้องเขียนสูตรซับซ้อน</p>
+
+      <div class="highlight-box">
+        <h4>🎯 ทำไมต้องใช้ PivotTable?</h4>
+        <ul>
+          <li><strong>สรุปข้อมูลได้ทันที</strong> - จากหลักพันแถว เหลือเพียงไม่กี่แถว</li>
+          <li><strong>ไม่ต้องเขียนสูตร</strong> - แค่ลากวาง ก็ได้ผลลัพธ์</li>
+          <li><strong>เปลี่ยนมุมมองได้ง่าย</strong> - Pivot (หมุน) ข้อมูลได้ตามต้องการ</li>
+          <li><strong>สร้างรายงานได้หลายรูปแบบ</strong> - จากข้อมูลชุดเดียว</li>
+          <li><strong>รองรับข้อมูลขนาดใหญ่</strong> - หลักล้านแถวก็ทำได้</li>
+        </ul>
+      </div>
+
+      <h3>📊 ตัวอย่างการใช้งานจริง</h3>
+
+      <p>สมมติคุณมีข้อมูลการขายสินค้า 10,000 แถว ประกอบด้วย:</p>
+      <ul>
+        <li>วันที่ขาย</li>
+        <li>ชื่อสินค้า</li>
+        <li>ประเภทสินค้า</li>
+        <li>พื้นที่ขาย</li>
+        <li>พนักงานขาย</li>
+        <li>ยอดขาย</li>
+      </ul>
+
+      <p>ด้วย PivotTable คุณสามารถตอบคำถามเหล่านี้ได้ทันที:</p>
+
+      <div class="success-box">
+        <h4><i class="bi bi-check-circle-fill"></i> คำถามที่ PivotTable ตอบได้</h4>
+        <ul>
+          <li>สินค้าไหนขายดีที่สุด?</li>
+          <li>พื้นที่ไหนทำยอดขายสูงสุด?</li>
+          <li>พนักงานคนไหนขายได้มากที่สุด?</li>
+          <li>ยอดขายแต่ละเดือนเป็นอย่างไร?</li>
+          <li>สินค้าประเภทไหนมีกำไรสูงสุด?</li>
+          <li>การเติบโตของยอดขายเทียบกับปีก่อน?</li>
+        </ul>
+      </div>
+
+      <h2>วิธีสร้าง PivotTable ทีละขั้นตอน</h2>
+
+      <div class="step-guide">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>เตรียมข้อมูล (Data Preparation)</h4>
+            <p>ข้อมูลต้องอยู่ในรูปแบบ <strong>Table</strong> โดยมี Header ที่ชัดเจน ไม่มีแถวหรือคอลัมน์ว่าง และไม่มีข้อมูลที่ซ้ำซ้อน</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>เลือก Insert → PivotTable</h4>
+            <p>คลิกที่เซลล์ใดก็ได้ในข้อมูล → ไปที่ Tab <strong>Insert</strong> → คลิก <strong>PivotTable</strong> → เลือก <strong>New Worksheet</strong></p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>ลาก Field ไปยัง Area ต่างๆ</h4>
+            <p>ใช้ PivotTable Fields Panel ที่ขวามือ ลากชื่อฟิลด์ไปยัง 4 พื้นที่: <strong>Filters</strong>, <strong>Columns</strong>, <strong>Rows</strong>, <strong>Values</strong></p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>ปรับแต่งและวิเคราะห์</h4>
+            <p>เปลี่ยนฟังก์ชันการคำนวณ (Sum, Average, Count), เพิ่ม Filter, จัดกลุ่ม (Group) วันที่, สร้าง Calculated Field</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>สร้าง PivotChart</h4>
+            <p>คลิกที่ PivotTable → Tab <strong>PivotTable Analyze</strong> → <strong>PivotChart</strong> → เลือกประเภทกราฟที่ต้องการ</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>เทคนิคขั้นสูงที่ควรรู้</h2>
+
+      <h3>1. การจัดกลุ่มวันที่ (Group Date)</h3>
+      <p>แทนที่จะแสดงข้อมูลทุกวัน คุณสามารถจัดกลุ่มเป็น <strong>เดือน, ไตรมาส, ปี</strong> ได้:</p>
+      <ul>
+        <li>คลิกขวาที่วันที่ใน PivotTable</li>
+        <li>เลือก <strong>Group</strong></li>
+        <li>เลือกช่วงเวลาที่ต้องการ (Months, Quarters, Years)</li>
+      </ul>
+
+      <h3>2. Calculated Field (สร้างฟิลด์คำนวณใหม่)</h3>
+      <p>สร้างฟิลด์ใหม่จากการคำนวณฟิลด์เดิม เช่น <strong>กำไร = รายได้ - ต้นทุน</strong></p>
+      <ul>
+        <li>Tab <strong>PivotTable Analyze</strong></li>
+        <li>คลิก <strong>Fields, Items & Sets</strong></li>
+        <li>เลือก <strong>Calculated Field</strong></li>
+        <li>ตั้งชื่อและใส่สูตร</li>
+      </ul>
+
+      <h3>3. Slicers (ตัวกรองแบบ Visual)</h3>
+      <p>สร้างปุ่มกรองที่ดูสวยงามและใช้งานง่าย:</p>
+      <ul>
+        <li>Tab <strong>PivotTable Analyze</strong></li>
+        <li>คลิก <strong>Insert Slicer</strong></li>
+        <li>เลือกฟิลด์ที่ต้องการกรอง</li>
+        <li>จัดรูปแบบและวางตำแหน่ง</li>
+      </ul>
+
+      <div class="warning-box">
+        <h4><i class="bi bi-exclamation-triangle-fill"></i> ข้อควรระวังเมื่อใช้ PivotTable</h4>
+        <ul>
+          <li><strong>ข้อมูลต้นทางเปลี่ยน → ต้อง Refresh</strong> - คลิกขวาที่ PivotTable → Refresh</li>
+          <li><strong>อย่าแก้ไขข้อมูลใน PivotTable โดยตรง</strong> - แก้ที่ข้อมูลต้นทาง</li>
+          <li><strong>ระวังข้อมูลที่มี Blank</strong> - อาจทำให้ผลลัพธ์ผิดพลาด</li>
+          <li><strong>PivotTable ขนาดใหญ่ทำให้ไฟล์ใหญ่</strong> - ลบ PivotTable ที่ไม่ใช้</li>
+        </ul>
+      </div>
+
+      <h2>สรุป: P

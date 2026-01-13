@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Power Query Excel: ทำความสะอาดข้อมูลอัตโนมัติ ไม่ต้องทำซ้ำ | i-Solutions</title>
+  <meta name="description" content="เรียนรู้ Power Query ใน Excel เครื่องมือทำความสะอาดและเตรียมข้อมูลอัตโนมัติ ประหยัดเวลา ลดข้อผิดพลาด พร้อมเทคนิคการใช้งานจริง">
+  <meta name="keywords" content="power query excel, ทำความสะอาดข้อมูล, excel data cleaning, power query คือ, excel automation">
+  
+  <link rel="canonical" href="https://i-solutions.com/blog/excel/power-query-tutorial/">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    /* Copy styles from previous article */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-blue: #0ea5e9;
+      --accent-green: #10b981;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-blue), #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 40px 80px;
+    }
+    .article-title {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin: 20px 0;
+    }
+    .article-category {
+      display: inline-block;
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .article-excerpt {
+      font-size: 20px;
+      color: var(--text-light);
+      padding: 20px;
+      background: rgba(14, 165, 233, 0.05);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 8px;
+      margin: 30px 0;
+    }
+    h2 {
+      font-size: 36px;
+      font-weight: 800;
+      margin: 60px 0 24px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid var(--primary-blue);
+    }
+    .highlight-box {
+      background: rgba(14, 165, 233, 0.08);
+      border-left: 5px solid var(--primary-blue);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), #8b5cf6);
+      border-radius: 20px;
+      padding: 50px;
+      text-align: center;
+      margin: 60px 0;
+      color: white;
+    }
+    .btn-cta-primary {
+      background: white;
+      color: var(--primary-blue);
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="../../index.html" class="logo">i-Solutions</a>
+    </div>
+  </header>
+
+  <article class="article-container">
+    <span class="article-category">Excel Automation</span>
+    <h1 class="article-title">Power Query: ทำความสะอาดข้อมูลอัตโนมัติ ไม่ต้องทำซ้ำ</h1>
+    
+    <div class="article-excerpt">
+      <strong>เบื่อไหมกับการทำความสะอาดข้อมูลทุกครั้งที่ได้ไฟล์ใหม่?</strong> Power Query คือเครื่องมือเปลี่ยนเกมที่ช่วยให้คุณทำความสะอาดข้อมูลอัตโนมัติ บันทึกขั้นตอนไว้ครั้งเดียว แล้วใช้ซ้ำได้ตลอด!
+    </div>
+
+    <h2>Power Query คืออะไร?</h2>
+    <p><strong>Power Query</strong> เป็นเครื่องมือใน Excel (และ Power BI) ที่ช่วยในการ:</p>
+    
+    <div class="highlight-box">
+      <h4>🎯 ความสามารถของ Power Query</h4>
+      <ul>
+        <li><strong>นำเข้าข้อมูล</strong> - จากหลายแหล่ง (Excel, CSV, Database, Web)</li>
+        <li><strong>ทำความสะอาด</strong> - ลบข้อมูลซ้ำ, แก้ไขรูปแบบ, แยกคอลัมน์</li>
+        <li><strong>แปลงข้อมูล</strong> - Pivot/Unpivot, Merge, Append</li>
+        <li><strong>อัตโนมัติ</strong> - บันทึกขั้นตอน รีเฟรชได้ทันที</li>
+      </ul>
+    </div>
+
+    <h2>ปัญหาที่ Power Query แก้ได้</h2>
+    <ul>
+      <li>ข้อมูลจากหลายไฟล์ที่ต้องรวมกัน</li>
+      <li>รูปแบบวันที่ที่ไม่ถูกต้อง</li>
+      <li>ข้อมูลที่มีช่องว่างหรือตัวอักษรพิเศษ</li>
+      <li>ต้องทำซ้ำทุกเดือน/ทุกสัปดาห์</li>
+    </ul>
+
+    <h2>วิธีเริ่มต้นใช้ Power Query</h2>
+    <ol>
+      <li>ไปที่ Tab <strong>Data</strong> → <strong>Get Data</strong></li>
+      <li>เลือกแหล่งข้อมูล (From File, From Database, From Web)</li>
+      <li>แก้ไขข้อมูลใน Power Query Editor</li>
+      <li>คลิก <strong>Close & Load</strong> เพื่อโหลดกลับ Excel</li>
+    </ol>
+
+    <div class="cta-section">
+      <h3>พร้อมเรียนรู้ Power Query แบบเจาะลึก?</h3>
+      <p>สมัครเรียนหลักสูตร Excel Advanced และเชี่ยวชาญ Power Query พร้อมใช้งานจริง</p>
+      <a href="../../courses/excel-advanced.html" class="btn-cta-primary">ดูหลักสูตร Excel Advanced</a>
+    </div>
+  </article>
+</body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VLOOKUP vs XLOOKUP: เปรียบเทียบและเลือกใช้อย่างถูกต้อง | i-Solutions</title>
+  <meta name="description" content="เปรียบเทียบ VLOOKUP กับ XLOOKUP ใน Excel ข้อดี ข้อเสีย และวิธีเลือกใช้ให้เหมาะสมกับงาน พร้อมตัวอย่างการใช้งานจริง">
+  <meta name="keywords" content="vlookup excel, xlookup excel, vlookup vs xlookup, สูตร vlookup, excel lookup function">
+  
+  <link rel="canonical" href="https://i-solutions.com/blog/excel/vlookup-vs-xlookup/">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --primary-blue: #0ea5e9;
+      --primary-dark: #0284c7;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-orange: #f59e0b;
+      --accent-green: #10b981;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --bg-light: #f8fafc;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb-container {
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding: 0 40px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-light);
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a {
+      color: var(--text-light);
+      text-decoration: none;
+    }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 40px 80px;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-orange), #fbbf24);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 30px;
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .article-excerpt {
+      font-size: 20px;
+      color: var(--text-light);
+      padding: 20px;
+      background: rgba(14, 165, 233, 0.05);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 8px;
+      margin: 30px 0;
+    }
+
+    .featured-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 40px 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-content {
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 800;
+      margin: 60px 0 24px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid var(--primary-blue);
+    }
+
+    h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 40px 0 20px;
+    }
+
+    p {
+      margin-bottom: 24px;
+    }
+
+    ul, ol {
+      margin: 24px 0 24px 40px;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
+
+    strong {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    /* Comparison Table */
+    .comparison-table {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      margin: 40px 0;
+    }
+
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      color: white;
+      padding: 20px;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .comparison-table td {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table .feature {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .comparison-table .check {
+      color: var(--accent-green);
+      font-size: 24px;
+    }
+
+    .comparison-table .cross {
+      color: #ef4444;
+      font-size: 24px;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .code-block .comment {
+      color: #94a3b8;
+    }
+
+    .code-block .function {
+      color: #60a5fa;
+      font-weight: 700;
+    }
+
+    .code-block .string {
+      color: #34d399;
+    }
+
+    /* Highlight Box */
+    .highlight-box {
+      background: rgba(14, 165, 233, 0.08);
+      border-left: 5px solid var(--primary-blue);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .highlight-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 16px;
+    }
+
+    /* Warning Box */
+    .warning-box {
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 5px solid var(--accent-orange);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .warning-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent-orange);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Success Box */
+    .success-box {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 5px solid var(--accent-green);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .success-box h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent-green);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* VS Badge */
+    .vs-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 24px;
+      font-weight: 900;
+      margin: 40px auto;
+      text-align: center;
+      display: block;
+      width: fit-content;
+      box-shadow: 0 8px 30px rgba(239, 68, 68, 0.3);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      border-radius: 20px;
+      padding: 50px;
+      text-align: center;
+      margin: 60px 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
+    }
+
+    .cta-section h3 {
+      font-size: 32px;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 30px;
+    }
+
+    .btn-cta-primary {
+      background: white;
+      color: var(--primary-blue);
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .btn-cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .article-title { font-size: 32px; }
+      h2 { font-size: 28px; }
+      h3 { font-size: 22px; }
+      nav ul { display: none; }
+      .featured-image { height: 300px; }
+      .comparison-table { overflow-x: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <a href="../../index.html" class="logo">i-Solutions</a>
+      <nav>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../courses.html">หลักสูตร</a></li>
+          <li><a href="../../contact.html">ติดต่อเรา</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb-container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="../index.html">Blog</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="./index.html">Excel</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>VLOOKUP vs XLOOKUP</span>
+    </div>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-category">Excel Functions</span>
+      <h1 class="article-title">VLOOKUP vs XLOOKUP: เปรียบเทียบและเลือกใช้อย่างถูกต้อง</h1>
+      
+      <div class="article-meta">
+        <div class="meta-item">
+          <i class="bi bi-calendar3"></i>
+          <span>10 มกราคม 2025</span>
+        </div>
+        <div class="meta-item">
+          <i class="bi bi-clock"></i>
+          <span>12 นาทีในการอ่าน</span>
+        </div>
+        <div class="meta-item">
+          <i class="bi bi-person"></i>
+          <span>โดย i-Solutions Team</span>
+        </div>
+      </div>
+
+      <div class="article-excerpt">
+        <strong>VLOOKUP vs XLOOKUP คุณควรใช้ฟังก์ชันไหน?</strong> หนึ่งในคำถามที่ได้รับบ่อยที่สุดจากผู้ใช้ Excel คือ "ควรใช้ VLOOKUP หรือ XLOOKUP?" บทความนี้จะเปรียบเทียบทั้ง 2 ฟังก์ชันอย่างละเอียด พร้อมแนะนำว่าควรเลือกใช้อย่างไรให้เหมาะสมกับสถานการณ์
+      </div>
+    </header>
+
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop" 
+         alt="Excel VLOOKUP vs XLOOKUP" 
+         class="featured-image"
+         loading="lazy">
+
+    <div class="article-content">
+      
+      <h2>VLOOKUP คืออะไร?</h2>
+      
+      <p><strong>VLOOKUP</strong> (Vertical Lookup) เป็นฟังก์ชันที่ใช้งานมายาวนานใน Excel สำหรับ<strong>ค้นหาข้อมูลในตารางแนวตั้ง</strong> และดึงค่ามาแสดง</p>
+
+      <div class="code-block">
+<span class="comment">// Syntax ของ VLOOKUP</span>
+=<span class="function">VLOOKUP</span>(<span class="string">lookup_value</span>, table_array, col_index_num, [range_lookup])
+
+<span class="comment">// ตัวอย่างการใช้งาน</span>
+=<span class="function">VLOOKUP</span>(<span class="string">"P001"</span>, A2:D100, 3, FALSE)
+<span class="comment">// ค้นหา "P001" ในคอลัมน์แรกของ A2:D100 และดึงค่าจากคอลัมน์ที่ 3</span>
+      </div>
+
+      <div class="highlight-box">
+        <h4>🎯 วิธีใช้ VLOOKUP</h4>
+        <ul>
+          <li><strong>lookup_value:</strong> ค่าที่ต้องการค้นหา (เช่น รหัสสินค้า)</li>
+          <li><strong>table_array:</strong> ช่วงตารางที่ต้องการค้นหา</li>
+          <li><strong>col_index_num:</strong> หมายเลขคอลัมน์ที่ต้องการดึงค่า (เริ่มจาก 1)</li>
+          <li><strong>range_lookup:</strong> FALSE = ค้นหาแบบตรงทุกตัวอักษร, TRUE = ค้นหาแบบใกล้เคียง</li>
+        </ul>
+      </div>
+
+      <div class="vs-badge">⚡ VS ⚡</div>
+
+      <h2>XLOOKUP คืออะไร?</h2>
+
+      <p><strong>XLOOKUP</strong> เป็นฟังก์ชันใหม่ที่ Microsoft เพิ่มเข้ามาใน Excel 365 และ Excel 2021 เพื่อ<strong>แทนที่ VLOOKUP</strong> ด้วยความสามารถที่ดีกว่าและใช้งานง่ายกว่า</p>
+
+      <div class="code-block">
+<span class="comment">// Syntax ของ XLOOKUP</span>
+=<span class="function">XLOOKUP</span>(<span class="string">lookup_value</span>, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])
+
+<span class="comment">// ตัวอย่างการใช้งาน</span>
+=<span class="function">XLOOKUP</span>(<span class="string">"P001"</span>, A2:A100, C2:C100)
+<span class="comment">// ค้นหา "P001" ใน A2:A100 และดึงค่าจาก C2:C100</span>
+      </div>
+
+      <div class="success-box">
+        <h4><i class="bi bi-check-circle-fill"></i> ข้อดีของ XLOOKUP</h4>
+        <ul>
+          <li><strong>ค้นหาได้ทั้งซ้ายและขวา</strong> - ไม่จำเป็นต้องเรียงข้อมูลใหม่</li>
+          <li><strong>ไม่ต้องนับคอลัมน์</strong> - ระบุ range ที่ต้องการดึงค่าโดยตรง</li>
+          <li><strong>มี default value</strong> - แสดงข้อความเมื่อไม่พบข้อมูล</li>
+          <li><strong>ค้นหาได้หลายทิศทาง</strong> - บนล่าง, ซ้ายขวา, ทั้งหมด</li>
+          <li><strong>ดึงได้หลายคอลัมน์</strong> - ไม่ต้องเขียนสูตรซ้ำ</li>
+        </ul>
+      </div>
+
+      <h2>ตารางเปรียบเทียบ VLOOKUP vs XLOOKUP</h2>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>คุณสมบัติ</th>
+              <th>VLOOKUP</th>
+              <th>XLOOKUP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature">ค้นหาไปทางซ้าย</td>
+              <td><span class="cross">✗</span> ไม่ได้</td>
+              <td><span class="check">✓</span> ได้</td>
+            </tr>
+            <tr>
+              <td class="feature">ต้องนับคอลัมน์</td>
+              <td><span class="cross">✗</span> ต้องนับ</td>
+              <td><span class="check">✓</span> ไม่ต้อง</td>
+            </tr>
+            <tr>
+              <td class="feature">Default value เมื่อไม่เจอ</td>
+              <td><span class="cross">✗</span> แสดง #N/A</td>
+              <td><span class="check">✓</span> กำหนดเองได้</td>
+            </tr>
+            <tr>
+              <td class="feature">ดึงหลายคอลัมน์พร้อมกัน</td>
+              <td><span class="cross">✗</span> ไม่ได้</td>
+              <td><span class="check">✓</span> ได้</td>
+            </tr>
+            <tr>
+              <td class="feature">ค้นหาจากล่างขึ้นบน</td>
+              <td><span class="cross">✗</span> ไม่ได้</td>
+              <td><span class="check">✓</span> ได้</td>
+            </tr>
+            <tr>
+              <td class="feature">รองรับ Excel รุ่นเก่า</td>
+              <td><span class="check">✓</span> รองรับทุกรุ่น</td>
+              <td><span class="cross">✗</span> เฉพาะ 365/2021+</td>
+            </tr>
+            <tr>
+              <td class="feature">ความเร็ว</td>
+              <td>เร็ว</td>
+              <td>เร็วกว่า</td>
+            </tr>
+            <tr>
+              <td class="feature">ความยืดหยุ่น</td>
+              <td>จำกัด</td>
+              <td>สูงมาก</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>ตัวอย่างการใช้งานจริง</h2>
+
+      <h3>📌 สถานการณ์: ค้นหาราคาสินค้าจากรหัส</h3>
+
+      <p>สมมติคุณมีตารางสินค้าดังนี้:</p>
+
+      <div class="highlight-box">
+        <h4>ตาราง Products</h4>
+        <ul>
+          <li>A: รหัสสินค้า (P001, P002, P003...)</li>
+          <li>B: ชื่อสินค้า</li>
+          <li>C: ราคา</li>
+          <li>D: สต็อก</li>
+        </ul>
+      </div>
+
+      <h4>🔵 ใช้ VLOOKUP:</h4>
+
+      <div class="code-block">
+<span class="comment">// ค้นหาราคาจากรหัส P001</span>
+=<span class="function">VLOOKUP</span>(<span class="string">"P001"</span>, A2:D100, 3, FALSE)
+
+<span class="comment">// ปัญหา: ถ้าต้องการดึงชื่อสินค้า ต้องเปลี่ยน col_index เป็น 2</span>
+=<span class="function">VLOOKUP</span>(<span class="string">"P001"</span>, A2:D100, 2, FALSE)
+
+<span class="comment">// ปัญหา: ถ้าเพิ่มคอลัมน์ใหม่ สูตรอาจผิดพลาด</span>
+      </div>
+
+      <h4>🟢 ใช้ XLOOKUP:</h4>
+
+      <div class="code-block">
+<span class="comment">// ค้นหาราคาจากรหัส P001</span>
+=<span class="function">XLOOKUP</span>(<span class="string">"P001"</span>, A2:A100, C2:C100)
+
+<span class="comment">// ดึงชื่อสินค้า - แค่เปลี่ยน return_array</span>
+=<span class="function">XLOOKUP</span>(<span class="string">"P001"</span>, A2:A100, B2:B100)
+
+<span class="comment">// ดึงหลายคอลัมน์พร้อมกัน (ชื่อ + ราคา + สต็อก)</span>
+=<span class="function">XLOOKUP</span>(<span class="string">"P001"</span>, A2:A100, B2:D100)
+
+<span class="comment">// กำหนด default message เมื่อไม่เจอ</span>
+=<span class="function">XLOOKUP</span>(<span class="string">"P001"</span>, A2:A100, C2:C100, <span class="string">"ไม่พบสินค้า"</span>)
+      </div>
+
+      <h2>เมื่อไหร่ควรใช้อันไหน?</h2>
+
+      <h3>✅ ใช้ VLOOKUP เมื่อ:</h3>
+      <ul>
+        <li>ทำงานกับ Excel รุ่นเก่า (2016 ลงมา)</li>
+        <li>แชร์ไฟล์กับคนที่ยังไม่มี Office 365</li>
+        <li>มีข้อมูลที่ค้นหาอยู่คอลัมน์ซ้ายสุด และดึงค่าทางขวาเท่านั้น</li>
+        <li>คุ้นเคยกับ VLOOKUP แล้วและไม่ต้องการเปลี่ยน</li>
+      </ul>
+
+      <h3>✅ ใช้ XLOOKUP เมื่อ:</h3>
+      <ul>
+        <li>มี Excel 365 หรือ Excel 2021</li>
+        <li>ต้องการความยืดหยุ่นในการค้นหา (ซ้าย-ขวา, บน-ล่าง)</li>
+        <li>ต้องการดึงหลายคอลัมน์พร้อมกัน</li>
+        <li>ต้องการกำหนดข้อความเมื่อไม่พบข้อมูล</li>
+        <li>ต้องการสูตรที่อ่านง่ายและบำรุงรักษาง่าย</li>
+      </ul>
+
+      <div class="warning-box">
+        <h4><i class="bi bi-exclamation-triangle-fill"></i> ข้อควรระวัง</h4>
+        <ul>
+          <li><strong>XLOOKUP ใช้ไม่ได้ใน Excel 2019 ลงมา</strong> - ถ้าแชร์ไฟล์จะมีปัญหา</li>
+          <li><strong>VLOOKUP ไม่สามารถค้นหาไปทางซ้ายได้</strong> - ต้องใช้ INDEX-MATCH แทน</li>
+          <li><strong>ทั้ง 2 ฟังก์ชันต้องการข้อมูลที่เรียงระเบียบ</strong> - สำหรับการค้นหาแบบ exact match</li>
+          <li><strong>ระวังการเปลี่ยน range</strong> - อาจทำให้ผลลัพธ์ผิดพลาด</li>
+        </ul>
+      </div>
+
+      <h2>ทางเลือกอื่น: INDEX + MATCH</h2>
+
+      <p>ก่อนที่จะมี XLOOKUP หลายคนใช้ <strong>INDEX + MATCH</strong> แทน VLOOKUP เพราะมีความยืดหยุ่
