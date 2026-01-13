@@ -99,33 +99,109 @@
       display: inline-block;
     }
 
-    .new-modern-header .navmenu ul {
-      display: flex;
-      gap: 35px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-    }
+    /* --- เมนูหลัก (แนวนอน) --- */
+nav > ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  align-items: center;
+  position: relative;
+}
 
-    .new-modern-header .navmenu ul li {
-      position: relative;
-    }
+nav ul li {
+  position: relative;
+}
 
-    .new-modern-header .navmenu ul li a {
-      color: var(--new-text-dark) !important;
-      font-weight: 600 !important;
-      font-size: 15px !important;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      padding: 8px 0;
-      display: inline-block;
-    }
+nav a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
 
-    .new-modern-header .navmenu ul li a:hover,
-    .new-modern-header .navmenu ul li a.active {
-      color: var(--new-primary-blue) !important;
-    }
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  box-shadow: 0 2px 10px rgba(14,165,233,0.5);
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+nav a:hover {
+  color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+/* --- Level 1 Dropdown (แนวตั้ง) --- */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 5px 0;
+  min-width: 170px;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* --- Level 2 Dropdown (แนวตั้ง) --- */
+.dropdown-sub {
+  position: relative;
+}
+
+.sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 5px 0;
+  min-width: 170px;
+  display: none;
+  flex-direction: column;
+}
+
+.dropdown-sub:hover .sub-menu {
+  display: flex;
+}
+
+/* --- สไตล์ภายใน dropdown --- */
+.dropdown-menu a,
+.sub-menu a {
+  padding: 8px 16px;
+  white-space: nowrap;
+  font-size: 14px;
+  display: block;
+}
+
+.dropdown-menu a:hover,
+.sub-menu a:hover {
+  background: rgba(14,165,233,0.08);
+  color: var(--primary-blue);
+}
+
 
     .new-modern-header .new-btn-getstarted {
       background: linear-gradient(135deg, var(--new-primary-blue), var(--new-accent-cyan)) !important;
@@ -391,6 +467,7 @@
       line-height: 1.4;
       font-weight: 400;
     }
+    
   </style>
 </head>
 
@@ -399,38 +476,17 @@
   <!-- ========================================
        🎯 NEW MODERN HEADER
        ======================================== -->
-  <header id="header" class="header new-modern-header d-flex align-items-center fixed-top">
-    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+<header id="header" class="header d-flex align-items-center fixed-top">
+   <div id="header"></div>
 
-      <a href="index.html" class="new-logo">i-Solutions</a>
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+</script>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li class="dropdown"><a href="#"><span>หลักสูตร</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="PowerBi For Business_Rv2.html" target="_blank" rel="noopener noreferrer">Power BI Course</a></li>
-              <li class="dropdown"><a href="#"><span>Excel Course</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="excel_tem_html.html">Microsoft Excel Intermediate</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Lookers Studio Course</a></li>
-            </ul>
-          </li>
-          <li><a href="#recent-blog-postst">บริการของเรา</a></li>
-          <li><a href="schedule.html">ราคา</a></li>
-          <li><a href="about.html">ผู้สอน</a></li>
-          <li><a href="Blog.html">บทความ</a></li>
-          <li><a href="#contact">ติดต่อเรา</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="new-btn-getstarted" href="#about">Get Started</a>
-
-    </div>
   </header>
+
 
   <main class="main">
 
@@ -455,7 +511,7 @@
         <br>
         <a href="schedule.html" target="_blank" class="btn btn-outline-info"
           style="border-color:#0099CC; color:#0099CC;">
-          ตารางกึกอบรม/Training schedule
+          ตารางการฝึกอบรม/Training schedule
         </a>
 
       </div>
@@ -1141,74 +1197,15 @@
   <!-- ========================================
        🎨 NEW MODERN FOOTER (แทนที่ Footer + Contact เดิม)
        ======================================== -->
-  <footer class="new-modern-footer">
-    <div class="new-footer-container">
-      
-      <div class="new-footer-grid">
-        
-        <!-- Brand Section -->
-        <div class="new-footer-section">
-          <h3>I-SOLUTIONS</h3>
-          <p><strong>แพลตฟอร์ม :</strong> การเรียนรู้ Data Analysis สำหรับวัยทำงาน ออนไลน์ พัฒนาทักษะการทำงาน วิเคราะห์ข้อมูล และเพิ่มประสิทธิภาพในการทำงานยุคดิจิทัล</p>
-        </div>
+ <footer id="footer" class="footer">
+   <div id="footer"></div>
 
-        <!-- Useful Links -->
-        <div class="new-footer-section">
-          <h4>Useful Links</h4>
-          <ul class="new-footer-links">
-            <li><a href="#"><i class="bi bi-chevron-right"></i>Home</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i>หลักสูตร</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i>Services</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i>Terms of service</a></li>
-          </ul>
-        </div>
-
-        <!-- Services -->
-        <div class="new-footer-section">
-          <h4>Our Services</h4>
-          <ul class="new-footer-links">
-            <li><a href="#"><i class="bi bi-chevron-right"></i>Power BI Dashboard</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i>Looker Studio Dashboard</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i>Google AppSheet & App Script</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i>Google Big Query</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div class="new-footer-section">
-          <h4>Contact Us</h4>
-          <div class="new-contact-item">
-            <strong>Phone :</strong>
-            <span>099-296-3593</span>
-          </div>
-          <div class="new-contact-item">
-            <strong>Email :</strong>
-            <span>sirinthiya.ch@gmail.com</span>
-          </div>
-          <div class="new-social-links">
-            <a href="#" aria-label="Twitter">
-              <i class="bi bi-twitter-x"></i>
-            </a>
-            <a href="#" aria-label="Facebook">
-              <i class="bi bi-facebook"></i>
-            </a>
-            <a href="#" aria-label="Instagram">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-              <i class="bi bi-linkedin"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer Bottom -->
-      <div class="new-footer-bottom">
-        <p>
-          © 2025 Copyright <strong>TeB-Training</strong> All Rights Reserved
-        </p>
-      </div>
-    </div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+  
   </footer>
 
   <!-- Scroll Top -->
