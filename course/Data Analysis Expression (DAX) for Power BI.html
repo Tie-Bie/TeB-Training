@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Power BI for Business - i-Solutions</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI for Business - i-Solutions</title>
+
+    <meta name="description"
+      content="เรียน Data Analysis สำหรับวัยทำงาน เข้าใจง่าย ไม่ต้องมีพื้นฐาน วิเคราะห์ข้อมูลด้วย Excel, Google Sheet และเครื่องมือที่ใช้ได้จริงในที่ทำงาน">
+    <meta name="keywords"
+      content="Data Analysis สำหรับวัยทำงาน, วิเคราะห์ข้อมูล, Data Analytics, Excel วิเคราะห์ข้อมูล, Google Sheet, พัฒนาทักษะการทำงาน">
+    <meta name="author" content="https://tie-bie.github.io/TeB-Training">
 
 
-  <meta name="description" content="เรียน Data Analysis สำหรับวัยทำงาน เข้าใจง่าย ไม่ต้องมีพื้นฐาน วิเคราะห์ข้อมูลด้วย Excel, Google Sheet และเครื่องมือที่ใช้ได้จริงในที่ทำงาน">
-  <meta name="keywords" content="Data Analysis สำหรับวัยทำงาน, วิเคราะห์ข้อมูล, Data Analytics, Excel วิเคราะห์ข้อมูล, Google Sheet, พัฒนาทักษะการทำงาน">
-  <meta name="author" content="https://tie-bie.github.io/TeB-Training">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap"
+      rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
 
-  <style>
+    <style>
     * {
       margin: 0;
       padding: 0;
@@ -1705,17 +1715,23 @@ nav ul li {
       padding: 80px 0;
     }
 
-    .row {
+    /* .row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
       gap: 32px;
       margin-top: 40px;
-    }
+    } */
+
+
+    .row {
+  margin-top: 40px;
+  gap: 32px;
+}
 
     .steps-item {
       background: white;
-      border-radius: 24px;
-      padding: 40px;
+      border-radius: 10px;
+      padding: 20px;
       box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -2081,12 +2097,12 @@ nav ul li {
   padding-top: 10px !important;
   padding-bottom: 40px !important;
 }
-#recent-blog-postst {
+#recent-blog-post {
   padding-top: 10px !important;
   padding-bottom: 40px !important;
 }
 
-#recent-blog-postst .container {
+#recent-blog-post .container {
   padding-top: 0px !important;
 }
 
@@ -2113,105 +2129,74 @@ nav ul li {
 }
 
   </style>
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="header-content">
-      <div class="logo">i-Solutions</div>
-      <nav>
-  <ul>
-    <li><a href="#home">Home</a></li>
+  </head>
+  <body>
+    <!-- Header -->
+    <div id="header"></div>
 
-    <li class="dropdown">
-      <a href="#courses">หลักสูตร</a>
-      <ul class="dropdown-menu">
-        <li class="dropdown-sub">
-          <a href="#">Power BI Course</a>
-          <ul class="sub-menu">
-<li><a href="Power BI Desktop for Business Analytics.html">Power BI Desktop for Business Analytics</a></li>
-              <li><a href="Data Analysis Expression (DAX) for Power BI.html">Data Analysis Expression (DAX) for Power BI</a></li>
-          </ul>
-        </li>
+    <script>
+  fetch("../header1.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+</script>
 
-        <li class="dropdown-sub">
-          <a href="#">Excel Course</a>
-          <ul class="sub-menu">
-              <li><a href="Microsoft Excel Intermediate.html">Microsoft Excel Intermediate</a></li>
-              <li><a href="Microsoft Excel for Business.html">Microsoft Excel for Business</a></li>
-              <li><a href="Excel Power Query & Data Analysis.html">Excel Power Query & Data Analysis</a></li>
-          </ul>
-        </li>
-             <li><a href="Google Looker Studio.html">Google Looker Studio</a></li>
-              <li><a href="Google AppSheet Apps Script.html">AppSheet Apps Script </a></li>
-              <li><a href="Google Big Query.html">Google BigQuery  </a></li>
-      </ul>
-
-    </li>
-
-      <li><a href="#recent-blog-postst">บริการของเรา</a></li>
-     
-          <li><a href="../schedule.html" class="">ราคา</a></li>
-          <li><a href="../about.html">ผู้สอน</a></li>
-          <li><a href="../about.html">บทความ</a></li>
-          <li><a href="../contact.html">ติดต่อเรา</a></li>
-  </ul>
-</nav>
-
-
-      <a href="#start" class="btn-get-started">Get Started</a>
-    </div>
-  </header>
-
-  <!-- Main Container -->
+    <!-- Main Container -->
     <main>
-  <div class="container1">
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-grid"></div>
-      <div class="hero-content">
-        <div>
-          <div class="badge-container">
-            <div class="badge badge-highlight">
-              <i class="bi bi-star-fill"></i>
-              <span> Power BI (DAX) </span>
-            </div>
-            <div class="badge">
-              <i class="bi bi-laptop"></i>
-              <span>On-Line | On-Site</span>
-            </div>
-          </div>
+      <section id="call-to-action" class="dark-background">
+      </section>
 
-          <h3 class="hero-title">
-            <!-- สร้าง Business Dashboard เปลี่ยนข้อมูลยุ่งเหยิงเป็นเรื่องง่าย ด้วย Power BI -->
-            หลักสูตร: Data Analysis Expression (DAX) for Power BI
-          </h3>
+      <section id="call-to-action" class>
+        <div class="container">
+          <!-- Hero Section -->
+          <section class="hero-section">
+            <div class="hero-grid"></div>
+            <div class="hero-content">
+              <div>
+                <div class="badge-container">
+                  <div class="badge badge-highlight">
+                    <i class="bi bi-star-fill"></i>
+                    <span> Power BI (DAX) </span>
+                  </div>
+                  <div class="badge">
+                    <i class="bi bi-laptop"></i>
+                    <span>On-Line | On-Site</span>
+                  </div>
+                </div>
 
-          <p class="hero-subtitle">
-            ปลดล็อกพลังการวิเคราะห์ข้อมูลขั้นสูง ด้วยสูตร DAX ที่ใช้งานจริงในองค์กร
-            เพราะ DAX คือ “หัวใจ” ที่ทำให้ Power BI กลายเป็นเครื่องมือวิเคราะห์ระดับมืออาชีพ
-          </p>
+                <h3 class="hero-title">
+                  <!-- สร้าง Business Dashboard เปลี่ยนข้อมูลยุ่งเหยิงเป็นเรื่องง่าย ด้วย Power BI -->
+                  หลักสูตร: Data Analysis Expression (DAX) for Power BI
+                </h3>
 
-          <ul class="check-list">
-            <li class="check-item">
-              <i class="bi bi-check-circle-fill"></i>
-              <span>อยากเรียน Power BI แบบลงมือทำ 100%</span>
-            </li>
-            <li class="check-item">
-              <i class="bi bi-check-circle-fill"></i>
-              <span>ต้องการเข้าใจ Data Model + DAX + Workshop เคสจริง</span>
-            </li>
-            <li class="check-item">
-              <i class="bi bi-check-circle-fill"></i>
-              <span>ต้องการสร้าง Dashboard แบบมืออาชีพ เพื่อนำเสนอข้อมูล</span>
-            </li>
-            <li class="check-item">
-              <i class="bi bi-check-circle-fill"></i>
-              <span>ต้องการมี Portfolio Dashboard ล้ำกว่าใคร</span>
-            </li>
-          </ul>
+                <p class="hero-subtitle">
+                  ปลดล็อกพลังการวิเคราะห์ข้อมูลขั้นสูง ด้วยสูตร DAX
+                  ที่ใช้งานจริงในองค์กร
+                  เพราะ DAX คือ “หัวใจ” ที่ทำให้ Power BI
+                  กลายเป็นเครื่องมือวิเคราะห์ระดับมืออาชีพ
+                </p>
 
-          <!-- <div class="button-group">
+                <ul class="check-list">
+                  <li class="check-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>อยากเรียน Power BI แบบลงมือทำ 100%</span>
+                  </li>
+                  <li class="check-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>ต้องการเข้าใจ Data Model + DAX + Workshop
+                      เคสจริง</span>
+                  </li>
+                  <li class="check-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>ต้องการสร้าง Dashboard แบบมืออาชีพ
+                      เพื่อนำเสนอข้อมูล</span>
+                  </li>
+                  <li class="check-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>ต้องการมี Portfolio Dashboard ล้ำกว่าใคร</span>
+                  </li>
+                </ul>
+
+                <!-- <div class="button-group">
             <button class="btn-primary">
               สมัครคอร์ส / ขอรายละเอียดเพิ่มเติม
             </button>
@@ -2220,76 +2205,84 @@ nav ul li {
             </button>
           </div> -->
 
-          <div class="info-notice">
-            <i class="bi bi-info-circle-fill"></i>
-            <span>📌 บอกปัญหา DAX ที่คุณเจอ เราจะช่วยประเมินระดับและแนะนำหลักสูตรที่เหมาะสมกับคุณ</span>
-          </div>
+                <div class="info-notice">
+                  <i class="bi bi-info-circle-fill"></i>
+                  <span>📌 บอกปัญหา DAX ที่คุณเจอ
+                    เราจะช่วยประเมินระดับและแนะนำหลักสูตรที่เหมาะสมกับคุณ</span>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h3>👉 สมัครเรียน DAX for Power BI</h3>
+                    <p> ยกระดับ Power BI ของคุณให้ “คิดเป็น วิเคราะห์เป็น”
+                      แบบมืออาชีพ</p>
+                  </div>
+                  <div class="workshop-tag">
+                    Hands-on Workshop
+                  </div>
+                </div>
+
+                <div class="info-pills">
+                  <div class="pill">
+                    <div class="pill-label">ระยะเวลาเรียน</div>
+                    <div class="pill-value">1 วัน</div>
+                  </div>
+                  <div class="pill">
+                    <div class="pill-label">ระดับคลาส</div>
+                    <div class="pill-value">ขั้นกลาง-สูง</div>
+                  </div>
+                  <div class="pill">
+                    <div class="pill-label">รูปแบบ</div>
+                    <div class="pill-value">On-Line & On-Site</div>
+                  </div>
+                </div>
+
+                <div class="target-box">
+                  <h4>🎯 เหมาะสำหรับ</h4>
+                  <ul class="target-list">
+                    <li class="target-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <!-- <span>UpSkill ด้าน Data & Analytics เพื่อโตในสายงาน</span> -->
+                      <span>คนที่ใช้ Power BI สร้าง Dashboard ได้แล้ว
+                        แต่ติดเรื่อง Measure</span>
+                    </li>
+                    <li class="target-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>นักวิเคราะห์ข้อมูล / BI Analyst / Data
+                        Analyst</span>
+                    </li>
+                    <li class="target-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>สายงาน Finance, Sales, Marketing ที่ต้องทำ KPI
+                        และรายงาน</span>
+                    </li>
+                    <li class="target-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>คนที่อยากอัปเกรดเป็น “Power BI Advanced”</span>
+                    </li>
+                  </ul>
+                  <div class="highlight-text">
+                    || คนที่อยากย้ายสายเป็น Data Analyst / BI ||
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
+      </section>
 
-        <div class="info-card">
-          <div class="card-header">
-            <div class="card-title-group">
-              <h3>👉 สมัครเรียน DAX for Power BI</h3>
-              <p> ยกระดับ Power BI ของคุณให้ “คิดเป็น วิเคราะห์เป็น” แบบมืออาชีพ</p>
-            </div>
-            <div class="workshop-tag">
-              Hands-on Workshop
-            </div>
+      <section id="work-process" class="work-process section">
+        <div class="container">
+          <div class="section-title">
+            <h3>เนื้อหาหลักสูตร (Course Outline)</h3>
+            <!-- <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร</p> -->
           </div>
-
-          <div class="info-pills">
-            <div class="pill">
-              <div class="pill-label">ระยะเวลาเรียน</div>
-              <div class="pill-value">1 วัน</div>
-            </div>
-            <div class="pill">
-              <div class="pill-label">ระดับคลาส</div>
-              <div class="pill-value">ขั้นกลาง-สูง</div>
-            </div>
-            <div class="pill">
-              <div class="pill-label">รูปแบบ</div>
-              <div class="pill-value">On-Line & On-Site</div>
-            </div>
-          </div>
-
-          <div class="target-box">
-            <h4>🎯 เหมาะสำหรับ</h4>
-            <ul class="target-list">
-              <li class="target-item">
-                <i class="bi bi-check-circle-fill"></i>
-                <!-- <span>UpSkill ด้าน Data & Analytics เพื่อโตในสายงาน</span> -->
-                 <span>คนที่ใช้ Power BI สร้าง Dashboard ได้แล้ว แต่ติดเรื่อง Measure</span>
-              </li>
-              <li class="target-item">
-                <i class="bi bi-check-circle-fill"></i>
-                <span>นักวิเคราะห์ข้อมูล / BI Analyst / Data Analyst</span>
-              </li>
-              <li class="target-item">
-                <i class="bi bi-check-circle-fill"></i>
-                <span>สายงาน Finance, Sales, Marketing ที่ต้องทำ KPI และรายงาน</span>
-              </li>
-              <li class="target-item">
-                <i class="bi bi-check-circle-fill"></i>
-                <span>คนที่อยากอัปเกรดเป็น “Power BI Advanced”</span>
-              </li>
-            </ul>
-            <div class="highlight-text">
-              || คนที่อยากย้ายสายเป็น Data Analyst / BI ||
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  <section id="work-process" class="work-process section">
-    <div class="container1">
-      <div class="section-title">
-        <h4>เนื้อหาหลักสูตร (Course Outline)</h4>
-        <!-- <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร</p> -->
-      </div>
 
       <div class="row">
-        <div class="col-lg-6">
+   <div class="col-lg-4 col-md-6 col-sm-12">
+
           <div class="steps-item line-blue">
             <div class="steps-content">
               <h3>Module 1: DAX Mindset & Core Concepts</h3>
@@ -2316,7 +2309,9 @@ nav ul li {
           </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+
+
           <div class="steps-item line-green">
             <div class="steps-content">
               <h3>Module 2: Context ที่ทำให้ DAX “ถูกหรือผิด”</h3>
@@ -2343,7 +2338,9 @@ nav ul li {
           </div>
         </div>
 
-        <div class="col-lg-4">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+
+
           <div class="steps-item">
             <div class="steps-content">
               <h3>Module 3: DAX Functions ที่ใช้จริงในงานธุรกิจ</h3>
@@ -2378,7 +2375,9 @@ nav ul li {
           </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+
+
           <div class="steps-item">
             <div class="steps-content">
               <h3>Module 4: Measure & KPI Design (ทำตัวชี้วัดแบบมือโปร)</h3>
@@ -2405,7 +2404,9 @@ nav ul li {
           </div>
         </div>
 
-        <div class="col-lg-4">
+   <div class="col-lg-4 col-md-6 col-sm-12">
+
+
           <div class="steps-item">
             <div class="steps-content">
               <h3>Module 5: Advanced DAX Patterns (ต่อยอดสู่ระดับโปร)</h3>
@@ -2431,44 +2432,16 @@ nav ul li {
             </div>
           </div>
         </div>
+        
+</div>
 
-        <div class="col-lg-4">
-          <div class="steps-item">
-            <div class="steps-content">
-              <h3>Workshop: ทำ Dashboard KPI จริงแบบองค์กร (Project-Based)</h3>
-              <p>ได้ชิ้นงาน Business Dashboard กลับไปใช้งานจริง</p>
-              <div class="steps-features">
-                <div class="feature-item">
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>สร้าง Sales KPI Dashboard</span>
-                </div>
-                <div class="feature-item">
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>ทำ Time Intelligence + Growth</span>
-                </div>
-                <div class="feature-item">
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>Ranking + Top Products</span>
-                </div>
-                <div class="feature-item">
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>Dynamic KPI + Smart Tooltip</span>
-                </div>
-                <div class="feature-item">
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>Final Dashboard พร้อมนำเสนอ</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+       </div> 
+      </section>
 
-  <!-- LEARNING OUTCOMES SECTION -->
+
+ <!-- LEARNING OUTCOMES SECTION -->
   <section id="recent-blog-postst" class="recent-blog-postst section">
-    <div class="container1">
+    <div class="container">
       <div class="section-title">
         <h4>ทักษะที่ได้หลังเรียนจบ (Learning Outcomes)</h4>
         <!-- <p>
@@ -2579,46 +2552,29 @@ nav ul li {
             </div>
           </div>
         </div>
-</div>
 
- <div class="row">
-  <div class="col-xl-4 col-md-6 contact-center">
-    <h4>📞 ติดต่อสอบถาม</h4>
-    <p>📧 Email: sirinthiya.ch@gmail.com | 📱 Tel: 099 296 3593</p>
-    <p>⭐ รับประกันคุณภาพการอบรม | 🎖️ วิทยากรมืออาชีพ | 📜 ใบประกาศนียบัตร</p>
-  </div>
-</div>
- <div class="row">
-  <div class="col-xl-4 col-md-6 contact-center">
- <a href="../contact.html" class="btn-get-started">ขอใบเสนอราคา</a>
- </div>
-</div>
 
+</div>
+</div>
 </section>
- </main>
+      </main>
 
+      <div id="footer"></div>
 
-<footer id="" class="">
-  <div class="row">
-    <div class="col-3">คอลัมน์ 1</div>
-    <div class="col-3">คอลัมน์ 2</div>
-    <div class="col-3">คอลัมน์ 3</div>
-    <div class="col-3">คอลัมน์ 4</div>
-  </div>
-</footer>
+      <script>
+  fetch("../footer1.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
 
-    <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    </footer>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <script>
+fetch("../header1.html")
+  .then(r => r.text())
+  .then(html => {
+     document.getElementById("header").innerHTML = html;
+  });
+</script>
+
   </body>
-
-</html>
