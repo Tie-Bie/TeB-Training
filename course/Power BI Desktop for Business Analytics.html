@@ -1983,9 +1983,16 @@
   </style>
 </head>
 
-<body class="index-page">
+<body>
   <!-- Header -->
-<iframe src="../header1.html" style="width:100%;border:none;height:120px;"></iframe>
+
+    <div id="header"></div>
+
+<script>
+  fetch("../header1.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+</script>
 
 
 
