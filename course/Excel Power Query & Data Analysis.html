@@ -1,485 +1,2581 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power BI for Business - i-Solutions</title>
 
-  <title>Data Analysis สำหรับวัยทำงาน | TeB Training</title>
-  <meta name="description" content="Data Analysis สำหรับวัยทำงาน เรียนวิเคราะห์ข้อมูลด้วย Excel และ Google Sheet เข้าใจง่าย ใช้ได้จริง">
-  <meta name="keywords" content="Data Analysis สำหรับวัยทำงาน, วิเคราะห์ข้อมูล, Data Analytics, Excel วิเคราะห์ข้อมูล, Google Sheet">
-  <meta name="author" content="TeB Training">
-  <meta name="robots" content="index, follow">
-
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Data Analysis สำหรับวัยทำงาน | TeB Training">
-  <meta property="og:description" content="เรียน Data Analysis สำหรับวัยทำงาน วิเคราะห์ข้อมูลอย่างเข้าใจง่าย ใช้ได้จริง">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tie-bie.github.io/TeB-Training/">
-  <meta property="og:image" content="https://tie-bie.github.io/TeB-Training/../assets/img/og-cover.jpg">
+<meta name="description" content="เรียน Data Analysis สำหรับวัยทำงาน เข้าใจง่าย ไม่ต้องมีพื้นฐาน วิเคราะห์ข้อมูลด้วย Excel, Google Sheet และเครื่องมือที่ใช้ได้จริงในที่ทำงาน">
+  <meta name="keywords" content="Data Analysis สำหรับวัยทำงาน, วิเคราะห์ข้อมูล, Data Analytics, Excel วิเคราะห์ข้อมูล, Google Sheet, พัฒนาทักษะการทำงาน">
+  <meta name="author" content="https://tie-bie.github.io/TeB-Training">
 
   <!-- Favicons -->
-  <link rel="icon" href="../assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Slick -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-
-  <!-- Fancybox -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css">
-
-  <!-- Main CSS -->
-  <link href="../assets/css/main.css" rel="stylesheet">
-
-  <!-- JS (โหลดครั้งเดียว) -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
 
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<!-- SweetAlert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    :root {
+      --primary-blue: #0ea5e9;
+      --primary-dark: #0284c7;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-orange: #f59e0b;
+      --accent-green: #10b981;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
 
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <!-- =======================================================
+    body {
+      font-family: 'Kanit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-  
-  * Template Name: Arsha
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Updated: Feb 22 2025 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style>
-  /* ให้รูปภาพขยายเต็มคอลัมน์และคงสัดส่วน */
-.col-xl-4.col-md-6 .swiper-slide img {
+    /* Animated Background Particles */
+    @keyframes float-particle {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translate(50px, -50px) scale(1.2);
+        opacity: 0.6;
+      }
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+      animation: float-particle 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header with Glass Effect */
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 
+        0 4px 30px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+      animation: slideDown 0.5s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      position: relative;
+      animation: glow-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(14, 165, 233, 0.3));
+      }
+      50% {
+        filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.6));
+      }
+    }
+
+:root {
+  --primary-blue: #0ea5e9;
+  --text-dark: #111;
+  --accent-cyan: #06b6d4;
+}
+
+/* --- เมนูหลัก (แนวนอน) --- */
+nav > ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  align-items: center;
+  position: relative;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  box-shadow: 0 2px 10px rgba(14,165,233,0.5);
+}
+
+nav a:hover::before {
   width: 100%;
-  height: auto;
-  object-fit: cover; /* ถ้าต้องการให้ภาพไม่ถูกตัดใช้แทนเป็น contain */
+}
+
+nav a:hover {
+  color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+/* --- Level 1 Dropdown (แนวตั้ง) --- */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 5px 0;
+  min-width: 170px;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* --- Level 2 Dropdown (แนวตั้ง) --- */
+.dropdown-sub {
+  position: relative;
+}
+
+.sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 5px 0;
+  min-width: 170px;
+  display: none;
+  flex-direction: column;
+}
+
+.dropdown-sub:hover .sub-menu {
+  display: flex;
+}
+
+/* --- สไตล์ภายใน dropdown --- */
+.dropdown-menu a,
+.sub-menu a {
+  padding: 8px 16px;
+  white-space: nowrap;
+  font-size: 14px;
   display: block;
 }
-.col-xl-4.col-md-6 .swiper-slide {
-  height: 250px; /* ปรับตามต้องการ */
-}
 
-.col-xl-4.col-md-6 .swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.dropdown-menu a:hover,
+.sub-menu a:hover {
+  background: rgba(14,165,233,0.08);
+  color: var(--primary-blue);
 }
 
 
-.portfolio-details-slider .swiper-slide img {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+/* small animation */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
-.btn-custom{
-    color: #ffffff;
-    border-color: #ffffff;
+
+
+    .btn-get-started {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      color: white;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 15px;
+      box-shadow: 
+        0 4px 15px rgba(14, 165, 233, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-get-started::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+
+    .btn-get-started:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-get-started:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 8px 30px rgba(14, 165, 233, 0.5),
+        0 0 20px rgba(14, 165, 233, 0.3);
+    }
+
+    /* Container */
+    /* .container1 {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      position: relative;
+      z-index: 1;
+    } */
+
+    .container1 {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0; /* เอา padding ออก */
 }
 
-.btn-custom:hover{
-    background-color: #c9c6c6;
-    color: #ffffff;
-    border-color: #ffffff;
+
+    /* Hero Section with Advanced Effects */
+    .hero-section {
+      background: 
+        linear-gradient(140deg, 
+          rgba(14, 165, 233, 1) 0%,
+          rgba(6, 182, 212, 0.95) 35%,
+          rgba(184, 103, 246, 0.92) 70%,
+          rgba(4, 29, 249, 0.9) 100%
+         
+        );
+      border-radius: 32px;
+      padding: 60px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 25px 70px rgba(14, 165, 233, 0.35),
+        0 10px 40px rgba(139, 92, 246, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      /* margin-bottom: 80px; */
+      margin-bottom: 30px;
+      animation: hero-entrance 0.8s ease-out;
+    }
+
+    @keyframes hero-entrance {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animated Gradient Mesh Background */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 900px;
+      height: 900px;
+      background: 
+        radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 30% 40%, rgba(6, 182, 212, 0.3) 0%, transparent 50%);
+      border-radius: 50%;
+      animation: float-glow 25s ease-in-out infinite;
+      filter: blur(40px);
+    }
+
+    @keyframes float-glow {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.6;
+      }
+      33% {
+        transform: translate(-40px, -40px) rotate(120deg) scale(1.1);
+        opacity: 0.8;
+      }
+      66% {
+        transform: translate(40px, 40px) rotate(240deg) scale(0.9);
+        opacity: 0.7;
+      }
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -15%;
+      width: 700px;
+      height: 700px;
+      background: 
+        radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 65%),
+        radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.25) 0%, transparent 50%);
+      border-radius: 50%;
+      animation: float-glow 20s ease-in-out infinite reverse;
+      filter: blur(50px);
+    }
+
+    /* Grid Pattern Overlay with Animation */
+    .hero-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: grid-move 30s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes grid-move {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    /* Badge with Shine Effect */
+    .badge-container {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      animation: badge-float 3s ease-in-out infinite;
+    }
+
+    .badge::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+      );
+      animation: shine 3s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    @keyframes badge-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .badge i {
+      font-size: 16px;
+      animation: pulse-icon 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-icon {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .badge-highlight {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.9), rgba(251, 191, 36, 0.8));
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 
+        0 4px 15px rgba(245, 158, 11, 0.4),
+        0 0 20px rgba(245, 158, 11, 0.3);
+    }
+
+    /* Hero Title with Gradient Animation */
+    .hero-title {
+      font-size: 34px;
+      font-weight: 900;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      text-shadow: 
+        0 2px 20px rgba(0, 0, 0, 0.2),
+        0 0 40px rgba(255, 255, 255, 0.2);
+      animation: title-glow 4s ease-in-out infinite;
+    }
+
+    @keyframes title-glow {
+      0%, 100% {
+        text-shadow: 
+          0 2px 20px rgba(0, 0, 0, 0.2),
+          0 0 40px rgba(255, 255, 255, 0.2);
+      }
+      50% {
+        text-shadow: 
+          0 2px 25px rgba(0, 0, 0, 0.3),
+          0 0 60px rgba(255, 255, 255, 0.4);
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      font-weight: 400;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Check List with Animation */
+    .check-list {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-size: 16px;
+      margin-bottom: 14px;
+      font-weight: 400;
+      opacity: 0;
+      animation: slideInLeft 0.6s ease-out forwards;
+    }
+
+    .check-item:nth-child(1) { animation-delay: 0.3s; }
+    .check-item:nth-child(2) { animation-delay: 0.4s; }
+    .check-item:nth-child(3) { animation-delay: 0.5s; }
+    .check-item:nth-child(4) { animation-delay: 0.6s; }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .check-item i {
+      color: var(--accent-green);
+      font-size: 20px;
+      filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.5));
+      animation: check-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes check-pulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.5));
+      }
+      50% {
+        transform: scale(1.15);
+        filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.8));
+      }
+    }
+
+    /* Buttons with Advanced Effects */
+    .button-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary-blue);
+      padding: 16px 32px;
+      border-radius: 14px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 
+        0 8px 30px rgba(14, 165, 233, 0.4),
+        0 0 30px rgba(14, 165, 233, 0.2);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-secondary::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn-secondary:hover::after {
+      width: 400px;
+      height: 400px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Info Notice with Pulse */
+    .info-notice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1.5px solid rgba(245, 158, 11, 0.4);
+      border-radius: 12px;
+      color: white;
+      font-size: 14px;
+      line-height: 1.5;
+      position: relative;
+      overflow: hidden;
+      animation: notice-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes notice-pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 20px 5px rgba(245, 158, 11, 0.2);
+      }
+    }
+
+    .info-notice i {
+      color: var(--accent-orange);
+      font-size: 20px;
+      animation: rotate-icon 4s linear infinite;
+    }
+
+    @keyframes rotate-icon {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* Right Card with Glass Morphism */
+    .info-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(25px) saturate(180%);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      animation: card-float 4s ease-in-out infinite;
+    }
+
+    @keyframes card-float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%
+      );
+      animation: card-shine 4s ease-in-out infinite;
+    }
+
+    @keyframes card-shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-title-group h3 {
+      color: white;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title-group p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 14px;
+    }
+
+    .workshop-tag {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.95), rgba(219, 39, 119, 0.9));
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 
+        0 4px 15px rgba(236, 72, 153, 0.4),
+        0 0 30px rgba(236, 72, 153, 0.3);
+      animation: tag-pulse 2s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes tag-pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 
+          0 4px 15px rgba(236, 72, 153, 0.4),
+          0 0 30px rgba(236, 72, 153, 0.3);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 
+          0 6px 20px rgba(236, 72, 153, 0.6),
+          0 0 40px rgba(236, 72, 153, 0.5);
+      }
+    }
+
+    /* Info Pills with Hover Effect */
+    .info-pills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      color: white;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pill::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+
+    .pill:hover::before {
+      width: 200px;
+      height: 200px;
+    }
+
+    .pill:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .pill-label {
+      font-size: 12px;
+      opacity: 0.85;
+      margin-bottom: 6px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill-value {
+      font-size: 16px;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Target Box */
+    .target-box {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
+
+    .target-box:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: scale(1.02);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .target-box h4 {
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .target-list {
+      list-style: none;
+    }
+
+    .target-item {
+      display: flex;
+      align-items: start;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 14px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+      opacity: 0;
+      animation: slideInLeft 0.6s ease-out forwards;
+    }
+
+    .target-item:nth-child(1) { animation-delay: 0.1s; }
+    .target-item:nth-child(2) { animation-delay: 0.2s; }
+    .target-item:nth-child(3) { animation-delay: 0.3s; }
+    .target-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .target-item i {
+      color: var(--accent-green);
+      font-size: 18px;
+      margin-top: 2px;
+      filter: drop-shadow(0 2px 6px rgba(16, 185, 129, 0.4));
+    }
+
+    .highlight-text {
+      text-align: center;
+      color: white;
+      font-weight: 800;
+      font-size: 15px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      animation: text-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes text-glow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .section-title {
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan), var(--accent-purple));
+      border-radius: 10px;
+      animation: underline-grow 2s ease-in-out infinite;
+    }
+
+    @keyframes underline-grow {
+      0%, 100% { width: 100px; }
+      50% { width: 150px; }
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    /* Module Cards with 3D Effect */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+      perspective: 1000px;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(14, 165, 233, 0.1);
+      transform-style: preserve-3d;
+    }
+
+    .module-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--primary-blue), var(--accent-cyan));
+      transition: all 0.5s ease;
+    }
+
+    .module-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(14, 165, 233, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .module-card:nth-child(2)::before {
+      background: linear-gradient(180deg, var(--accent-green), var(--accent-cyan));
+    }
+
+    .module-card:nth-child(3)::before {
+      background: linear-gradient(180deg, var(--accent-purple), var(--accent-pink));
+    }
+
+    .module-card:nth-child(4)::before {
+      background: linear-gradient(180deg, var(--accent-orange), var(--accent-pink));
+    }
+
+    .module-card:nth-child(5)::before {
+      background: linear-gradient(180deg, var(--accent-pink), var(--accent-purple));
+    }
+
+    .module-card:nth-child(6)::before {
+      background: linear-gradient(180deg, var(--primary-blue), var(--accent-purple));
+    }
+
+    .module-card:hover {
+      transform: translateY(-15px) rotateX(2deg) rotateY(2deg) scale(1.02);
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.15),
+        0 10px 30px rgba(14, 165, 233, 0.3);
+    }
+
+    .module-card:hover::before {
+      width: 100%;
+      opacity: 0.08;
+    }
+
+    .module-card:hover::after {
+      opacity: 1;
+    }
+
+    .module-number {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+      position: relative;
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
+
+    .module-card:hover .module-number {
+      transform: scale(1.15) rotate(360deg);
+      box-shadow: 0 6px 25px rgba(14, 165, 233, 0.6);
+    }
+
+    .module-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-description {
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-features {
+      list-style: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: start;
+      gap: 10px;
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      color: var(--text-dark);
+      transform: translateX(5px);
+    }
+
+    .feature-item i {
+      color: var(--accent-green);
+      font-size: 16px;
+      margin-top: 2px;
+      filter: drop-shadow(0 2px 4px rgba(16, 185, 129, 0.3));
+    }
+
+    /* Learning Outcomes with Flip Effect */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-bottom: 80px;
+    }
+
+    .outcome-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(14, 165, 233, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .outcome-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .outcome-card:hover::before {
+      opacity: 1;
+      transform: translate(25%, 25%);
+    }
+
+    .outcome-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 5px 20px rgba(14, 165, 233, 0.3);
+    }
+
+    .outcome-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+      position: relative;
+      transition: all 0.5s ease;
+    }
+
+    .outcome-card:hover .outcome-icon {
+      transform: rotateY(360deg) scale(1.1);
+      box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
+    }
+
+    .outcome-icon i {
+      color: white;
+      font-size: 28px;
+    }
+
+    .outcome-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .outcome-description {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .skill-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .skill-tag {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(6, 182, 212, 0.12));
+      color: var(--primary-blue);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(14, 165, 233, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(6, 182, 212, 0.2));
+      border-color: rgba(14, 165, 233, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+    }
+
+    /* Target Audience with Animated Border */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .audience-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.5s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audience-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+      border-radius: 20px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .audience-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+      border-radius: 20px 20px 0 0;
+    }
+
+    .audience-card:nth-child(2)::after {
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+    }
+
+    .audience-card:nth-child(3)::after {
+      background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+    }
+
+    .audience-card:hover::before {
+      opacity: 1;
+      animation: rotate-border 3s linear infinite;
+    }
+
+    @keyframes rotate-border {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .audience-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(14, 165, 233, 0.2);
+    }
+
+    .audience-number {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
+      transition: all 0.5s ease;
+    }
+
+    .audience-card:hover .audience-number {
+      transform: scale(1.2) rotate(360deg);
+      box-shadow: 0 8px 30px rgba(14, 165, 233, 0.6);
+    }
+
+    .audience-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .audience-description {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* CTA Section with Particles */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      border-radius: 32px;
+      padding: 60px;
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 20px 60px rgba(14, 165, 233, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float-particle 15s ease-in-out infinite;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float-particle 20s ease-in-out infinite reverse;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-title {
+      font-size: 36px;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      animation: title-glow 4s ease-in-out infinite;
+    }
+
+    .cta-subtitle {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 32px;
+    }
+
+    .cta-form {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-input {
+      flex: 1;
+      padding: 16px 24px;
+      border-radius: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      font-size: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .cta-input:focus {
+      outline: none;
+      border-color: white;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .cta-button {
+      background: white;
+      color: var(--primary-blue);
+      padding: 16px 36px;
+      border-radius: 14px;
+      border: none;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 8px 30px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Footer with Gradient */
+    footer {
+      background: linear-gradient(135deg, var(--text-dark) 0%, #0f172a 100%);
+      color: white;
+      padding: 60px 40px 30px;
+      margin-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand h3 {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .footer-section h4 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-blue);
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+    }
+
+    .social-link:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    .social-link i {
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px) rotate(360deg);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .info-pills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero-section {
+        padding: 40px 24px;
+      }
+
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+
+      .info-pills {
+        grid-template-columns: 1fr;
+      }
+
+      .modules-grid,
+      .outcomes-grid,
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .cta-section {
+        padding: 40px 24px;
+      }
+
+      .cta-title {
+        font-size: 28px;
+      }
+
+      .cta-form {
+        flex-direction: column;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+ /* ========== วาง CSS ใหม่ทั้งหมดตรงนี้ 06/01/2026 ========== */
+
+/* ========== WORK PROCESS SECTION ========== */
+    #work-process {
+      padding: 80px 0;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .steps-item {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(14, 165, 233, 0.1);
+      animation: slideInUp 0.6s ease-out both;
+    }
+
+    .steps-item:nth-child(1) { animation-delay: 0.1s; }
+    .steps-item:nth-child(2) { animation-delay: 0.2s; }
+    .steps-item:nth-child(3) { animation-delay: 0.3s; }
+    .steps-item:nth-child(4) { animation-delay: 0.4s; }
+    .steps-item:nth-child(5) { animation-delay: 0.5s; }
+    .steps-item:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Gradient Line Effects */
+    .steps-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--primary-blue), var(--accent-cyan));
+      transition: all 0.5s ease;
+    }
+
+    .steps-item.line-blue::before {
+      background: linear-gradient(180deg, var(--primary-blue), var(--accent-cyan));
+    }
+
+    .steps-item.line-green::before {
+      background: linear-gradient(180deg, var(--accent-green), var(--accent-cyan));
+    }
+
+    .steps-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(14, 165, 233, 0.03) 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .steps-item:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.15),
+        0 10px 30px rgba(14, 165, 233, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+    .steps-item:hover::before {
+      width: 100%;
+      opacity: 0.06;
+    }
+
+    .steps-item:hover::after {
+      opacity: 1;
+    }
+
+    .steps-content h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .steps-item:hover .steps-content h3 {
+      color: var(--primary-blue);
+    }
+
+    .steps-content > p {
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .steps-features {
+      list-style: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 12px;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+      padding: 8px 0;
+    }
+
+    .feature-item:hover {
+      color: var(--text-dark);
+      transform: translateX(8px);
+    }
+
+    .feature-item i {
+      color: var(--accent-green);
+      font-size: 18px;
+      margin-top: 2px;
+      filter: drop-shadow(0 2px 6px rgba(16, 185, 129, 0.3));
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover i {
+      filter: drop-shadow(0 4px 10px rgba(16, 185, 129, 0.5));
+      transform: scale(1.15);
+    }
+
+    /* ========== LEARNING OUTCOMES SECTION ========== */
+    #recent-blog-postst {
+      padding: 80px 0;
+      background: transparent;
+    }
+
+    .post-item {
+      background: white;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(14, 165, 233, 0.1);
+      height: 100%;
+      animation: fadeInScale 0.6s ease-out both;
+    }
+
+    .post-item:nth-child(1) { animation-delay: 0.1s; }
+    .post-item:nth-child(2) { animation-delay: 0.2s; }
+    .post-item:nth-child(3) { animation-delay: 0.3s; }
+    .post-item:nth-child(4) { animation-delay: 0.4s; }
+    .post-item:nth-child(5) { animation-delay: 0.5s; }
+    .post-item:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Gradient Corner Effect */
+    .post-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan), var(--accent-purple));
+      transition: height 0.5s ease;
+    }
+
+    .post-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.05) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .post-item:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.15),
+        0 10px 40px rgba(14, 165, 233, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+    .post-item:hover::before {
+      height: 100%;
+      opacity: 0.04;
+    }
+
+    .post-item:hover::after {
+      opacity: 1;
+    }
+
+    .post-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .post-content h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+    }
+
+    .post-item:hover .post-content h3 {
+      color: var(--primary-blue);
+    }
+
+    .post-content > p {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    /* Skill Pills */
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .btn-custom {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(6, 182, 212, 0.08));
+      color: var(--primary-blue);
+      border: 1.5px solid rgba(14, 165, 233, 0.3);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-custom::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(14, 165, 233, 0.15);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+
+    .btn-custom:hover::before {
+      width: 200px;
+      height: 200px;
+    }
+
+    .btn-custom:hover {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(6, 182, 212, 0.15));
+      border-color: rgba(14, 165, 233, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 
+        0 6px 20px rgba(14, 165, 233, 0.25),
+        0 0 15px rgba(14, 165, 233, 0.15);
+      color: var(--primary-dark);
+    }
+
+    /* Responsive Grid */
+    @media (max-width: 1200px) {
+      .row {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 15px;
+      }
+
+      #work-process,
+      #recent-blog-postst {
+        padding: 60px 0;
+      }
+
+      .section-title h2,
+      .section-title h3 {
+        font-size: 32px;
+      }
+
+      .section-title p {
+        font-size: 16px;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .steps-item,
+      .post-item {
+        padding: 28px;
+      }
+
+      .steps-content h3,
+      .post-content h3 {
+        font-size: 18px;
+      }
+
+      .pill-row {
+        gap: 8px;
+      }
+
+      .btn-custom {
+        font-size: 12px;
+        padding: 7px 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-title h2,
+      .section-title h3 {
+        font-size: 28px;
+      }
+
+      .steps-item,
+      .post-item {
+        padding: 24px;
+      }
+    }
+    #work-process {
+  padding-top: 10px !important;
+  padding-bottom: 40px !important;
+}
+#recent-blog-postst {
+  padding-top: 10px !important;
+  padding-bottom: 40px !important;
 }
 
-    .hero {
-
-    background: radial-gradient(circle at top left, #0099CC 0, #0192c2 45%, #015c7a 100%);
-    border-radius: 24px;
-    padding: 20px;
-    color: white;
-    margin: 0 auto 24px;
-    max-width: 1300px;
-  
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
-    gap: 16px;
+#recent-blog-postst .container {
+  padding-top: 0px !important;
 }
 
-.gradient-box {
-    background: linear-gradient(135deg, #E3F2FD, #90CAF9);
-    
-    padding: 16px;
-    border-radius: 16px;
+.contact-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center !important;
 }
 
-.hero .hero-title1 {
-    color: #ffffff;
-    font-weight: 700; /* ตัวหนามาตรฐาน */
+
+.footer .footer-newsletter .newsletter-form {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding: 6px 8px;
+  position: relative;
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  transition: 0.3s;
+  border-radius: 50px;
+
+
 }
 
-.hero .hero-subtitle1 {
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 400;
-    line-height: 1.6;
-}
-
- .objectives {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .objective-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid;
-            transition: all 0.3s;
-        }
-
-        .objective-card:nth-child(1) { border-left-color: #3b82f6; }
-        .objective-card:nth-child(2) { border-left-color: #10b981; }
-        .objective-card:nth-child(3) { border-left-color: #f59e0b; }
-        .objective-card:nth-child(4) { border-left-color: #ef4444; }
-
-        .objective-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-</style>
-
-
+  </style>
 </head>
-<body class="starter-page-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">i-Solutions</div>
+      <nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
 
-      <a href="../index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="../assets/img/logo.webp" alt=""> -->
-        <p style="color: white; font-size: 40px; font-weight: bold; margin: 0;">
-    i-Solutions</p>
-      </a>
-
-     
-      <nav id="navmenu" class="navmenu">
-      <ul>
-          <li><a href="../index.html" class="">Home</a></li>
- 
-           <li class="dropdown"><a href="#" ><span>หลักสูตร</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li class="dropdown"><a href="#"><span>Power BI Course</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="Power BI Desktop for Business Analytics.html">Power BI Desktop for Business Analytics</a></li>
+    <li class="dropdown">
+      <a href="#courses">หลักสูตร</a>
+      <ul class="dropdown-menu">
+        <li class="dropdown-sub">
+          <a href="#">Power BI Course</a>
+          <ul class="sub-menu">
+<li><a href="Power BI Desktop for Business Analytics.html">Power BI Desktop for Business Analytics</a></li>
               <li><a href="Data Analysis Expression (DAX) for Power BI.html">Data Analysis Expression (DAX) for Power BI</a></li>
-              
-            </ul>
-              <li class="dropdown"><a href="#"><span>Excel Course</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="excel_tem_html.html">Microsoft Excel Intermediate</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown-sub">
+          <a href="#">Excel Course</a>
+          <ul class="sub-menu">
+              <li><a href="Microsoft Excel Intermediate.html">Microsoft Excel Intermediate</a></li>
               <li><a href="Microsoft Excel for Business.html">Microsoft Excel for Business</a></li>
               <li><a href="Excel Power Query & Data Analysis.html">Excel Power Query & Data Analysis</a></li>
-            </ul>
-          </li>
-
-              <li><a href="Google Looker Studio.html">Google Looker Studio</a></li>
-              <li><a href="AppSheet Apps Script.html">AppSheet Apps Script </a></li>
-              <li><a href="Google BigQuery สำหรับผู้เริ่มต้น.html">Google BigQuery  </a></li>
-           
-                
+          </ul>
+        </li>
+             <li><a href="Google Looker Studio.html">Google Looker Studio</a></li>
+              <li><a href="Google AppSheet Apps Script.html">AppSheet Apps Script </a></li>
+              <li><a href="Google Big Query.html">Google BigQuery  </a></li>
       </ul>
-          </li>
-          <li><a href="#recent-blog-postst">บริการของเรา</a></li>
+
+    </li>
+
+      <li><a href="#recent-blog-postst">บริการของเรา</a></li>
      
           <li><a href="../schedule.html" class="">ราคา</a></li>
           <li><a href="../about.html">ผู้สอน</a></li>
           <li><a href="../about.html">บทความ</a></li>
           <li><a href="../contact.html">ติดต่อเรา</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+  </ul>
+</nav>
 
-
-      <a class="btn-getstarted" href="#about">Get Started</a>
-
+      <a href="#start" class="btn-get-started">Get Started</a>
     </div>
   </header>
 
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div><!-- End Page Title -->
-
-     <!-- Subscribe Section -->
-    <section id="subscribe" class="hero py-1">
-     
-      <div class="container px-5 py-2" data-aos="fade-up" data-aos-delay="100">
-       
-        <div class="row gy-4 justify-content-between align-items-center">
-          <div class="col-lg-7">
-                 <div>
-        <div class="">
-          <span style="color:#0099CC;">🔵</span> Power BI For Business
-          <span>| Live Virtual & In-house</span>
-        </div>
-        <h2 class="hero-title1">
-          สร้าง Business Dashboard ที่ผู้บริหารใช้ตัดสินใจได้จริง ด้วย Power BI
-        </h2>
-        <p class="hero-subtitle1">
-          คอร์ส Power BI for Business เน้นภาคปฏิบัติ 100% จากไฟล์ดิบในองค์กร
-          ไปสู่ Dashboard ที่ดูง่าย ใช้งานได้จริง เหมาะสำหรับคนทำงานธุรกิจที่อยากอัปสกิลด้าน Data & Analytics
-        </p>
-       
-     <p style="color:#ffffff;">
-  <i class="bi bi-check-circle-fill"></i>
-  เรียนรู้การเตรียมข้อมูล, สร้าง Data Model, เขียน DAX และออกแบบ Dashboard สำหรับผู้บริหาร
-</p>
-
-<p style="color:#ffffff;">
-  <i class="bi bi-check-circle-fill"></i>
-  เน้น Workshop จากเคสธุรกิจจริง: Sales, Finance, HR, Operation
-</p>
-
-<p style="color:#ffffff;">
-  <i class="bi bi-check-circle-fill"></i>
-  จบคอร์สมี Portfolio Dashboard ใช้ยื่นสมัครงาน หรือเสนอหัวหน้าได้ทันที
-</p>
-
-
-        <div class="hero-cta">
-          <button type="button" class="btn btn-outline-primary btn-custom">สมัครคอร์ส / ขอรายละเอียดเพิ่มเติม</button>
-          <button type="button" class="btn btn-outline-primary btn-custom">ดาวน์โหลด Course Outline (PDF)</button>
-           <br> <br>
-        <h5 style="color:rgba(255,255,255,0.9);">
-  สอนสดออนไลน์ + รองรับจัดอบรมแบบ In-house สำหรับองค์กร
-</h5>
-
-        </div>
-      </div>  
-          </div>
-          <div class="col-lg-5">
-            <div class="container px-3 py-2" 
-     style="border-radius:20px; border:1px solid rgba(255,255,255,0.4); background:rgba(255,255,255,0.06);">
-
-
-
-        <div class="hero-card-header">
-         <div class="row">
-    <div class="col-md-6 text-start">
-      <div class="hero-card-title">Power BI for Business</div>
-            <div style="font-size:12px;color:#404040;">เน้นใช้งานจริงสำหรับงานออฟฟิศและองค์กร</div>
-
-    </div>
-
-    <div class="col-md-6 text-end">
-        <button type="button" class="btn btn-outline-primary btn-custom">
-            Hands-on Workshop
-        </button>
-    </div>
-</div>
-
-       </div>
-
-<br>
-        <div class="hero-card-header">
-         <div class="row">
-    <div class="col-md-4 text-start">
-      <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#404040;">ระยะเวลาเรียน</p>12–16 ชม.</button>
-    </div>
-
-    <div class="col-md-4 text-end">
-        <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#404040;">รูปแบบ</p>Live Online</button>
-    </div>
-     <div class="col-md-4 text-end">
-        <button type="button" class="btn btn-outline-primary btn-custom"><p style="font-size:12px;color:#404040;">ระยะเวลาเรียน</p>12–16 ชม.</button>
-    </div>
-</div>
-
-       </div>
-
-
-<br>
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-grid"></div>
+      <div class="hero-content">
         <div>
-          ✨ เหมาะสำหรับ: ผู้เริ่มต้นใช้ Power BI, คนทำงานที่ต้องทำรายงาน, ทีมที่ต้องการยกระดับรายงานจาก Excel ไปสู่ Dashboard
-        </div>
-  <br>   
+          <div class="badge-container">
+            <div class="badge badge-highlight">
+              <i class="bi bi-star-fill"></i>
+              <span>Excel Power Query</span>
             </div>
-
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-        </div>
-      </div>
-    </section><!-- /Subscribe Section -->
-
-
- <!-- หลักสูตรSection -->
-<section id="work-process" class="work-process section py-3">
-
-
-      <!-- Section Title -->
-            
-<div class="container section-title" data-aos="fade-up">
-      <h2>สิ่งที่จะได้เรียน (Course Outline)</h2>
-  <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร </p>
-<br><strong>🚀เรายินดีให้คำปรึกษาฟรี </strong>
-      </div>
-
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-5">
-            <div class="objectives fade-in">
-                <div class="objective-card">
-                    <h3>🔢 การคำนวณขั้นสูง</h3>
-                    <p>สามารถสร้างตารางการคำนวณโดยใช้ฟังก์ชันต่าง ๆ ในเชิงประยุกต์สูตรได้</p>
-                </div>
-                <div class="objective-card">
-                    <h3>⚡ Power Query</h3>
-                    <p>สามารถเตรียมข้อมูลเบื้องต้นด้วย Power Query ได้อย่างมีประสิทธิภาพ</p>
-                </div>
-                <div class="objective-card">
-                    <h3>📊 การวิเคราะห์ข้อมูล</h3>
-                    <p>ใช้ Excel วิเคราะห์ และสรุปผลข้อมูล ด้วย PivotTable และ PivotChart ได้</p>
-                </div>
-                <div class="objective-card"> 
-                      
-                    <h3>🔒 ความปลอดภัย</h3>
-                    <p>สามารถทำการกำหนดการรักษาความปลอดภัยของ Microsoft Excel ได้</p>
-                </div>
+            <div class="badge">
+              <i class="bi bi-laptop"></i>
+              <span>On-Line | On-Site</span>
             </div>
-   
+          </div>
+
+          <h4 class="hero-title">
+            <!-- สร้าง Business Dashboard เปลี่ยนข้อมูลยุ่งเหยิงเป็นเรื่องง่าย ด้วย Power BI -->
+            <!-- Microsoft Excel for Business เพิ่มทักษะการวิเคราะห์ข้อมูลและการทำงานให้โดดเด่น -->
+           Excel Power Query & Data Analysis
+          </h4>
+
+          <p class="hero-subtitle">
+           เปลี่ยน Excel ให้เป็นเครื่องมือจัดการข้อมูล + วิเคราะห์แบบมืออาชีพ (ลดงานซ้ำ อัปเดตอัตโนมัติ)
+           คอร์สนี้จะช่วยให้คุณใช้ Power Query ใน Excel
+เพื่อดึงข้อมูล/จัดการข้อมูล/รวมข้อมูลแบบอัตโนมัติ
+และต่อยอดไปสู่ Data Analysis สำหรับวัยทำงาน ได้จริง ✅
+          </p>
+
+          <ul class="check-list">
+            <li class="check-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>ต้องรวมไฟล์ Excel หลายไฟล์ทุกเดือน (เสียเวลามาก)</span>
+            </li>
+            <li class="check-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>ข้อมูลจากหลายแหล่ง รูปแบบไม่เหมือนกัน ทำความสะอาดยาก</span>
+            </li>
+            <li class="check-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>ต้อง Copy/Paste + จัด Format ซ้ำ ๆ จนผิดพลาดง่าย</span>
+            </li>
+            <li class="check-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <span> อยากทำ Data Analysis แต่ข้อมูลยังไม่พร้อมใช้</span>
+              
+            </li>
+          </ul>
+
+    
+          <div class="info-notice">
+            <i class="bi bi-info-circle-fill"></i>
+            <span>📌 เริ่มสร้างระบบรายงานที่ “ทำครั้งเดียว แล้วใช้ได้ตลอด” ตั้งแต่วันนี้</span>
+          </div>
         </div>
 
+        <div class="info-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h3>👉 สมัครเรียน Excel Power Query</h3>
+              <p>บอกปัญหาข้อมูลและรายงานของคุณ เราช่วยแนะนำแนวทาง Power Query ที่เหมาะกับงานคุณ</p>
+            </div>
+            <div class="workshop-tag">
+              Hands-on Workshop
+            </div>
+          </div>
+
+          <div class="info-pills">
+            <div class="pill">
+              <div class="pill-label">ระยะเวลา</div>
+              <div class="pill-value">1 วัน</div>
+            </div>
+            <div class="pill">
+              <div class="pill-label">ระดับคลาส</div>
+              <div class="pill-value">ขั้นกลาง-สูง</div>
+            </div>
+            <div class="pill">
+              <div class="pill-label">รูปแบบ</div>
+              <div class="pill-value">On-Line & On-Site</div>
+            </div>
+          </div>
+
+          <div class="target-box">
+            <h3>👤 คอร์สนี้เหมาะกับใคร</h3>
+            <p>บุคคลทั่วไป & 🏢 องค์กร</p>
+            <ul class="target-list">
+              <li class="target-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <!-- <span>UpSkill ด้าน Data & Analytics เพื่อโตในสายงาน</span> -->
+                 <span> ผู้ที่ใช้ Excel เป็น แต่ยังเสียเวลากับการจัดข้อมูลซ้ำ ๆ </span>
+              </li>
+              <li class="target-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <span> พนักงานที่ทำรายงานทุกเดือน/ทุกสัปดาห์ </span>
+              </li>
+              <li class="target-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>สาย Finance / Sales / Marketing / HR / Admin / Operations</span>
+              </li>
+              <li class="target-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>ทีมที่ต้องรวมข้อมูลจากหลายฝ่าย</span>
+              </li>
+            </ul>
+            <div class="highlight-text">
+              <!-- || คนที่อยากย้ายสายเป็น Data Analyst / BI || -->
+               || สามารถปรับเคสตัวอย่างให้เป็นข้อมูลขององค์กรได้ ||
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work-process" class="work-process section">
+      <div class="container">
+        <div class="section-title">
+          <h4>📚 เนื้อหาหลักสูตร (Course Outline)</h4>
+          <!-- <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร</p> -->
         </div>
 
-      </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="steps-item line-blue">
+              <div class="steps-content">
+                <h3>Module 1: Data Analysis Mindset + Power Query Overview</h3>
+                <p>เข้าใจก่อนทำ — เพื่อให้ใช้ Power Query ได้จริง</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Power Query คืออะไร และช่วยงานอะไรได้บ้าง</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Data Workflow: Extract → Transform → Load (ETL แบบเข้าใจง่าย)</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>เปรียบเทียบการทำงานแบบ Manual vs Power Query</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>แนวคิดและเทคนิค “ทำครั้งเดียว แล้ว Refresh ได้ตลอด”</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    </section><!-- /Work Process Section -->
+          <div class="col-lg-4">
+            <div class="steps-item line-green">
+              <div class="steps-content">
+                <h3>Module 2: Connect Data (ดึงข้อมูลจากหลายแหล่ง)</h3>
+                <p>เปิดทางให้คุณรวมข้อมูลได้แบบมืออาชีพ</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>ดึงข้อมูลจาก Excel/CSV/Folder (หลายไฟล์พร้อมกัน)</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>ดึงข้อมูลจาก Web / SharePoint / Google Sheets </span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>การตั้งค่า Refresh และการจัดการ Connection</span>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
 
-
-<!-- หลักสูตรSection -->
-    <section id="work-process" class="work-process section py-3">
-
-      <!-- Section Title -->
-            
-<div class="container section-title" data-aos="fade-up">
-    <h2>ทักษะที่ได้หลังเรียนจบ (Learning Outcomes)</h2>
-<p>
-คุณจะได้ทั้งความเข้าใจ แนวคิด และทักษะเชิงปฏิบัติที่ใช้ได้จริงในงาน <strong>Data Analysis สำหรับวัยทำงาน</strong>  
-ที่เน้นการเรียนรู้จากประสบการณ์จริง เข้าใจง่าย และนำไปใช้งานได้จริง
-</p>
-
-      </div>
-
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-5">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-4">
             <div class="steps-item">
               <div class="steps-content">
-                 <h3> ทักษะ 1</h3>
-               
-               <p>รายละเอียด</p>
-                                  
-             </div>              
-            </div><!-- End Steps Item -->            
-          </div>
- <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="steps-item">
-              <div class="steps-content">
-          <h3> ทักษะ 2</h3>
-          <p>รายละเอียด</p>
-                                
-             </div>              
-            </div><!-- End Steps Item -->            
-          </div>
-           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="steps-item">
-              <div class="steps-content">
-     <h3>ทักษะ 3</h3>
-          <p>รายละเอียด</p>
-                                  
-             </div>              
-            </div><!-- End Steps Item -->            
-          </div>
-           
-           
-          
-             
+                <h3>Module 3: Data Cleaning ด้วย Power Query (จัดข้อมูลให้พร้อมวิเคราะห์)</h3>
+                <p>สิ่งที่ช่วยลดเวลางานซ้ำได้มากที่สุด</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>ลบข้อมูลซ้ำ / ลบช่องว่าง / ปรับรูปแบบข้อมูล</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Split/Extract ข้อมูลจากข้อความ</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Replace Values / Fill Down / Remove Errors</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>เปลี่ยน Data Type ให้ถูกต้อง (สำคัญมาก)</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>เทคนิคจัดการข้อมูลเละ ๆ จากหลายฝ่าย</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
+          <div class="col-lg-4">
+            <div class="steps-item">
+              <div class="steps-content">
+                <h3>Module 4: Transform & Combine Data (รวมข้อมูลหลายตารางให้เป็นชุดเดียว)</h3>
+                <p>หัวใจของการทำรายงานที่อัปเดตได้</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Merge Queries (เหมือน JOIN ใน SQL)</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Append Queries (รวมตารางต่อกัน)</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Combine Files จาก Folder (จบปัญหารวมไฟล์รายเดือน)</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>สร้าง Master Table สำหรับการวิเคราะห์</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="steps-item">
+              <div class="steps-content">
+                <h3>Module 5: Power Query Techniques ที่คนทำงานต้องใช้จริง</h3>
+                <p>ทำให้ระบบคุณยืดหยุ่นและทำงานเร็วขึ้น</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>การใช้ Parameters เพื่อทำไฟล์ Dynamic</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Custom Column & Conditional Column</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Group By เพื่อสรุปข้อมูลเบื้องต้น</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>จัดการ Date/Time สำหรับรายงานรายเดือน/รายไตรมาส</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="steps-item">
+              <div class="steps-content">
+                <h3>Module 6: Load Data + Model for Analysis (เตรียมข้อมูลเพื่อวิเคราะห์)</h3>
+                <p>จากการจัดการข้อมูล → สู่การวิเคราะห์</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Load เข้า Worksheet / Data Model</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>สร้าง Table ที่พร้อม Pivot</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>แนวคิด Model เบื้องต้นสำหรับ Excel & Power BI</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>ตั้งค่าการ Refresh ให้รายงานอัปเดตแบบอัตโนมัติ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         <div class="col-lg-4">
+            <div class="steps-item">
+              <div class="steps-content">
+                <h3>Module 7: Data Analysis & Reporting (วิเคราะห์และสรุปผลแบบมืออาชีพ)</h3>
+                <p>ทำรายงานที่ใช้ตัดสินใจได้จริง</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Pivot Table & Pivot Chart สำหรับงานธุรกิจ</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>การสร้าง KPI Summary</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>การวิเคราะห์ Trend / Growth / Top N</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>เทคนิค Data Storytelling ด้วย Excel</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+    </section>
+
+    <!-- LEARNING OUTCOMES SECTION -->
+    <section id="recent-blog-postst" class="recent-blog-postst section">
+      <div class="container">
+        <div class="section-title">
+          <h4>ทักษะที่ได้หลังเรียนจบ (Learning Outcomes)</h4>
+          <!-- <p>
+          คุณจะได้ทั้งความเข้าใจ แนวคิด และทักษะเชิงปฏิบัติที่ใช้ได้จริงในงาน <strong>Data Analysis สำหรับวัยทำงาน</strong> 
+          ที่เน้นการเรียนรู้จากประสบการณ์จริง เข้าใจง่าย และนำไปใช้งานได้จริง
+        </p> -->
         </div>
 
-      </div>
+        <div class="row">
+          <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100">
+              <div class="post-content d-flex flex-column">
+                <h3>✅ มีระบบรายงานที่ Refresh แล้วอัปเดตทันที</h3>
+                <p>มองเห็นภาพว่าควรใช้ Power BI เมื่อไร และช่วยองค์กรยังไง</p>
+                <div class="pill-row">
+                  <button type="button" class="btn btn-outline-primary btn-custom">
+                    Business Analytics
+                  </button>
+                  <button type="button" class="btn btn-outline-primary btn-custom">
+                    Decision Support
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    </section><!-- /Work Process Section -->
+          <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100">
+              <div class="post-content d-flex flex-column">
+                <!-- <h3>สามารถจัดการข้อมูลและวิเคราะห์ข้อมูลได้ด้วย Excel</h3> -->
+                 <h3>✅ เพิ่มทักษะ Data Analysis สำหรับวัยทำงานแบบจับต้องได้</h3>
+                <p>ออกแบบโครงสร้างข้อมูลที่รองรับการวิเคราะห์ระยะยาว</p>
+                <div class="pill-row">
+                  <button type="button" class="btn btn-outline-primary btn-custom">
+                    Data Cleaning
+                  </button>
+                  <button type="button" class="btn btn-outline-primary btn-custom">
+                    Data Modeling
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100">
+              <div class="post-content d-flex flex-column">
+                <h3>✅ รวมไฟล์หลายแหล่งได้ในไม่กี่คลิก</h3>
+                <p>สร้างตัววัดยอดขาย กำไร การเติบโต และตัวชี้วัดอื่นๆ</p>
+                <div class="pill-row">
+                  <button type="button" class="btn btn-outline-primary btn-custom">
+                    DAX Basics
+                  </button>
+                  <button type="button" class="btn btn-outline-primary btn-custom">
+                    Business KPI
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  </main>
+          <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100">
+              <div class="post-content d-flex flex-column">
+                <h3>✅ ลดเวลาทำรายงานซ้ำ ๆ ได้อย่างมาก</h3>
+                <p>สร้างรายงานที่อ่านง่าย ตอบคำถามทางธุรกิจได้ในไม่กี่คลิก</p>
+                <div class="pill-row">
+                   </div>
+            </div>
+          </div>
+        </div>
+</div>
+
+ <div class="row">
+  <div class="col-xl-4 col-md-6 contact-center">
+    <h4>📞 ติดต่อสอบถาม</h4>
+    <p>📧 Email: sirinthiya.ch@gmail.com | 📱 Tel: 099 296 3593</p>
+    <p>⭐ รับประกันคุณภาพการอบรม | 🎖️ วิทยากรมืออาชีพ | 📜 ใบประกาศนียบัตร</p>
+  </div>
+</div>
+ <div class="row">
+  <div class="col-xl-4 col-md-6 contact-center">
+ <a href="../contact.html" class="btn-get-started">Get Started</a>
+ </div>
+</div>
+
+</section>
+ </main>
+
 
   <footer id="footer" class="footer">
 
     <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <!-- <div class="container section-title" data-aos="fade-up">
-      <h2>สำหรับองค์กร</h2>
-<p>
-สามารถปรับเนื้อหาและ Workshop  <strong>ให้ตรงกับข้อมูลจริงของบริษัทคุณได้ </strong>  (Custom Training)
-
-</p> -->
-      </div>
-
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="ขอใบเสนอราคา"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">i-Solutions</span>
+          <a href="../index.html" class="d-flex align-items-center">
+            <div class="logo">i-Solutions</div>
           </a>
           <div class="footer-contact pt-3">
             <!-- <p>A108 Adam Street</p>
@@ -524,35 +2620,4 @@
 
       </div>
     </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span> 2025 Copyright</span> <strong class="px-1 sitename">TeB-Training</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-       
-      </div>
-    </div>
-
   </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="../assets/js/main.js"></script>
-
-</body>
-
-</html>

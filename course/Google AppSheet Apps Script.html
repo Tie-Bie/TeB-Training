@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Power BI for Business - i-Solutions</title>
-
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+  
   <style>
     * {
       margin: 0;
@@ -46,13 +44,10 @@
 
     /* Animated Background Particles */
     @keyframes float-particle {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translate(0, 0) scale(1);
         opacity: 0.3;
       }
-
       50% {
         transform: translate(50px, -50px) scale(1.2);
         opacity: 0.6;
@@ -66,7 +61,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background:
+      background: 
         radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
@@ -79,7 +74,7 @@
     header {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(20px) saturate(180%);
-      box-shadow:
+      box-shadow: 
         0 4px 30px rgba(0, 0, 0, 0.05),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
       position: sticky;
@@ -94,7 +89,6 @@
         transform: translateY(-100%);
         opacity: 0;
       }
-
       to {
         transform: translateY(0);
         opacity: 1;
@@ -124,12 +118,9 @@
     }
 
     @keyframes glow-pulse {
-
-      0%,
-      100% {
+      0%, 100% {
         filter: drop-shadow(0 0 5px rgba(14, 165, 233, 0.3));
       }
-
       50% {
         filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.6));
       }
@@ -184,7 +175,7 @@
       font-weight: 700;
       text-decoration: none;
       font-size: 15px;
-      box-shadow:
+      box-shadow: 
         0 4px 15px rgba(14, 165, 233, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transition: all 0.3s ease;
@@ -212,7 +203,7 @@
 
     .btn-get-started:hover {
       transform: translateY(-2px);
-      box-shadow:
+      box-shadow: 
         0 8px 30px rgba(14, 165, 233, 0.5),
         0 0 20px rgba(14, 165, 233, 0.3);
     }
@@ -228,17 +219,19 @@
 
     /* Hero Section with Advanced Effects */
     .hero-section {
-      background:
-        linear-gradient(140deg,
+      background: 
+        linear-gradient(140deg, 
           rgba(14, 165, 233, 1) 0%,
           rgba(6, 182, 212, 0.95) 35%,
-          rgba(3, 134, 32, 0.92) 70%,
-          rgba(1, 129, 65, 0.9) 100%);
+          rgba(184, 103, 246, 0.92) 70%,
+          rgba(4, 29, 249, 0.9) 100%
+         
+        );
       border-radius: 32px;
       padding: 60px;
       position: relative;
       overflow: hidden;
-      box-shadow:
+      box-shadow: 
         0 25px 70px rgba(14, 165, 233, 0.35),
         0 10px 40px rgba(139, 92, 246, 0.25),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -252,7 +245,6 @@
         opacity: 0;
         transform: translateY(30px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -267,7 +259,7 @@
       right: -20%;
       width: 900px;
       height: 900px;
-      background:
+      background: 
         radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
         radial-gradient(circle at 30% 40%, rgba(6, 182, 212, 0.3) 0%, transparent 50%);
       border-radius: 50%;
@@ -276,18 +268,14 @@
     }
 
     @keyframes float-glow {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translate(0, 0) rotate(0deg) scale(1);
         opacity: 0.6;
       }
-
       33% {
         transform: translate(-40px, -40px) rotate(120deg) scale(1.1);
         opacity: 0.8;
       }
-
       66% {
         transform: translate(40px, 40px) rotate(240deg) scale(0.9);
         opacity: 0.7;
@@ -301,7 +289,7 @@
       left: -15%;
       width: 700px;
       height: 700px;
-      background:
+      background: 
         radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 65%),
         radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.25) 0%, transparent 50%);
       border-radius: 50%;
@@ -316,7 +304,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image:
+      background-image: 
         linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
       background-size: 50px 50px;
@@ -326,13 +314,8 @@
     }
 
     @keyframes grid-move {
-      0% {
-        background-position: 0 0;
-      }
-
-      100% {
-        background-position: 50px 50px;
-      }
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
     }
 
     .hero-content {
@@ -376,33 +359,23 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(45deg,
-          transparent 30%,
-          rgba(255, 255, 255, 0.3) 50%,
-          transparent 70%);
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+      );
       animation: shine 3s ease-in-out infinite;
     }
 
     @keyframes shine {
-      0% {
-        transform: translateX(-100%) translateY(-100%) rotate(45deg);
-      }
-
-      100% {
-        transform: translateX(100%) translateY(100%) rotate(45deg);
-      }
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
     }
 
     @keyframes badge-float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-5px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
 
     .badge i {
@@ -411,49 +384,39 @@
     }
 
     @keyframes pulse-icon {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.2);
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
     .badge-highlight {
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.9), rgba(251, 191, 36, 0.8));
       border-color: rgba(255, 255, 255, 0.5);
-      box-shadow:
+      box-shadow: 
         0 4px 15px rgba(245, 158, 11, 0.4),
         0 0 20px rgba(245, 158, 11, 0.3);
     }
 
     /* Hero Title with Gradient Animation */
     .hero-title {
-      font-size: 40px;
+      font-size: 34px;
       font-weight: 900;
       color: white;
       line-height: 1.2;
       margin-bottom: 24px;
-      text-shadow:
+      text-shadow: 
         0 2px 20px rgba(0, 0, 0, 0.2),
         0 0 40px rgba(255, 255, 255, 0.2);
       animation: title-glow 4s ease-in-out infinite;
     }
 
     @keyframes title-glow {
-
-      0%,
-      100% {
-        text-shadow:
+      0%, 100% {
+        text-shadow: 
           0 2px 20px rgba(0, 0, 0, 0.2),
           0 0 40px rgba(255, 255, 255, 0.2);
       }
-
       50% {
-        text-shadow:
+        text-shadow: 
           0 2px 25px rgba(0, 0, 0, 0.3),
           0 0 60px rgba(255, 255, 255, 0.4);
       }
@@ -473,7 +436,6 @@
         opacity: 0;
         transform: translateY(20px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -498,28 +460,16 @@
       animation: slideInLeft 0.6s ease-out forwards;
     }
 
-    .check-item:nth-child(1) {
-      animation-delay: 0.3s;
-    }
-
-    .check-item:nth-child(2) {
-      animation-delay: 0.4s;
-    }
-
-    .check-item:nth-child(3) {
-      animation-delay: 0.5s;
-    }
-
-    .check-item:nth-child(4) {
-      animation-delay: 0.6s;
-    }
+    .check-item:nth-child(1) { animation-delay: 0.3s; }
+    .check-item:nth-child(2) { animation-delay: 0.4s; }
+    .check-item:nth-child(3) { animation-delay: 0.5s; }
+    .check-item:nth-child(4) { animation-delay: 0.6s; }
 
     @keyframes slideInLeft {
       from {
         opacity: 0;
         transform: translateX(-30px);
       }
-
       to {
         opacity: 1;
         transform: translateX(0);
@@ -534,13 +484,10 @@
     }
 
     @keyframes check-pulse {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: scale(1);
         filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.5));
       }
-
       50% {
         transform: scale(1.15);
         filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.8));
@@ -565,7 +512,7 @@
       font-size: 15px;
       cursor: pointer;
       transition: all 0.4s ease;
-      box-shadow:
+      box-shadow: 
         0 4px 15px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 1);
       position: relative;
@@ -589,7 +536,7 @@
 
     .btn-primary:hover {
       transform: translateY(-3px) scale(1.02);
-      box-shadow:
+      box-shadow: 
         0 8px 30px rgba(14, 165, 233, 0.4),
         0 0 30px rgba(14, 165, 233, 0.2);
     }
@@ -652,12 +599,9 @@
     }
 
     @keyframes notice-pulse {
-
-      0%,
-      100% {
+      0%, 100% {
         box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
       }
-
       50% {
         box-shadow: 0 0 20px 5px rgba(245, 158, 11, 0.2);
       }
@@ -670,25 +614,11 @@
     }
 
     @keyframes rotate-icon {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      25% {
-        transform: rotate(-10deg);
-      }
-
-      50% {
-        transform: rotate(0deg);
-      }
-
-      75% {
-        transform: rotate(10deg);
-      }
-
-      100% {
-        transform: rotate(0deg);
-      }
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
     }
 
     /* Right Card with Glass Morphism */
@@ -698,7 +628,7 @@
       border: 1.5px solid rgba(255, 255, 255, 0.3);
       border-radius: 24px;
       padding: 36px;
-      box-shadow:
+      box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
       position: relative;
@@ -707,12 +637,9 @@
     }
 
     @keyframes card-float {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0);
       }
-
       50% {
         transform: translateY(-10px);
       }
@@ -725,21 +652,18 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(45deg,
-          transparent 30%,
-          rgba(255, 255, 255, 0.1) 50%,
-          transparent 70%);
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%
+      );
       animation: card-shine 4s ease-in-out infinite;
     }
 
     @keyframes card-shine {
-      0% {
-        transform: translateX(-100%) translateY(-100%) rotate(45deg);
-      }
-
-      100% {
-        transform: translateX(100%) translateY(100%) rotate(45deg);
-      }
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
     }
 
     .card-header {
@@ -773,7 +697,7 @@
       border-radius: 50px;
       font-size: 13px;
       font-weight: 700;
-      box-shadow:
+      box-shadow: 
         0 4px 15px rgba(236, 72, 153, 0.4),
         0 0 30px rgba(236, 72, 153, 0.3);
       animation: tag-pulse 2s ease-in-out infinite;
@@ -782,18 +706,15 @@
     }
 
     @keyframes tag-pulse {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: scale(1);
-        box-shadow:
+        box-shadow: 
           0 4px 15px rgba(236, 72, 153, 0.4),
           0 0 30px rgba(236, 72, 153, 0.3);
       }
-
       50% {
         transform: scale(1.05);
-        box-shadow:
+        box-shadow: 
           0 6px 20px rgba(236, 72, 153, 0.6),
           0 0 40px rgba(236, 72, 153, 0.5);
       }
@@ -849,8 +770,7 @@
     }
 
     .pill-label {
-      font-size: 15px;
-      color: rgb(129, 3, 102);
+      font-size: 12px;
       opacity: 0.85;
       margin-bottom: 6px;
       font-weight: 600;
@@ -859,7 +779,7 @@
     }
 
     .pill-value {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 800;
       position: relative;
       z-index: 1;
@@ -907,21 +827,10 @@
       animation: slideInLeft 0.6s ease-out forwards;
     }
 
-    .target-item:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-
-    .target-item:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .target-item:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-
-    .target-item:nth-child(4) {
-      animation-delay: 0.4s;
-    }
+    .target-item:nth-child(1) { animation-delay: 0.1s; }
+    .target-item:nth-child(2) { animation-delay: 0.2s; }
+    .target-item:nth-child(3) { animation-delay: 0.3s; }
+    .target-item:nth-child(4) { animation-delay: 0.4s; }
 
     .target-item i {
       color: var(--accent-green);
@@ -942,12 +851,9 @@
     }
 
     @keyframes text-glow {
-
-      0%,
-      100% {
+      0%, 100% {
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
       }
-
       50% {
         text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
       }
@@ -987,15 +893,8 @@
     }
 
     @keyframes underline-grow {
-
-      0%,
-      100% {
-        width: 100px;
-      }
-
-      50% {
-        width: 150px;
-      }
+      0%, 100% { width: 100px; }
+      50% { width: 150px; }
     }
 
     .section-subtitle {
@@ -1070,7 +969,7 @@
 
     .module-card:hover {
       transform: translateY(-15px) rotateX(2deg) rotateY(2deg) scale(1.02);
-      box-shadow:
+      box-shadow: 
         0 25px 70px rgba(0, 0, 0, 0.15),
         0 10px 30px rgba(14, 165, 233, 0.3);
     }
@@ -1193,7 +1092,7 @@
 
     .outcome-card:hover {
       transform: translateY(-10px) scale(1.03);
-      box-shadow:
+      box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.15),
         0 5px 20px rgba(14, 165, 233, 0.3);
     }
@@ -1319,18 +1218,13 @@
     }
 
     @keyframes rotate-border {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .audience-card:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow:
+      box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.15),
         0 0 40px rgba(14, 165, 233, 0.2);
     }
@@ -1379,7 +1273,7 @@
       margin-bottom: 80px;
       position: relative;
       overflow: hidden;
-      box-shadow:
+      box-shadow: 
         0 20px 60px rgba(14, 165, 233, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
@@ -1486,7 +1380,7 @@
 
     .cta-button:hover {
       transform: translateY(-3px) scale(1.05);
-      box-shadow:
+      box-shadow: 
         0 8px 30px rgba(0, 0, 0, 0.25),
         0 0 30px rgba(255, 255, 255, 0.3);
     }
@@ -1658,8 +1552,7 @@
         flex-direction: column;
       }
 
-      .btn-primary,
-      .btn-secondary {
+      .btn-primary, .btn-secondary {
         width: 100%;
         text-align: center;
       }
@@ -1695,10 +1588,9 @@
         gap: 30px;
       }
     }
+ /* ========== วาง CSS ใหม่ทั้งหมดตรงนี้ 06/01/2026 ========== */
 
-    /* ========== วาง CSS ใหม่ทั้งหมดตรงนี้ 06/01/2026 ========== */
-
-    /* ========== WORK PROCESS SECTION ========== */
+/* ========== WORK PROCESS SECTION ========== */
     #work-process {
       padding: 80px 0;
     }
@@ -1714,7 +1606,7 @@
       background: white;
       border-radius: 24px;
       padding: 40px;
-      box-shadow:
+      box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
       transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1724,36 +1616,18 @@
       animation: slideInUp 0.6s ease-out both;
     }
 
-    .steps-item:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-
-    .steps-item:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .steps-item:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-
-    .steps-item:nth-child(4) {
-      animation-delay: 0.4s;
-    }
-
-    .steps-item:nth-child(5) {
-      animation-delay: 0.5s;
-    }
-
-    .steps-item:nth-child(6) {
-      animation-delay: 0.6s;
-    }
+    .steps-item:nth-child(1) { animation-delay: 0.1s; }
+    .steps-item:nth-child(2) { animation-delay: 0.2s; }
+    .steps-item:nth-child(3) { animation-delay: 0.3s; }
+    .steps-item:nth-child(4) { animation-delay: 0.4s; }
+    .steps-item:nth-child(5) { animation-delay: 0.5s; }
+    .steps-item:nth-child(6) { animation-delay: 0.6s; }
 
     @keyframes slideInUp {
       from {
         opacity: 0;
         transform: translateY(40px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -1795,7 +1669,7 @@
 
     .steps-item:hover {
       transform: translateY(-12px) scale(1.02);
-      box-shadow:
+      box-shadow: 
         0 25px 70px rgba(0, 0, 0, 0.15),
         0 10px 30px rgba(14, 165, 233, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 1);
@@ -1825,7 +1699,7 @@
       color: var(--primary-blue);
     }
 
-    .steps-content>p {
+    .steps-content > p {
       font-size: 15px;
       color: var(--text-light);
       margin-bottom: 24px;
@@ -1880,7 +1754,7 @@
       background: white;
       border-radius: 24px;
       padding: 36px;
-      box-shadow:
+      box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
       transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1891,36 +1765,18 @@
       animation: fadeInScale 0.6s ease-out both;
     }
 
-    .post-item:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-
-    .post-item:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .post-item:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-
-    .post-item:nth-child(4) {
-      animation-delay: 0.4s;
-    }
-
-    .post-item:nth-child(5) {
-      animation-delay: 0.5s;
-    }
-
-    .post-item:nth-child(6) {
-      animation-delay: 0.6s;
-    }
+    .post-item:nth-child(1) { animation-delay: 0.1s; }
+    .post-item:nth-child(2) { animation-delay: 0.2s; }
+    .post-item:nth-child(3) { animation-delay: 0.3s; }
+    .post-item:nth-child(4) { animation-delay: 0.4s; }
+    .post-item:nth-child(5) { animation-delay: 0.5s; }
+    .post-item:nth-child(6) { animation-delay: 0.6s; }
 
     @keyframes fadeInScale {
       from {
         opacity: 0;
         transform: scale(0.95);
       }
-
       to {
         opacity: 1;
         transform: scale(1);
@@ -1954,7 +1810,7 @@
 
     .post-item:hover {
       transform: translateY(-15px) scale(1.03);
-      box-shadow:
+      box-shadow: 
         0 25px 70px rgba(0, 0, 0, 0.15),
         0 10px 40px rgba(14, 165, 233, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 1);
@@ -1990,7 +1846,7 @@
       color: var(--primary-blue);
     }
 
-    .post-content>p {
+    .post-content > p {
       font-size: 15px;
       color: var(--text-light);
       line-height: 1.7;
@@ -2042,7 +1898,7 @@
       background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(6, 182, 212, 0.15));
       border-color: rgba(14, 165, 233, 0.5);
       transform: translateY(-3px);
-      box-shadow:
+      box-shadow: 
         0 6px 20px rgba(14, 165, 233, 0.25),
         0 0 15px rgba(14, 165, 233, 0.15);
       color: var(--primary-dark);
@@ -2101,7 +1957,6 @@
     }
 
     @media (max-width: 480px) {
-
       .section-title h2,
       .section-title h3 {
         font-size: 28px;
@@ -2112,23 +1967,21 @@
         padding: 24px;
       }
     }
-
     #work-process {
-      padding-top: 10px !important;
-      padding-bottom: 40px !important;
-    }
+  padding-top: 10px !important;
+  padding-bottom: 40px !important;
+}
+#recent-blog-postst {
+  padding-top: 10px !important;
+  padding-bottom: 40px !important;
+}
 
-    #recent-blog-postst {
-      padding-top: 10px !important;
-      padding-bottom: 40px !important;
-    }
+#recent-blog-postst .container {
+  padding-top: 0px !important;
+}
 
-    #recent-blog-postst .container {
-      padding-top: 0px !important;
-    }
   </style>
 </head>
-
 <body>
   <!-- Header -->
   <header>
@@ -2159,7 +2012,7 @@
           <div class="badge-container">
             <div class="badge badge-highlight">
               <i class="bi bi-star-fill"></i>
-              <span>Microsoft Excel for Business</span>
+              <span> Google AppSheet || Apps Script</span>
             </div>
             <div class="badge">
               <i class="bi bi-laptop"></i>
@@ -2167,38 +2020,34 @@
             </div>
           </div>
 
-          <h4 class="hero-title">
+          <h3 class="hero-title">
             <!-- สร้าง Business Dashboard เปลี่ยนข้อมูลยุ่งเหยิงเป็นเรื่องง่าย ด้วย Power BI -->
-            <!-- Microsoft Excel for Business เพิ่มทักษะการวิเคราะห์ข้อมูลและการทำงานให้โดดเด่น -->
-            Excel for Business พื้นฐาน Data Analysis 
-          </h4>
+            Google AppSheet & Apps Script
+          </h3>
 
           <p class="hero-subtitle">
-            <!-- คอร์ส Microsoft Excel for Business 
-            เรียนรู้การใช้ Excel วิเคราะห์ข้อมูลธุรกิจ เพิ่มทักษะ Data Analysis สำหรับวัยทำงาน และต่อยอดสู่สาย Data ได้จริง -->
-            ในยุคที่ข้อมูลกลายเป็นหัวใจของการตัดสินใจ
-            Excel for Business ไม่ใช่แค่การใช้สูตรพื้นฐาน
-            แต่คือการใช้ Excel เพื่อ วิเคราะห์ข้อมูล สรุปผล และสนับสนุนการตัดสินใจทางธุรกิจ
-            Data Analysis สำหรับวัยทำงาน ที่จะช่วยให้คุณโดดเด่นในสายงาน 100%
+            ปสร้างแอปใช้งานจริงในองค์กร + ทำงานอัตโนมัติด้วย Google Workspace (ครบจบในคอร์สเดียว)
+            คอร์สนี้จะช่วยให้คุณสร้าง ระบบทำงานจริง
+            ✅ AppSheet (ทำแอปแบบ No-code)
+            ✅ Apps Script (ทำ Automation แบบยืดหยุ่น)
           </p>
 
           <ul class="check-list">
             <li class="check-item">
               <i class="bi bi-check-circle-fill"></i>
-              <span>ต้องการการลดงานซ้ำ และเพิ่มประสิทธิภาพการทำงาน</span>
+              <span>ต้องการใช้ Google Sheet เก็บข้อมูล </span>
             </li>
             <li class="check-item">
               <i class="bi bi-check-circle-fill"></i>
-              <span>ต้องการการใช้ Excel เพื่อเข้าใจข้อมูลเชิงธุรกิจ</span>
+              <span>ต้องตามงาน/อนุมัติ/แจ้งเตือนผ่านแชทจนหลุดง่าย</span>
             </li>
             <li class="check-item">
               <i class="bi bi-check-circle-fill"></i>
-              <span>ต้องการต่อยอดไปสู่ Power BI หรือ Big Data ได้</span>
+              <span>งานซ้ำ ๆ เช่น ส่งรายงาน อัปเดตข้อมูล ย้ายข้อมูล ทำทุกวัน</span>
             </li>
             <li class="check-item">
               <i class="bi bi-check-circle-fill"></i>
-              <span> ผู้ที่อยากย้ายสายเป็น Data Analyst / BI</span>
-               <!-- <span>เปิดทางสู่สาย Data Analysis เพิ่มโอกาสเลื่อนตำแหน่ง</span> -->
+              <span>อยากทำระบบง่าย ๆ แต่ไม่อยากลงทุนเขียนโปรแกรมแพง ๆ</span>
             </li>
           </ul>
 
@@ -2213,15 +2062,15 @@
 
           <div class="info-notice">
             <i class="bi bi-info-circle-fill"></i>
-            <span>📌 ปรึกษาฟรีก่อนสมัคร — แนะนำเส้นทางการเรียนให้ตรงกับงานของคุณ</span>
+            <span>📌 เล่าปัญหางานของคุณ แล้วเราช่วยประเมินว่า “ระบบแบบไหนทำได้” และควรเริ่มตรงไหน</span>
           </div>
         </div>
 
         <div class="info-card">
           <div class="card-header">
             <div class="card-title-group">
-              <h3>👉 สมัครเรียน Excel for Business</h3>
-              <p>แนะนำเส้นทางการเรียนที่เหมาะกับงานของคุณ (ไม่มีค่าใช้จ่าย)</p>
+              <h3>👉 สมัครเรียน Google AppSheet & Apps Script</h3>
+              <p> เริ่มสร้างระบบงานของคุณวันนี้ ลดงานซ้ำ เพิ่มประสิทธิภาพทีมแบบทันที</p>
             </div>
             <div class="workshop-tag">
               Hands-on Workshop
@@ -2230,7 +2079,7 @@
 
           <div class="info-pills">
             <div class="pill">
-              <div class="pill-label">ระยะเวลา</div>
+              <div class="pill-label">ระยะเวลาเรียน</div>
               <div class="pill-value">1 วัน</div>
             </div>
             <div class="pill">
@@ -2244,275 +2093,302 @@
           </div>
 
           <div class="target-box">
-            <h3>🎯 เหมาะสำหรับ</h3>
+            <h4>👤 คอร์สนี้เหมาะกับใคร</h4>
             <ul class="target-list">
               <li class="target-item">
                 <i class="bi bi-check-circle-fill"></i>
                 <!-- <span>UpSkill ด้าน Data & Analytics เพื่อโตในสายงาน</span> -->
-                 <span> พนักงานออฟฟิศที่ใช้ Excel ทำงานประจำ </span>
+                 <span>ผู้ที่อยากสร้างระบบงานเอง ไม่ต้องรอ IT</span>
               </li>
               <li class="target-item">
                 <i class="bi bi-check-circle-fill"></i>
-                <span> สาย Marketing / Sales / Finance / HR / Admin / Operations </span>
+                <span>ผู้ที่อยากเพิ่มทักษะการสร้างระบบอัตโนมัติแบบ low-code</span>
               </li>
               <li class="target-item">
                 <i class="bi bi-check-circle-fill"></i>
-                <span>ผู้ที่อยากเริ่มต้น Data Analysis สำหรับวัยทำงาน ด้วยเครื่องมือที่ใช้จริง</span>
+                <span>ทีมที่ใช้ Google Workspace และอยากทำระบบภายใน</span>
               </li>
               <li class="target-item">
                 <i class="bi bi-check-circle-fill"></i>
-                <span>องค์กรที่ต้องการ Upskill พนักงานให้วิเคราะห์ข้อมูลเป็น</span>
+                <span>องค์กรที่อยากลดงานซ้ำ เพิ่มประสิทธิภาพการทำงาน”</span>
               </li>
             </ul>
             <div class="highlight-text">
-              <!-- || คนที่อยากย้ายสายเป็น Data Analyst / BI || -->
-               || สามารถปรับเคสตัวอย่างให้เป็นข้อมูลขององค์กรได้ ||
+             ✅ ไม่ต้องมีพื้นฐานเขียนโค้ดมาก่อน (มีสอนพื้นฐาน Apps Script แบบเข้าใจง่าย)
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="work-process" class="work-process section">
-      <div class="container">
-        <div class="section-title">
-          <h4>เนื้อหาหลักสูตร (Course Outline)</h4>
-          <!-- <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร</p> -->
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="steps-item line-blue">
-              <div class="steps-content">
-                <h3>Module 1: Excel for Business Foundations (พื้นฐานสำคัญสำหรับคนทำงาน)</h3>
-                <p>ทักษะที่ได้: เข้าใจโครงสร้าง Excel สำหรับงานธุรกิจ ทำงานเป็นระบบขึ้นทันที</p>
-                <div class="steps-features">
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>เริ่มต้นโครงสร้างข้อมูลที่ดี (Data Structure สำหรับธุรกิจ)</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>การจัดระเบียบไฟล์และตารางให้ทำงานง่ายเพื่อความรวดเร็วและแม่นยำ</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>ทำความรู้จักและจัดการกับข้อมูล Big Data</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>เทคนิคการใช้ Excel ให้เร็วขึ้น (Shortcut & Productivity)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="steps-item line-green">
-              <div class="steps-content">
-                <h3>Module 2: Data Cleaning & Data Preparation (จัดการข้อมูลก่อนวิเคราะห์)</h3>
-                <p>ทักษะที่ได้: ลดเวลางานซ้ำ แก้ปัญหาข้อมูลเละได้</p>
-                <div class="steps-features">
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>แก้ปัญหาข้อมูลซ้ำ/ข้อมูลผิดรูปแบบ</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>ฝึกใช้คำสั่ง Text to Columns, Remove Duplicates, Data Validation</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>เทคนิคจัด Format ข้อมูลให้พร้อมวิเคราะห์</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span> Workshop </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="steps-item">
-              <div class="steps-content">
-                <h3>Module 3: Excel Functions ที่ใช้จริงในธุรกิจ (สูตรที่คนทำงานต้องใช้)</h3>
-                <p>ทักษะที่ได้: เข้าใจ ใช้สูตรเป็น นำไปใช้ได้จริง</p>
-                <div class="steps-features">
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>IF / Nested IF / IFS</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>SUMIF / SUMIFS, COUNTIF / COUNTIFS</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>XLOOKUP (แทน VLOOKUP) + MATCH/INDEX</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>ฟังก์ชันจัดการวันที่/เวลาและข้อความที่ใช้บ่อย</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="steps-item">
-              <div class="steps-content">
-                <h3>Module 4: Pivot Table for Business Report (สรุปข้อมูลแบบมืออาชีพ)</h3>
-                <p>ทักษะที่ได้: เข้าใจแนวคิดและสามารถสรุปข้อมูลได้ภายในไม่กี่นาที</p>
-                <div class="steps-features">
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>สร้าง Pivot Table จากข้อมูลจริง</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>Pivot Chart + การเลือกกราฟให้เหมาะสม</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>Grouping รายวัน/เดือน/ไตรมาส</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>จัดรูปแบบรายงานให้อ่านง่ายสำหรับผู้บริหาร</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="steps-item">
-              <div class="steps-content">
-                <h3>Module 5: Data Analysis สำหรับวัยทำงาน (วิเคราะห์ข้อมูลเพื่อใช้ตัดสินใจ)</h3>
-                <p>ทักษะที่ได้: เปลี่ยน Excel ให้เป็นเครื่องมือวิเคราะห์ที่ทรงพลัง</p>
-                <div class="steps-features">
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>การตั้งคำถามกับข้อมูล (Business Questions)</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>การหา Insight จากยอดขาย/ต้นทุน/ลูกค้า</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>วิเคราะห์ KPI / Trend / เปรียบเทียบช่วงเวลา</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>เทคนิคการเล่าเรื่องด้วยข้อมูล (Data Storytelling)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="steps-item">
-              <div class="steps-content">
-                <h3>Module 6: Dashboard & Report Design (ทำรายงานหน้าเดียวแบบใช้งานจริง)</h3>
-                <p>ทักษะที่ได้: สร้าง Dashboard แบบมืออาชีพ สามารถวิเคราะห์เพื่อการตัดสินใจได้</p>
-                <div class="steps-features">
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>ออกแบบ Dashboard ที่ผู้บริหารเข้าใจใน 1 หน้า</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>ทำ Interactive ด้วย Slicer</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>Best Practice Dashboard สำหรับ Excel</span>
-                  </div>
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>Template Dashboard ที่นำไปใช้ต่อได้</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <section id="work-process" class="work-process section">
+    <div class="container">
+      <div class="section-title">
+        <h4>📚 เนื้อหาหลักสูตร (Course Outline)</h4>
+        <!-- <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร</p> -->
       </div>
-    </section>
 
-    <!-- LEARNING OUTCOMES SECTION -->
-    <section id="recent-blog-postst" class="recent-blog-postst section">
-      <div class="container">
-        <div class="section-title">
-          <h4>ทักษะที่ได้หลังเรียนจบ (Learning Outcomes)</h4>
-          <!-- <p>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="steps-item line-blue">
+            <div class="steps-content">
+              <h3>Module 1: Business Automation Mindset & Use Cases</h3>
+              <p>ปูพื้นฐานให้เข้าใจ DAX แบบ “คิดเป็น” ประยุกต์ใช้ได้จริง</p>
+              <div class="steps-features">
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Automation คืออะไร และองค์กรใช้แก้ปัญหาอะไร</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>เลือกใช้ AppSheet vs Apps Script ให้ถูกงาน</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>ตัวอย่างระบบยอดนิยม:ระบบบันทึกข้อมูล / ติดตามงาน  </span>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="steps-item line-green">
+            <div class="steps-content">
+              <h3>Module 2: เตรียมข้อมูลให้พร้อมสำหรับสร้างแอป (Google Sheets as Database)</h3>
+              <p>ฐานข้อมูลดี = แอปทำงานง่าย</p>
+              <div class="steps-features">
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>โครงสร้างข้อมูลแบบที่ AppSheet ชอบ</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>การออกแบบ Sheet ให้รองรับการใช้งานหลายคน</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Data Validation / Access Control เบื้องต้น</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Best Practice การตั้งชื่อ Column และจัดรูปแบบ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="steps-item">
+            <div class="steps-content">
+              <h3>Module 3: สร้างแอปด้วย AppSheet (No-code ที่ใช้งานจริงในองค์กร)</h3>
+              <p>สร้างแอปได้จริง โดยไม่ต้องเขียนโค้ด</p>
+              <div class="steps-features">
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>สร้างแอปจาก Google Sheets</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>ออกแบบ Views: Form / Table / Dashboard / Detail</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>สร้างระบบเพิ่ม-แก้ไข-ค้นหา-กรองข้อมูล</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>UX ที่ดีสำหรับทีมใช้งานจริง (มือถือ + Desktop)</span>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="steps-item">
+            <div class="steps-content">
+              <h3>Module 4: Apps Script Fundamentals (เริ่มเขียนแบบเข้าใจง่าย)</h3>
+              <p>เสริมพลังให้ทำ Automation ได้ยืดหยุ่นขึ้น</p>
+              <div class="steps-features">
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Apps Script คืออะไร และทำอะไรได้บ้าง</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>อ่าน/เขียนข้อมูลใน Google Sheets</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>ส่ง Email อัตโนมัติจากข้อมูลใน Sheet</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>สร้างระบบแจ้งเตือนและรายงานรายวัน/รายสัปดาห์</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="steps-item">
+            <div class="steps-content">
+              <h3>Module 5: เชื่อม AppSheet + Apps Script (ทำระบบขั้นสูง)</h3>
+              <p>ทำให้แอปของคุณ “ฉลาดขึ้น” และรองรับงานจริง</p>
+              <div class="steps-features">
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>เขียน Script เพื่อทำงานที่ AppSheet ทำยาก</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>สร้างไฟล์ PDF/ใบงานอัตโนมัติจากข้อมูล</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>ส่งรายงานสรุปเข้า Email/Google Chat</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>สร้าง Dashboard สรุปผลใน Google Sheets</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="steps-item">
+            <div class="steps-content">
+              <h3>Workshop: ทำ Dashboard KPI จริงแบบองค์กร (Project-Based)</h3>
+              <p>ได้ชิ้นงาน Business Dashboard กลับไปใช้งานจริง</p>
+              <div class="steps-features">
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>สร้าง Sales KPI Dashboard</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>ทำ Time Intelligence + Growth</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Ranking + Top Products</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Dynamic KPI + Smart Tooltip</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Final Dashboard พร้อมนำเสนอ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  <!-- LEARNING OUTCOMES SECTION -->
+  <section id="recent-blog-postst" class="recent-blog-postst section">
+    <div class="container">
+      <div class="section-title">
+        <h4>ทักษะที่ได้หลังเรียนจบ (Learning Outcomes)</h4>
+        <!-- <p>
           คุณจะได้ทั้งความเข้าใจ แนวคิด และทักษะเชิงปฏิบัติที่ใช้ได้จริงในงาน <strong>Data Analysis สำหรับวัยทำงาน</strong> 
           ที่เน้นการเรียนรู้จากประสบการณ์จริง เข้าใจง่าย และนำไปใช้งานได้จริง
         </p> -->
+      </div>
+
+      <div class="row">
+        <div class="col-xl-4 col-md-6">
+          <div class="post-item position-relative h-100">
+            <div class="post-content d-flex flex-column">
+              <h3>✅ สร้างแอปใช้งานจริงในทีมได้</h3>
+              <p>มองเห็นภาพว่าควรใช้ Power BI เมื่อไร และช่วยองค์กรยังไง</p>
+              <div class="pill-row">
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  Business Analytics
+                </button>
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  Decision Support
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="row">
-          <div class="col-xl-4 col-md-6">
-            <div class="post-item position-relative h-100">
-              <div class="post-content d-flex flex-column">
-                <h3>สามารถใช้ Excel ในการทำงานให้เร็วขึ้น</h3>
-                <p>มองเห็นภาพว่าควรใช้ Power BI เมื่อไร และช่วยองค์กรยังไง</p>
-                <div class="pill-row">
-                  <button type="button" class="btn btn-outline-primary btn-custom">
-                    Business Analytics
-                  </button>
-                  <button type="button" class="btn btn-outline-primary btn-custom">
-                    Decision Support
-                  </button>
-                </div>
+        <div class="col-xl-4 col-md-6">
+          <div class="post-item position-relative h-100">
+            <div class="post-content d-flex flex-column">
+              <h3>✅ ลดงานซ้ำและงาน Manual ได้อย่างชัดเจน</h3>
+              <p>ออกแบบโครงสร้างข้อมูลที่รองรับการวิเคราะห์ระยะยาว</p>
+              <div class="pill-row">
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  Data Cleaning
+                </button>
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  Data Modeling
+                </button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-xl-4 col-md-6">
-            <div class="post-item position-relative h-100">
-              <div class="post-content d-flex flex-column">
-                <!-- <h3>สามารถจัดการข้อมูลและวิเคราะห์ข้อมูลได้ด้วย Excel</h3> -->
-                 <h3>สามารถะวิเคราะห์ข้อมูลได้ด้วย Excel</h3>
-                <p>ออกแบบโครงสร้างข้อมูลที่รองรับการวิเคราะห์ระยะยาว</p>
-                <div class="pill-row">
-                  <button type="button" class="btn btn-outline-primary btn-custom">
-                    Data Cleaning
-                  </button>
-                  <button type="button" class="btn btn-outline-primary btn-custom">
-                    Data Modeling
-                  </button>
-                </div>
+        <div class="col-xl-4 col-md-6">
+          <div class="post-item position-relative h-100">
+            <div class="post-content d-flex flex-column">
+              <h3>✅ สร้างระบบอนุมัติ/ติดตามงาน/แจ้งเตือนได้</h3>
+              <p>สร้างตัววัดยอดขาย กำไร การเติบโต และตัวชี้วัดอื่นๆ</p>
+              <div class="pill-row">
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  DAX Basics
+                </button>
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  Business KPI
+                </button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-xl-4 col-md-6">
-            <div class="post-item position-relative h-100">
-              <div class="post-content d-flex flex-column">
-                <h3>สามารถสรุปข้อมูลสำหรับผู้บริหารได้อย่างมืออาชีพ</h3>
-                <p>สร้างตัววัดยอดขาย กำไร การเติบโต และตัวชี้วัดอื่นๆ</p>
-                <div class="pill-row">
-                  <button type="button" class="btn btn-outline-primary btn-custom">
-                    DAX Basics
-                  </button>
-                  <button type="button" class="btn btn-outline-primary btn-custom">
-                    Business KPI
-                  </button>
-                </div>
+        <div class="col-xl-4 col-md-6">
+          <div class="post-item position-relative h-100">
+            <div class="post-content d-flex flex-column">
+              <h3>✅ ทำ Automation ด้วย Apps Script ได้</h3>
+              <p>สร้างรายงานที่อ่านง่าย ตอบคำถามทางธุรกิจได้ในไม่กี่คลิก</p>
+              <div class="pill-row">
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  DAX Basics
+                </button>
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  Business KPI
+                </button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-xl-4 col-md-6">
-            <div class="post-item position-relative h-100">
-              <div class="post-content d-flex flex-column">
-                <h3>มี ทักษะ Data Analysis สำหรับวัยทำงาน ที่ใช้งานจริงได้ทันที</h3>
-                <p>สร้างรายงานที่อ่านง่าย ตอบคำถามทางธุรกิจได้ในไม่กี่คลิก</p>
-                <div class="pill-row">
+                <div class="col-xl-4 col-md-6">
+          <div class="post-item position-relative h-100">
+            <div class="post-content d-flex flex-column">
+              <h3>✅ มีผลงานจริง (แอป/ระบบ) พร้อมใช้ต่อยอดในงานทันที</h3>
+              <p>สร้างรายงานที่อ่านง่าย ตอบคำถามทางธุรกิจได้ในไม่กี่คลิก</p>
+              <div class="pill-row">
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  DAX Basics
+                </button>
+                <button type="button" class="btn btn-outline-primary btn-custom">
+                  Business KPI
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
