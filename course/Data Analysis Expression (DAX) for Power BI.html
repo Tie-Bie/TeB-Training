@@ -1714,19 +1714,21 @@ nav ul li {
     #work-process {
       padding: 80px 0;
     }
-
-    /* .row {
+/* 
+    .row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
       gap: 32px;
-      margin-top: 40px;
-    } */
+      margin-top: 10px;
+    }
+ */
 
+/* .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+} */
 
-    .row {
-  margin-top: 40px;
-  gap: 32px;
-}
 
     .steps-item {
       background: white;
@@ -2113,20 +2115,7 @@ nav ul li {
 }
 
 
-.footer .footer-newsletter .newsletter-form {
-  margin-top: 30px;
-  margin-bottom: 15px;
-  padding: 6px 8px;
-  position: relative;
-  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
-  display: flex;
-  transition: 0.3s;
-  border-radius: 50px;
 
-
-}
 
   </style>
   </head>
@@ -2273,6 +2262,9 @@ nav ul li {
         </div>
       </section>
 
+
+
+
       <section id="work-process" class="work-process section">
         <div class="container">
           <div class="section-title">
@@ -2280,8 +2272,11 @@ nav ul li {
             <!-- <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร</p> -->
           </div>
 
-      <div class="row">
-   <div class="col-lg-4 col-md-6 col-sm-12">
+
+
+    <div class="row g-4">
+
+        <div class="col-12 col-md-6 col-xl-4">
 
           <div class="steps-item line-blue">
             <div class="steps-content">
@@ -2439,8 +2434,12 @@ nav ul li {
       </section>
 
 
+
+
+
+
  <!-- LEARNING OUTCOMES SECTION -->
-  <section id="recent-blog-postst" class="recent-blog-postst section">
+  <section id="work-process" class="work-process section">
     <div class="container">
       <div class="section-title">
         <h4>ทักษะที่ได้หลังเรียนจบ (Learning Outcomes)</h4>
@@ -2449,9 +2448,9 @@ nav ul li {
           ที่เน้นการเรียนรู้จากประสบการณ์จริง เข้าใจง่าย และนำไปใช้งานได้จริง
         </p> -->
       </div>
+<div class="row g-4">
 
-      <div class="row">
-        <div class="col-xl-4 col-md-6">
+        <div class="col-12 col-md-6 col-xl-4">
           <div class="post-item position-relative h-100">
             <div class="post-content d-flex flex-column">
               <h3>เข้าใจหลักการ DAX อย่างเป็นระบบ (ไม่จำสูตรมั่ว)</h3>
@@ -2468,7 +2467,7 @@ nav ul li {
           </div>
         </div>
 
-        <div class="col-xl-4 col-md-6">
+        <div class="col-12 col-md-6 col-xl-4">
           <div class="post-item position-relative h-100">
             <div class="post-content d-flex flex-column">
               <h3>เขียน Measure & KPI แบบมืออาชีพ</h3>
@@ -2485,7 +2484,7 @@ nav ul li {
           </div>
         </div>
 
-        <div class="col-xl-4 col-md-6">
+        <div class="col-12 col-md-6 col-xl-4">
           <div class="post-item position-relative h-100">
             <div class="post-content d-flex flex-column">
               <h3>เข้าใจ Context (Row / Filter) จนตัวเลข “ไม่หลอกเราอีกต่อไป”</h3>
@@ -2502,7 +2501,7 @@ nav ul li {
           </div>
         </div>
 
-        <div class="col-xl-4 col-md-6">
+        <div class="col-12 col-md-6 col-xl-4">
           <div class="post-item position-relative h-100">
             <div class="post-content d-flex flex-column">
               <h3>ทำ Time Intelligence เช่น YTD / YoY / Rolling ได้จริง</h3>
@@ -2519,7 +2518,7 @@ nav ul li {
           </div>
         </div>
 
-                <div class="col-xl-4 col-md-6">
+                <div class="col-12 col-md-6 col-xl-4">
           <div class="post-item position-relative h-100">
             <div class="post-content d-flex flex-column">
               <h3>แก้ปัญหา DAX แบบที่เจอบ่อยในงานจริงได้อย่างเข้าใจ</h3>
@@ -2535,8 +2534,8 @@ nav ul li {
             </div>
           </div>
         </div>
-
-                      <div class="col-xl-4 col-md-6">
+<div class="col-12 col-md-6 col-xl-4">
+                      
           <div class="post-item position-relative h-100">
             <div class="post-content d-flex flex-column">
               <h3>พร้อมทำ Dashboard ที่ “วิเคราะห์ได้ลึก” และเชื่อถือได้</h3>
@@ -2554,7 +2553,7 @@ nav ul li {
         </div>
 
 
-</div>
+</row>
 </div>
 </section>
       </main>

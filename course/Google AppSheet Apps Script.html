@@ -1595,12 +1595,12 @@
       padding: 80px 0;
     }
 
-    .row {
+    /* .row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
       gap: 32px;
       margin-top: 40px;
-    }
+    } */
 
     .steps-item {
       background: white;
@@ -1984,23 +1984,18 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <div class="header-content">
-      <div class="logo">i-Solutions</div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#courses">หลักสูตร</a></li>
-          <li><a href="#services">บริการของเรา</a></li>
-          <li><a href="#pricing">ราคา</a></li>
-          <li><a href="#about">ผู้สอน</a></li>
-          <li><a href="#blog">บทความ</a></li>
-          <li><a href="#contact">ติดต่อเรา</a></li>
-        </ul>
-      </nav>
-      <a href="#start" class="btn-get-started">Get Started</a>
-    </div>
-  </header>
+   <div id="header"></div>
+
+    <script>
+  fetch("../header1.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+</script>
+
+    <!-- Main Container -->
+    <main>
+      <section id="call-to-action" class="dark-background">
+      </section>
 
   <!-- Main Container -->
   <div class="container">
@@ -2121,14 +2116,14 @@
       </div>
     </section>
 
-  <section id="work-process" class="work-process section">
+     <section id="recent-blog-postst" class="recent-blog-postst section">
     <div class="container">
       <div class="section-title">
         <h4>📚 เนื้อหาหลักสูตร (Course Outline)</h4>
         <!-- <p>เนื้อหาครบตั้งแต่พื้นฐานจนสร้าง Dashboard สำหรับงานจริงในองค์กร</p> -->
       </div>
 
-      <div class="row">
+  <div class="row g-4">
         <div class="col-lg-4">
           <div class="steps-item line-blue">
             <div class="steps-content">
@@ -2305,7 +2300,7 @@
         </p> -->
       </div>
 
-      <div class="row">
+   <div class="row g-4">
         <div class="col-xl-4 col-md-6">
           <div class="post-item position-relative h-100">
             <div class="post-content d-flex flex-column">
@@ -2391,4 +2386,22 @@
           </div>
         </div>
 
-        
+                </div>
+
+
+
+</div>
+</section>
+      </main>
+
+      <div id="footer"></div>
+
+      <script>
+  fetch("../footer1.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
+
+
+
+  </body>
