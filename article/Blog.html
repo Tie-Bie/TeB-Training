@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บทความและหลักสูตร - i-Solutions</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root{
+      --primary-blue:#0ea5e9;
+      --primary-dark:#0284c7;
+      --accent-cyan:#06b6d4;
+      --accent-purple:#8b5cf6;
+      --accent-orange:#f59e0b;
+      --text-dark:#1e293b;
+      --text-light:#64748b;
+      --bg-light:#f8fafc;
+      --white:#ffffff;
+    }
+
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+      background: linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 50%,#dbeafe 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header{
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(14,165,233,0.2);
+    }
+
+    .header-content{
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo{
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg,var(--primary-blue),var(--accent-cyan),var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    nav ul{ display:flex; gap:40px; list-style:none; align-items:center; }
+    nav a{
+      color: var(--text-dark);
+      text-decoration:none;
+      font-weight:600;
+      font-size:15px;
+      padding:8px 0;
+      transition: all .3s ease;
+    }
+    nav a:hover{ color: var(--primary-blue); }
+
+    .btn-get-started{
+      background: linear-gradient(135deg,var(--primary-blue),var(--accent-cyan));
+      color:white;
+      padding:12px 28px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      font-size:15px;
+      box-shadow: 0 4px 15px rgba(14,165,233,0.3);
+      transition: all .3s ease;
+    }
+    .btn-get-started:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(14,165,233,0.5);
+    }
+
+    .container{
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 40px 20px;
+    }
+
+    .page-title{
+      font-size: 36px;
+      font-weight: 900;
+      background: linear-gradient(135deg,var(--primary-blue),var(--accent-purple));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-align:center;
+      margin-bottom: 30px;
+      letter-spacing: -1px;
+    }
+
+    .content-wrapper{ display:flex; gap:30px; }
+
+    .sidebar{
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 25px;
+      width: 320px;
+      box-shadow: 0 8px 32px rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.1);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-header{
+      background: linear-gradient(135deg,var(--primary-blue),var(--accent-cyan));
+      color:white;
+      padding: 18px 20px;
+      margin: -25px -25px 25px -25px;
+      border-radius: 20px 20px 0 0;
+      font-size: 18px;
+      font-weight: 800;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .menu-item{
+      background: var(--bg-light);
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all .3s ease;
+      border-left: 4px solid transparent;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 14px;
+    }
+    .menu-item:hover{
+      background: rgba(14,165,233,0.1);
+      border-left-color: var(--primary-blue);
+      transform: translateX(8px);
+      box-shadow: 0 4px 15px rgba(14,165,233,0.1);
+    }
+    .menu-item.active{
+      background: linear-gradient(135deg,var(--primary-blue),var(--accent-cyan));
+      color:white;
+      border-left-color: var(--primary-dark);
+      box-shadow: 0 6px 20px rgba(14,165,233,0.3);
+      transform: translateX(8px);
+    }
+
+    .main-content{ flex: 1; min-height: 400px; }
+
+    .article-list{ display:none; }
+    .article-list.active{ display:grid; gap:25px; }
+
+    .article-card{
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px;
+      display:flex;
+      gap: 25px;
+      border: 1px solid rgba(14,165,233,0.1);
+      box-shadow: 0 8px 32px rgba(14,165,233,0.1);
+      transition: all .4s cubic-bezier(0.4,0,0.2,1);
+      overflow:hidden;
+      position: relative;
+    }
+    .article-card:hover{
+      border-color: var(--primary-blue);
+      box-shadow: 0 16px 48px rgba(14,165,233,0.25);
+      transform: translateY(-8px);
+    }
+
+    /* ✅ ลิงก์ครอบการ์ด (ไปหน้า Blog) */
+    .article-card-link{
+      text-decoration:none;
+      color: inherit;
+      display:block;
+    }
+
+    /* ✅ Thumbnail YouTube (แบบที่ 1: URL thumbnail ตรง) */
+    .youtube-thumb{
+      width: 180px;
+      height: 180px;
+      border-radius: 16px;
+      overflow:hidden;
+      flex-shrink: 0;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(14,165,233,0.3);
+      display:block;
+      text-decoration:none;
+    }
+    .youtube-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+      transition: transform .25s ease;
+    }
+    .youtube-thumb:hover img{ transform: scale(1.06); }
+
+    .play-icon{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size: 56px;
+      background: rgba(0,0,0,0.25);
+      transition: all .25s ease;
+    }
+    .youtube-thumb:hover .play-icon{
+      background: rgba(255,0,0,0.55);
+    }
+
+    .article-content{ flex: 1; }
+    .article-icon{
+      background: linear-gradient(135deg,var(--accent-cyan),var(--primary-blue));
+      color:white;
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:20px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(14,165,233,0.3);
+    }
+    .article-title{
+      font-size: 22px;
+      margin-bottom: 12px;
+      font-weight: 800;
+      line-height: 1.4;
+      color: var(--text-dark);
+    }
+    .article-description{
+      color: var(--text-light);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px){
+      .content-wrapper{ flex-direction: column; }
+      .sidebar{ width:100%; position: static; }
+    }
+    @media (max-width: 768px){
+      .header-content{ padding: 15px 20px; }
+      nav ul{ display:none; }
+      .container{ padding: 30px 20px; }
+      .page-title{ font-size: 32px; }
+
+      .article-card{ flex-direction: column; padding: 25px; }
+      .youtube-thumb{ width:100%; height:200px; }
+    }
+  </style>
+</head>
+
+<body>
+  
+   <!-- Header -->
+<header>
+    <div id="header"></div>
+
+<script>
+  fetch("../header1.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+</script>
+  </header>
+      <!-- Main Content -->
+      <main class="main">
+           <section id="call-to-action" class="dark-background">
+
+    </section><!-- /Call To Action Section -->
+  <div class="container">
+    <h4 class="page-title">หลักสูตร Data Analysis</h4>
+
+    <div class="content-wrapper">
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <i class="bi bi-journal-text"></i>
+          บทความทั้งหมด
+        </div>
+        <div class="menu-item active" data-category="excel">Microsoft Excel</div>
+        <div class="menu-item" data-category="powerbi">Power BI Business Intelligence</div>
+        <div class="menu-item" data-category="ai">Looker Studio Business Intelligence</div>
+        <div class="menu-item" data-category="access">google-bigquery-for-business</div>
+        <div class="menu-item" data-category="powerpoint">Power Automate Flow</div>
+        <div class="menu-item" data-category="sql">App Sheet & App Script</div>
+        <div class="menu-item" data-category="python">Python</div>
+      </div>
+
+      <div class="main-content">
+
+        <!-- ✅ Excel Articles -->
+        <div class="article-list active" id="excel">
+
+          <!-- ✅ ทั้งการ์ดไปหน้า Blog (Money/Supporting page) -->
+          <a href="Blog-Excel.html" class="article-card-link" aria-label="อ่านบทความ Excel สำหรับงานองค์กร">
+            <div class="article-card">
+
+              <!-- ✅ Thumbnail ไป YouTube (แบบที่ 1: URL thumbnail ตรง + fallback) -->
+              <!-- เปลี่ยน VIDEO_ID ใน 3 จุด: href, src, onerror -->
+              <a class="youtube-thumb"
+                 href="https://www.youtube.com/watch?v=VIDEO_ID"
+                 target="_blank"
+                 rel="noopener"
+                 onclick="event.stopPropagation();"
+                 aria-label="ดูวิดีโอ YouTube">
+                <img
+                  src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg"
+                  alt="YouTube Thumbnail"
+                  loading="lazy"
+                  onerror="this.onerror=null;this.src='https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg';"
+                >
+                <span class="play-icon"><i class="bi bi-play-fill"></i></span>
+              </a>
+
+              <div class="article-content">
+                <div class="article-icon"><i class="bi bi-pencil-square"></i></div>
+               <a href="https://example.com/article/excel">
+  <div class="article-title">Excel สำหรับงานองค์กร: ทักษะที่ช่วยลดเวลาทำรายงาน</div>
+</a>
+
+                <div class="article-description">
+                  คุณเคยใช้เวลาทำรายงานทั้งวันหรือไม่? ในยุคที่ข้อมูลคือทรัพย์สิน การใช้ Excel อย่างมีประสิทธิภาพไม่ใช่แค่ทักษะเสริม
+                  แต่เป็นความจำเป็นสำหรับทุกคนในองค์กร บทความนี้จะพาคุณไปรู้จักเทคนิค Excel 
+                  <br>
+                  <a class="new-btn-getstarted" href="#about">ดูวิดีโอ</a>
+
+                </div>
+              </div>
+
+            </div>
+          </a>
+
+          <!-- ✅ การ์ดที่ 2 -->
+         <a href="Blog-ExcelLooku.html" class="article-card-link" aria-label="อ่านบทความ VLOOKUP vs XLOOKUP">
+  <div class="article-card">
+
+    <a class="youtube-thumb"
+       href="https://www.youtube.com/watch?v=1e-OWcIbHAg&list=PLDIhR25ySwhu85o7ajwpgel-0Vx5h60MZ&index=4"
+       target="_blank"
+       rel="noopener"
+       onclick="event.stopPropagation();"
+       aria-label="ดูวิดีโอ YouTube">
+      <img
+        src="https://img.youtube.com/vi/1e-OWcIbHAg/maxresdefault.jpg"
+        alt="YouTube Thumbnail"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://img.youtube.com/vi/1e-OWcIbHAg/hqdefault.jpg';"
+      >
+      <span class="play-icon"><i class="bi bi-play-fill"></i></span>
+    </a>
+
+
+              <div class="article-content">
+                <div class="article-icon"><i class="bi bi-pencil-square"></i></div>
+                 <a href="https://example.com/article/excel">
+                <div class="article-title">VLOOKUP vs XLOOKUP: เปรียบเทียบและเลือกใช้อย่างถูกต้อง</div> </a>
+                <div class="article-description">
+                  คุณควรใช้ฟังก์ชันไหน? หนึ่งในคำถามที่ได้รับบ่อยที่สุดจากผู้ใช้ Excel คือ "ควรใช้ VLOOKUP หรือ XLOOKUP?"
+                  บทความนี้จะเปรียบเทียบทั้ง 2 ฟังก์ชันอย่างละเอียด พร้อมแนะนำว่าควรเลือกใช้อย่างไรให้เหมาะสมกับสถานการณ์
+                   <br>
+                  <a class="new-btn-getstarted" href="#about">ดูวิดีโอ</a>
+                </div>
+              </div>
+
+            </div>
+          </a>
+
+          <!-- ✅ การ์ดที่ 3 -->
+          <a href="Blog-PowerQuery.html" class="article-card-link" aria-label="อ่านบทความ Power Query ทำความสะอาดข้อมูลอัตโนมัติ">
+            <div class="article-card">
+
+              <a class="youtube-thumb"
+                 href="https://www.youtube.com/watch?v=VIDEO_ID_3"
+                 target="_blank"
+                 rel="noopener"
+                 onclick="event.stopPropagation();"
+                 aria-label="ดูวิดีโอ YouTube">
+                <img
+                  src="https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg"
+                  alt="YouTube Thumbnail"
+                  loading="lazy"
+                  onerror="this.onerror=null;this.src='https://img.youtube.com/vi/VIDEO_ID_3/hqdefault.jpg';"
+                >
+                <span class="play-icon"><i class="bi bi-play-fill"></i></span>
+              </a>
+
+              <div class="article-content">
+                <div class="article-icon"><i class="bi bi-pencil-square"></i></div>
+                 <a href="https://example.com/article/excel">
+                <div class="article-title">Power Query: ทำความสะอาดข้อมูลอัตโนมัติ ไม่ต้องทำซ้ำ</div></a>
+                <div class="article-description">
+                  เบื่อไหมกับการทำความสะอาดข้อมูลทุกครั้งที่ได้ไฟล์ใหม่? Power Query คือเครื่องมือเปลี่ยนเกมที่ช่วยให้คุณทำความสะอาดข้อมูลอัตโนมัติ
+                  บันทึกขั้นตอนไว้ครั้งเดียว แล้วใช้ซ้ำได้ตลอด!
+                   <br>
+                  <a class="new-btn-getstarted" href="#about">ดูวิดีโอ</a>
+                </div>
+              </div>
+
+            </div>
+          </a>
+
+        </div><!-- /#excel -->
+
+        <!-- หมวดอื่น ๆ ของคุณใส่ต่อได้ตามเดิม -->
+         <div class="article-list" id="powerbi">
+
+  <a href="Blog-PowerBI.html" class="article-card-link">
+    <div class="article-card">
+
+      <a class="youtube-thumb"
+         href="https://www.youtube.com/watch?v=VIDEO_ID_PBI_1"
+         target="_blank" rel="noopener"
+         onclick="event.stopPropagation();">
+        <img
+          src="https://img.youtube.com/vi/VIDEO_ID_PBI_1/maxresdefault.jpg"
+          onerror="this.onerror=null;this.src='https://img.youtube.com/vi/VIDEO_ID_PBI_1/hqdefault.jpg';"
+          alt="YouTube Thumbnail" loading="lazy">
+        <span class="play-icon"><i class="bi bi-play-fill"></i></span>
+      </a>
+
+      <div class="article-content">
+        <div class="article-icon"><i class="bi bi-graph-up"></i></div>
+        <div class="article-title">Power BI สำหรับองค์กร: จากข้อมูลดิบสู่ Dashboard ตัดสินใจ</div>
+        <div class="article-description">...</div>
+      </div>
+
+    </div>
+  </a>
+
+</div>
+      </div>
+    </div>
+  </div>
+
+  </main>
+<div id="footer"></div>
+<script>
+  fetch("../footer1.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+
+</body>
+
+  <!-- ✅ ตัวอย่างสคริปต์สลับเมนู (ถ้าคุณมีอยู่แล้ว เอาอันนี้ออกได้) -->
+  <script>
+    const menuItems = document.querySelectorAll('.menu-item');
+    const articleLists = document.querySelectorAll('.article-list');
+
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const category = item.getAttribute('data-category');
+
+        menuItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        articleLists.forEach(list => list.classList.remove('active'));
+        const target = document.getElementById(category);
+        if (target) target.classList.add('active');
+      });
+    });
+  </script>
+
+
+</html>
