@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Google AppSheet & Apps Script คืออะไร? สร้างแอปและระบบอัตโนมัติโดยไม่ต้องเขียนโค้ด | i-Solutions</title>
+  <meta name="description" content="Google AppSheet และ Google Apps Script คือเครื่องมือจาก Google ที่ช่วยให้องค์กรสร้างแอปและระบบ Automation ได้เร็ว สร้าง Workflow/Approval เชื่อม Sheets, Gmail, Drive อัตโนมัติ โดยไม่ต้องพัฒนาระบบใหม่ทั้งหมด">
+  <meta name="keywords" content="appsheet คืออะไร, apps script คืออะไร, google apps script automation, appsheet workflow, appsheet approval, automation google workspace, สร้างแอปจาก google sheets">
+
+  <link rel="canonical" href="https://i-solutions.com/blog/appsheet/what-is-appsheet-appsscript/">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root{
+      --primary-blue:#0ea5e9;
+      --accent-cyan:#06b6d4;
+      --accent-purple:#8b5cf6;
+      --accent-green:#10b981;
+      --accent-orange:#f59e0b;
+      --text-dark:#1e293b;
+      --text-light:#64748b;
+      --bg-light:#f8fafc;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg-light);
+      color:var(--text-dark);
+      line-height:1.85;
+    }
+
+    header{
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(20px);
+      box-shadow:0 4px 30px rgba(0,0,0,.05);
+      position:sticky; top:0; z-index:1000;
+      border-bottom:1px solid rgba(14,165,233,.2);
+    }
+
+    .header-content{
+      max-width:1400px;
+      margin:0 auto;
+      padding:20px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:900;
+      background:linear-gradient(135deg,var(--primary-blue),var(--accent-cyan));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-decoration:none;
+      letter-spacing:-0.5px;
+    }
+
+    nav ul{ display:flex; gap:40px; list-style:none; margin:0; }
+    nav a{ color:var(--text-dark); text-decoration:none; font-weight:600; transition:color .25s ease; }
+    nav a:hover{ color:var(--primary-blue); }
+
+    .breadcrumb-container{
+      max-width:900px;
+      margin:40px auto 0;
+      padding:0 40px;
+    }
+
+    .breadcrumb{
+      display:flex; gap:8px;
+      font-size:14px; color:var(--text-light);
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .breadcrumb a{ color:var(--text-light); text-decoration:none; }
+    .breadcrumb a:hover{ color:var(--primary-blue); }
+
+    .article-container{
+      max-width:900px;
+      margin:40px auto;
+      padding:0 40px 80px;
+    }
+
+    .article-category{
+      display:inline-block;
+      background:linear-gradient(135deg,var(--accent-purple),var(--primary-blue));
+      color:white;
+      padding:8px 20px;
+      border-radius:50px;
+      font-size:14px;
+      font-weight:800;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+
+    .article-title{
+      font-size:46px;
+      font-weight:900;
+      line-height:1.18;
+      margin-bottom:18px;
+    }
+
+    .article-meta{
+      display:flex; gap:30px;
+      color:var(--text-light);
+      font-size:14px;
+      margin-bottom:26px;
+      flex-wrap:wrap;
+    }
+
+    .meta-item{ display:flex; align-items:center; gap:8px; }
+
+    .article-excerpt{
+      font-size:19px;
+      color:var(--text-light);
+      padding:20px;
+      background:rgba(14,165,233,.08);
+      border-left:4px solid var(--primary-blue);
+      border-radius:10px;
+      margin:26px 0 10px;
+    }
+
+    .featured-image{
+      width:100%;
+      height:480px;
+      object-fit:cover;
+      border-radius:20px;
+      margin:34px 0 22px;
+      box-shadow:0 20px 60px rgba(0,0,0,.1);
+    }
+
+    h2{
+      font-size:34px;
+      font-weight:850;
+      margin:56px 0 18px;
+      padding-bottom:12px;
+      border-bottom:3px solid var(--primary-blue);
+    }
+
+    h3{
+      font-size:26px;
+      font-weight:800;
+      margin:36px 0 16px;
+    }
+
+    p{ margin-bottom:20px; }
+    ul,ol{ margin:18px 0 18px 38px; }
+    li{ margin-bottom:10px; }
+    strong{ font-weight:800; }
+
+    .info-box{
+      background:rgba(14,165,233,.08);
+      border-left:5px solid var(--primary-blue);
+      padding:26px;
+      border-radius:12px;
+      margin:34px 0;
+    }
+
+    .info-box h4{
+      font-size:20px;
+      font-weight:900;
+      color:var(--primary-blue);
+      margin-bottom:14px;
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .success-box{
+      background:rgba(16,185,129,.08);
+      border-left:5px solid var(--accent-green);
+      padding:26px;
+      border-radius:12px;
+      margin:34px 0;
+    }
+
+    .success-box h4{
+      font-size:20px;
+      font-weight:900;
+      color:var(--accent-green);
+      margin-bottom:14px;
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .warning-box{
+      background:rgba(245,158,11,.1);
+      border-left:5px solid var(--accent-orange);
+      padding:26px;
+      border-radius:12px;
+      margin:34px 0;
+    }
+
+    .warning-box h4{
+      font-size:20px;
+      font-weight:900;
+      color:var(--accent-orange);
+      margin-bottom:14px;
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .comparison-table{
+      background:#fff;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,.08);
+      margin:36px 0;
+    }
+
+    .comparison-table table{ width:100%; border-collapse:collapse; }
+
+    .comparison-table th{
+      background:linear-gradient(135deg,var(--primary-blue),var(--accent-cyan));
+      color:#fff;
+      padding:18px 20px;
+      text-align:left;
+      font-size:15px;
+      font-weight:900;
+    }
+
+    .comparison-table td{
+      padding:18px 20px;
+      border-bottom:1px solid rgba(0,0,0,.06);
+      vertical-align:top;
+    }
+
+    .comparison-table tr:last-child td{ border-bottom:none; }
+    .comparison-table .feature{ font-weight:800; color:var(--text-dark); }
+
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+      margin:28px 0 10px;
+    }
+
+    .benefit-card{
+      background:#fff;
+      padding:26px;
+      border-radius:16px;
+      box-shadow:0 10px 40px rgba(0,0,0,.08);
+      border-top:4px solid var(--accent-purple);
+      transition:transform .25s ease;
+    }
+
+    .benefit-card:hover{ transform:translateY(-5px); }
+    .benefit-icon{ font-size:44px; margin-bottom:14px; }
+    .benefit-title{ font-size:18px; font-weight:900; margin-bottom:10px; }
+    .benefit-desc{ font-size:14px; color:var(--text-light); line-height:1.65; }
+
+    .cta-section{
+      background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple));
+      border-radius:20px;
+      padding:46px;
+      text-align:center;
+      margin:56px 0 0;
+      color:#fff;
+      box-shadow:0 20px 60px rgba(14,165,233,.25);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cta-section::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      right:-20%;
+      width:380px;
+      height:380px;
+      background:radial-gradient(circle,rgba(255,255,255,.2) 0%,transparent 70%);
+      border-radius:50%;
+    }
+
+    .cta-content{ position:relative; z-index:1; }
+
+    .cta-section h3{
+      font-size:30px;
+      font-weight:950;
+      margin:0 0 12px;
+      color:#fff;
+    }
+
+    .cta-section p{
+      font-size:17px;
+      margin:0 0 26px;
+      color:rgba(255,255,255,.95);
+    }
+
+    .btn-cta-primary{
+      background:#fff;
+      color:var(--primary-blue);
+      padding:15px 34px;
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+      display:inline-block;
+      margin:8px;
+      transition:all .25s ease;
+      box-shadow:0 4px 15px rgba(0,0,0,.15);
+    }
+
+    .btn-cta-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 8px 30px rgba(0,0,0,.25);
+    }
+
+    @media (max-width:768px){
+      .article-title{ font-size:32px; }
+      h2{ font-size:26px; }
+      h3{ font-size:20px; }
+      nav ul{ display:none; }
+      .featured-image{ height:300px; }
+      .comparison-table{ overflow-x:auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <a href="../../index.html" class="logo">i-Solutions</a>
+      <nav>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../courses.html">หลักสูตร</a></li>
+          <li><a href="../../contact.html">ติดต่อเรา</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb-container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="../index.html">Blog</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="./index.html">AppSheet</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>AppSheet & Apps Script คืออะไร</span>
+    </div>
+  </div>
+
+  <article class="article-container">
+    <header>
+      <span class="article-category">Google Workspace Automation</span>
+      <h1 class="article-title">Google AppSheet & Apps Script คืออะไร? สร้างแอปและระบบอัตโนมัติโดยไม่ต้องเขียนโค้ด</h1>
+
+      <div class="article-meta">
+        <div class="meta-item"><i class="bi bi-calendar3"></i><span>21 มกราคม 2026</span></div>
+        <div class="meta-item"><i class="bi bi-clock"></i><span>10 นาทีในการอ่าน</span></div>
+        <div class="meta-item"><i class="bi bi-person"></i><span>โดย i-Solutions Team</span></div>
+      </div>
+
+      <div class="article-excerpt">
+        Google AppSheet และ Google Apps Script คือเครื่องมือจาก Google ที่ช่วยให้องค์กรสร้าง “แอป + Automation”
+        ได้เร็ว โดยไม่ต้องพัฒนาระบบใหม่ทั้งหมด — ใช้ทำ Workflow, ระบบอนุมัติ, แอปภายในองค์กร ได้อย่างเป็นระบบ
+      </div>
+    </header>
+
+    <img
+      class="featured-image"
+      src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop"
+      alt="Google AppSheet and Apps Script for business automation"
+      loading="lazy">
+
+    <div class="article-content">
+
+      <h2>Google AppSheet & Apps Script คืออะไร</h2>
+      <p>
+        <strong>Google AppSheet</strong> และ <strong>Google Apps Script</strong> คือเครื่องมือจาก Google ที่ช่วยให้องค์กรสามารถ
+        <strong>สร้างแอปและระบบ Automation ใช้งานจริงได้อย่างรวดเร็ว</strong> โดยไม่ต้องพัฒนาระบบใหม่ทั้งหมด
+      </p>
+
+      <div class="info-box">
+        <h4><i class="bi bi-info-circle-fill"></i> สรุปแบบเข้าใจง่าย</h4>
+        <ul>
+          <li><strong>AppSheet</strong> → สร้างแอปจากข้อมูล เช่น Google Sheets แบบ <strong>No-code</strong></li>
+          <li><strong>Apps Script</strong> → เขียนสคริปต์เพื่อทำ Automation และเชื่อมระบบใน <strong>Google Workspace</strong></li>
+        </ul>
+        <p style="margin-top:12px;">
+          เมื่อใช้ร่วมกัน จะสามารถสร้าง <strong>Workflow, ระบบอนุมัติ, แอปภายในองค์กร</strong> ได้อย่างทรงพลัง
+        </p>
+      </div>
+
+      <h2>ทำไมองค์กรควรใช้ AppSheet และ Apps Script</h2>
+      <p>หลายองค์กรยังทำงานด้วย Excel / Google Sheets แบบ Manual เช่น:</p>
+      <ul>
+        <li>กรอกข้อมูลซ้ำ</li>
+        <li>ส่งไฟล์ไปมา</li>
+        <li>อนุมัติงานผ่านไลน์หรืออีเมล</li>
+        <li>ข้อมูลไม่เป็นระบบ</li>
+      </ul>
+      <p>
+        <strong>AppSheet & Apps Script</strong> ช่วยเปลี่ยนงานเหล่านี้ให้เป็นระบบอัตโนมัติ ลดงานซ้ำ และทำให้ตรวจสอบย้อนหลังได้
+      </p>
+
+      <h2>ประโยชน์หลักของ AppSheet & Apps Script</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">📱</div>
+          <div class="benefit-title">แอปได้ทั้งมือถือและเว็บ</div>
+          <div class="benefit-desc">สร้างแอปใช้งานจริงได้เร็ว ไม่ต้องพัฒนาเต็มรูปแบบ</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⚙️</div>
+          <div class="benefit-title">ลดงาน Manual & งานซ้ำ</div>
+          <div class="benefit-desc">เปลี่ยนงานเดิม ๆ เป็น Workflow อัตโนมัติ ลดการทำซ้ำ</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔄</div>
+          <div class="benefit-title">เชื่อม Google Workspace</div>
+          <div class="benefit-desc">เชื่อม Sheets, Gmail, Drive, Forms, Calendar ได้โดยตรง</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-title">ลดต้นทุนระบบ</div>
+          <div class="benefit-desc">ทำระบบใช้เองได้โดยไม่ต้องจ้างพัฒนาระบบใหม่ทั้งหมด</div>
+        </div>
+      </div>
+
+      <h2>Google AppSheet ใช้ทำอะไรได้บ้าง</h2>
+      <p>AppSheet เหมาะสำหรับสร้างแอปจากข้อมูลที่มีอยู่แล้ว เช่น Google Sheets, BigQuery หรือ Database อื่น ๆ</p>
+
+      <div class="success-box">
+        <h4><i class="bi bi-phone-fill"></i> ตัวอย่างงานที่ AppSheet ทำได้ดี</h4>
+        <ul>
+          <li>แอปบันทึกข้อมูลลูกค้า</li>
+          <li>แอปขายสินค้า / ใบสั่งซื้อ</li>
+          <li>แอปเช็คสต็อก</li>
+          <li>แอปแจ้งซ่อม / แจ้งปัญหา</li>
+          <li>แอปอนุมัติเอกสาร</li>
+        </ul>
+        <p style="margin-top:12px;">
+          <strong>ไม่ต้องเขียนโค้ด</strong> และสามารถใช้ Google Sheets เป็นฐานข้อมูลได้ทันที
+        </p>
+      </div>
+
+      <h2>Google Apps Script ใช้ทำอะไรได้บ้าง</h2>
+      <p>
+        <strong>Apps Script</strong> คือเครื่องมือเขียนสคริปต์เพื่อ Automation เช่น ทำงานแทนคนได้แบบอัตโนมัติเต็มรูปแบบ
+      </p>
+
+      <div class="info-box">
+        <h4><i class="bi bi-gear-fill"></i> ตัวอย่าง Automation ที่ทำได้ด้วย Apps Script</h4>
+        <ul>
+          <li>ส่งอีเมลอัตโนมัติ</li>
+          <li>ดึง/ประมวลผลข้อมูลจาก Google Sheets</li>
+          <li>สร้างรายงานอัตโนมัติ</li>
+          <li>เชื่อม Forms, Drive, Calendar</li>
+          <li>ทำงานตามเวลา (Trigger)</li>
+        </ul>
+      </div>
+
+      <h2>ใช้ AppSheet ร่วมกับ Apps Script ดีอย่างไร</h2>
+      <p>เมื่อใช้ร่วมกัน จะสร้างระบบที่ครบวงจร เช่น:</p>
+
+      <div class="success-box">
+        <h4><i class="bi bi-diagram-3-fill"></i> Workflow ตัวอย่างที่ทำได้จริง</h4>
+        <ul>
+          <li>กรอกข้อมูลผ่าน AppSheet → Apps Script ส่งอีเมลแจ้งเตือน</li>
+          <li>ผู้ใช้งานกดอนุมัติในแอป → ระบบอัปเดตสถานะอัตโนมัติ</li>
+          <li>ดึงข้อมูลจากหลายไฟล์ → สรุปเป็นรายงานอัตโนมัติ</li>
+        </ul>
+        <p style="margin-top:12px;">
+          เหมาะมากกับงาน <strong>Digital Transformation</strong> ในองค์กร
+        </p>
+      </div>
+
+      <h2>AppSheet & Apps Script ต่างจาก Excel อย่างไร</h2>
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>หัวข้อ</th>
+              <th>Excel / Sheets</th>
+              <th>AppSheet & Apps Script</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature">การทำงาน</td>
+              <td>Manual</td>
+              <td>อัตโนมัติ</td>
+            </tr>
+            <tr>
+              <td class="feature">การใช้งาน</td>
+              <td>ไฟล์</td>
+              <td>แอป</td>
+            </tr>
+            <tr>
+              <td class="feature">การอนุมัติ</td>
+              <td>ทำเอง</td>
+              <td>Workflow</td>
+            </tr>
+            <tr>
+              <td class="feature">การแจ้งเตือน</td>
+              <td>ไม่มี/จำกัด</td>
+              <td>Real-time</td>
+            </tr>
+            <tr>
+              <td class="feature">การขยายระบบ</td>
+              <td>จำกัด</td>
+              <td>รองรับองค์กร</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>ใครควรเรียน AppSheet & Apps Script</h2>
+      <p>เหมาะกับ:</p>
+      <ul>
+        <li>พนักงานออฟฟิศ / Admin</li>
+        <li>ฝ่าย IT / Digital Transformation</li>
+        <li>HR / Accounting / Operation</li>
+        <li>ผู้บริหาร / เจ้าของธุรกิจ</li>
+        <li>องค์กรที่ต้องการสร้างระบบใช้เอง</li>
+      </ul>
+      <p><strong>ไม่จำเป็นต้องมีพื้นฐานเขียนโค้ด</strong> ก็สามารถเริ่มต้นได้</p>
+
+      <h2>เรียน AppSheet & Apps Script ได้อะไรบ้าง</h2>
+      <div class="warning-box">
+        <h4><i class="bi bi-mortarboard-fill"></i> เนื้อหาที่ควรได้จากการเรียนเชิงธุรกิจ</h4>
+        <ul>
+          <li>การสร้างแอปจาก Google Sheets</li>
+          <li>การออกแบบ Workflow และ Approval</li>
+          <li>การเขียน Apps Script เบื้องต้น</li>
+          <li>การเชื่อม AppSheet กับ Apps Script</li>
+          <li>การทำ Automation ตามเวลา</li>
+          <li>Best Practice สำหรับองค์กร</li>
+        </ul>
+      </div>
+
+      <h2>ทำไมองค์กรเลือกใช้ AppSheet & Apps Script กับ TeB Training</h2>
+      <div class="success-box">
+        <h4><i class="bi bi-check-circle-fill"></i> จุดเด่นของการอบรม</h4>
+        <ul>
+          <li>สอนจากประสบการณ์ใช้งานจริง</li>
+          <li>เน้น Workshop + Case ธุรกิจ</li>
+          <li>ลดงานซ้ำ เพิ่มประสิทธิภาพทันที</li>
+          <li>เหมาะกับทั้งบุคคลทั่วไปและองค์กร</li>
+          <li>รองรับ Online และ On-site Training</li>
+        </ul>
+      </div>
+
+      <h2>เริ่มต้นสร้างแอปและระบบ Automation ด้วย Google Workspace</h2>
+      <p>ถ้าคุณต้องการ:</p>
+      <ul>
+        <li>สร้างแอปใช้งานในองค์กร</li>
+        <li>ลดงานเอกสาร</li>
+        <li>ทำ Workflow อัตโนมัติ</li>
+        <li>ใช้ Google Workspace ให้คุ้มค่า</li>
+      </ul>
+      <p><strong>Google AppSheet & Apps Script คือคำตอบ</strong></p>
+
+      <div class="cta-section">
+        <div class="cta-content">
+          <h3>คอร์ส AppSheet & Apps Script สำหรับองค์กร (Workshop + เคสจริง)</h3>
+          <p>
+            เรียนรู้การสร้างแอปจาก Google Sheets ออกแบบ Workflow/Approval และเชื่อม Automation ด้วย Apps Script
+            เพื่อลดงานซ้ำและทำระบบภายในให้เป็นมาตรฐาน
+          </p>
+          <a class="btn-cta-primary" href="../../courses/appsheet-appsscript.html">ดูรายละเอียดคอร์ส</a>
+          <a class="btn-cta-primary" href="../../contact.html">ขอคำปรึกษาฟรี สำหรับองค์กร</a>
+        </div>
+      </div>
+
+    </div>
+  </article>
+</body>
+</html>
